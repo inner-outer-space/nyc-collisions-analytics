@@ -1,6 +1,6 @@
 variable "credentials"  {
   description = "Credentials for GCP"
-  default     = "~/.gcp-keys/terraform-runner-key.json"
+  default     = "~/.gcp-keys/nyc-collisions-terraform-key.json"
 }  
 
 variable "gcp_storage_location" {
@@ -10,7 +10,7 @@ variable "gcp_storage_location" {
 
 variable project {
   description = "Project"
-  default     = "aerobic-badge-408610"
+  default     = "nyc-collisions-418717"
 }
 
 variable "region" {
@@ -21,7 +21,7 @@ variable "region" {
 
 variable "bq_dataset_name" {
   description = "My BigQuery dataset"
-  default     = "taxi_dataset"
+  default     = "nyc_collisions_dataset"
 }
 
 variable "gcp_storage_class" {
@@ -31,7 +31,7 @@ variable "gcp_storage_class" {
 
 variable "gcs_bucket_name" {
   description = "Name for GCP bucket"
-  default     = "aerobic-badge-408610-taxi-bucket"
+  default     = "nyc-collisions-bucket"
 }
 
 
