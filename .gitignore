@@ -1,3 +1,23 @@
+# Data folders 
+data/*
+google_cloud_key.json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# EXTENSIVE LIST OF ITEMS THAT DONT PERTAIN TO THIS REPO. 
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
