@@ -1,6 +1,6 @@
 # Data folders 
-mage/data/
-mage/google_cloud_key.json
+data/*
+google_cloud_key.json
 
 
 
