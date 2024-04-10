@@ -1,0 +1,78 @@
+version: 2
+
+sources: 
+  - name: staging 
+    database: nyc_auto_accidents
+    schema: nyc_collision
+
+    tables: 
+      - name: nyc_collisions_data
+
+models:
+    - name: stg_ny_collisions_data
+      description: >
+        Auto collisions reported by the police within NYC
+      columns:
+          - name: collision_id
+            description: Primary key for this table provided by the source
+            tests:
+                - unique:
+                    severity: warn
+                - not_null:
+                    severity: warn
+          - name: crash_date
+            description: crash_date
+          - name: crash_time
+            description: crash_time            
+          - name: borough
+            description: borough
+          - name: zip_code
+            description: zip_code   
+          - name: zip_code
+            description: zip_code
+          - name: latitude
+            description: latitude
+          - name: latitude
+            description: latitude
+          - name: on_street_name
+            description: on_street_name      
+          - name: off_street_name
+            description: off_street_name
+          - name: cross_street_name
+            description: cross_street_name   
+          - name: number_of_persons_injured
+            description: number_of_persons_injured
+          - name: number_of_persons_killed
+            description: number_of_persons_killed
+          - name: number_of_pedestrians_injured
+            description: number_of_pedestrians_injured
+          - name: number_of_pedestrians_killed
+            description: number_of_pedestrians_killed 
+          - name: number_of_cyclist_injured
+            description: number_of_cyclist_injured
+          - name: number_of_cyclist_killed
+            description: number_of_cyclist_killed   
+          - name: number_of_motorist_injured
+            description: number_of_motorist_injured
+          - name: number_of_motorist_killed
+            description: number_of_motorist_killed
+          - name: contributing_factor_vehicle_1
+            description: contributing_factor_vehicle_1
+          - name: contributing_factor_vehicle_2
+            description: contributing_factor_vehicle_2 
+          - name: contributing_factor_vehicle_3
+            description: contributing_factor_vehicle_3
+          - name: contributing_factor_vehicle_4
+            description: contributing_factor_vehicle_4   
+          - name: contributing_factor_vehicle_5
+            description: contributing_factor_vehicle_5
+          - name: vehicle_type_code1
+            description: vehicle_type_code1
+          - name: vehicle_type_code2
+            description: vehicle_type_code2
+          - name: vehicle_type_code_3
+            description: vehicle_type_code_3 
+          - name: vehicle_type_code_4
+            description: vehicle_type_code_4
+          - name: vehicle_type_code_5
+            description: vehicle_type_code_5 
