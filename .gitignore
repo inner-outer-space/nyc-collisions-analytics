@@ -1,3 +1,29 @@
+# Data folders 
+mage/data/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# EXTENSIVE LIST OF ITEMS THAT DONT PERTAIN TO THIS REPO. 
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
