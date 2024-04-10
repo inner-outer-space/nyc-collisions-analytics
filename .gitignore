@@ -1,6 +1,6 @@
 # Data folders 
 mage/data/
-mage/personal-gcp.json/
+mage/google_cloud_key.json
 
 
 
