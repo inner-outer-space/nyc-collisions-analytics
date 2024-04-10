@@ -2,11 +2,11 @@ version: 2
 
 sources: 
   - name: staging 
-    database: nyc_auto_accidents
-    schema: nyc_collision
+    database: nyc-auto-accidents
+    schema: nyc_collisions
 
     tables: 
-      - name: nyc_collisions_data
+      - name: external_data
 
 models:
     - name: stg_ny_collisions_data
