@@ -35,7 +35,7 @@ default:
   # Google
   
   GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/home/src/google_cloud_key.json"
-  GOOGLE_LOCATION: US # Optional
+  GOOGLE_LOCATION: EU # Optional
   # MongoDB
   # Specify either the connection string or the (host, password, user, port) to connect to MongoDB.
   MONGODB_CONNECTION_STRING: "mongodb://{username}:{password}@{host}:{port}/"
