@@ -7,3 +7,7 @@ base:
       type: duckdb
 
   target: dev
+    outputs:
+      dev:
+        type: bigquery
+        location: EU
