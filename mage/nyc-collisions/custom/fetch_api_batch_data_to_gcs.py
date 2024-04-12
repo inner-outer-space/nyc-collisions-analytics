@@ -46,8 +46,7 @@ def fetch_and_save_batch_from_api(*args, **kwargs):
         response = requests.get(url)
         
         if not response.ok:
-            print(f"Failed to fetch data from API: {response.status_code}")
-            break
+            raise Exception(f"Failed to fetch data from API: {response.status_code}")
 
         # TRANSFORM THE DATA 
         # There are 2 nested layers. Normalize will take care of the first nested layer, 
@@ -57,7 +56,12 @@ def fetch_and_save_batch_from_api(*args, **kwargs):
         if 'location.human_address' in df.columns:
             df.drop(columns = ['location.human_address','location.latitude', 'location.longitude'], inplace=True)
 
-        # Transform the time columns so that the files can be partitioned on year
+        # check the length of date values
+        df['date_len'] = df['crash_date'].apply(lambda x: len(x))
+        print(df['date_len'].value_counts())
+        
+        df.drop(columns='date_len', inplace = True)
+        # Transform the time columns that are easier to handle in python
         #df['crash_date'] = pd.to_datetime(df['crash_date']).dt.strftime('%Y/%m/%d')
         #df['crash_time'] = pd.to_datetime(df['crash_time']).dt.strftime("%H:%M")
         #df['crash_datetime'] = pd.to_datetime(df['crash_date'] + ' ' + df['crash_time'], format='%Y/%m/%d %H:%M')
