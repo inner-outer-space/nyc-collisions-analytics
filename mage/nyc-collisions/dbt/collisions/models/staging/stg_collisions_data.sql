@@ -55,7 +55,6 @@ SELECT
     crash_datetime,
     formatted_crash_date as crash_date,
     formatted_crash_time as crash_time,
-    crash_datetime,
     extract(month from crash_datetime) as crash_month, 
     extract(year from crash_datetime) as crash_year, 
     extract(dayofweek from crash_datetime) as crash_dow,
