@@ -14,7 +14,7 @@ models:
         Auto collisions reported by the police within NYC
       columns:
           - name: collision_id
-            description: Primary key for this table provided by the source
+            description: Primary key defined by source
             tests:
                 - unique:
                     severity: warn
