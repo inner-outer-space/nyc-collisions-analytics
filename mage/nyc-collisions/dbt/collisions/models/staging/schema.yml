@@ -7,6 +7,7 @@ sources:
 
     tables: 
       - name: external_data
+      - name: weather_external_data
 
 models:
     - name: stg_ny_collisions_data
