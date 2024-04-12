@@ -1,5 +1,22 @@
 blocks:
 - all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/weather_data_from_api.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: weather_data_from_api
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: weather_data_from_api
+- all_upstream_blocks_executed: true
   color: teal
   configuration: {}
   downstream_blocks:
@@ -10,12 +27,12 @@ blocks:
   language: python
   name: fetch_api_batch_data_to_gcs
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: custom
   upstream_blocks: []
   uuid: fetch_api_batch_data_to_gcs
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: pink
   configuration:
     data_provider: bigquery
@@ -35,7 +52,7 @@ blocks:
   upstream_blocks:
   - fetch_api_batch_data_to_gcs
   uuid: create_bq_dataset
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     data_provider: bigquery
@@ -79,7 +96,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-10 20:36:22'
+updated_at: '2024-04-12T12:52:42+00:00'
 uuid: collision_data_prep
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []
