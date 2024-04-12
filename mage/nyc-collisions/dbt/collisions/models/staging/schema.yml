@@ -14,16 +14,28 @@ models:
         Auto collisions reported by the police within NYC
       columns:
           - name: collision_id
-            description: Primary key for this table provided by the source
+            description: Primary key defined by source
             tests:
                 - unique:
                     severity: warn
                 - not_null:
                     severity: warn
+          - name: crash_datetime
+            description: crash_datetime
           - name: crash_date
             description: crash_date
           - name: crash_time
-            description: crash_time            
+            description: crash_time
+          - name: crash_month
+            description: crash_month
+          - name: crash_year
+            description: crash_year
+          - name: crash_dow
+            description: crash_dow
+          - name: crash_dow_name
+            description: crash_dow_name
+          - name: crash_mon_yr
+            description: crash_mon_yr            
           - name: borough
             description: borough
           - name: zip_code
