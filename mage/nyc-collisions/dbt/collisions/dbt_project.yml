@@ -33,5 +33,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   collisions:
     # Config indicated by + and applies to all files under models/example/
-    example:
+    staging:
       +materialized: view
+    base: 
+      +materialized: table
