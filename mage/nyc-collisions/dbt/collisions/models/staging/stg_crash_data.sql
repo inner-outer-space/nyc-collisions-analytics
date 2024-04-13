@@ -3,7 +3,7 @@
 WITH formatted_data AS (
   SELECT
         -- UNIQUE KEY
-        cast(collision_id as integer) as collision_id,
+        cast(collision_id as integer) as crash_id,
 
         -- TIME FIELDS (local timezone - NYC)
         date(crash_date) as formatted_crash_date,
@@ -49,7 +49,7 @@ WITH formatted_data AS (
 
 SELECT
     -- UNIQUE KEY
-    cast(collision_id as integer) as collision_id,
+    crash_id,
 
     -- TIME_FIELDS (local timezone - NYC)
     crash_datetime,
