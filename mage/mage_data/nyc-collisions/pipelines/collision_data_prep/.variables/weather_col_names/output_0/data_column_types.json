@@ -1,0 +1,1 @@
+{"date": "str", "time": "str", "temp_c": "str", "temp_f": "str", "windspeed_miles": "str", "windspeed_kmph": "str", "winddir_degree": "str", "winddir16point": "str", "weather_code": "str", "weather_desc": "str", "precip_mm": "str", "humidity": "str", "visibility": "str", "pressure": "str", "cloudcover": "str"}
