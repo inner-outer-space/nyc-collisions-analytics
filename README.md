@@ -4,7 +4,7 @@ Work in progress
 
 
 meteo data 
-https://open-meteo.com/
+https://www.worldweatheronline.com/weather-api/api/docs/historical-weather-api.aspx
 
 
-https://api.open-meteo.com/v1/forecast?latitude=40.7143&longitude=-74.006&hourly=temperature_2m,weather_code,visibility&timezone=America%2FNew_York
+

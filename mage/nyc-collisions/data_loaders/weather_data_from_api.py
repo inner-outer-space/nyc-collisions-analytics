@@ -12,17 +12,9 @@ def load_data_from_api(*args, **kwargs):
     """
     Template for loading data from API
     """
-    url = 'http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=bf2b1f005ae542e89b1123837241204 &q=New York City&format=json&extra=isDayTime&date=2013-01-01&enddate=2024-03-31'
-    response = requests.get(url)
+    url = 'https://github.com/inner-outer-space/nyc-collisions/raw/main/mage/weather_data.parquet'
+    df = pd.read_parquet(url)
     
-    if not response.ok:
-        print(f"Failed to fetch data from API: {response.status_code}")
-        break
-
-    # TRANSFORM THE DATA 
-    # There are 2 nested layers. Normalize will take care of the first nested layer, 
-    df = pd.json_normalize(response.json())
-
     return df
 
 
