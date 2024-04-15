@@ -6,19 +6,21 @@ collisions:
     dev:
       type: bigquery
       location: EU
-      method: 'service-account-json'
-      project: 'nyc-auto-accidents'
-      dataset: 'collisions-first-try'
+      method: service-account
+      project: nyc-auto-accidents
+      dataset: nyc_collisions
       threads: 4
       timeout_seconds: 300
-      keyfile: "/home/src/google_cloud_key.json"
+      keyfile: /home/src/google_cloud_key.json
 
+  target: prod
+  outputs:
     prod:
       type: bigquery
       location: EU
-      method: 'service-account-json'
-      project: 'nyc-auto-accidents'
-      dataset: 'collisions-first-try'
+      method: service-account
+      project: nyc-auto-accidents
+      dataset: nyc_collisions_prod
       threads: 4
       timeout_seconds: 300
-      keyfile: "/home/src/google_cloud_key.json"
+      keyfile: /home/src/google_cloud_key.json

@@ -1,0 +1,14 @@
+sources:
+- description: Dataframes Mage upstream blocks
+  loader: mage
+  name: mage_collisions
+  schema: nyc_collisions_prod
+  tables:
+  - description: Dataframe for block `weather_to_bq_ext` of the `collision_data_prep`
+      mage pipeline.
+    identifier: mage_collision_data_prep_weather_to_bq_ext
+    meta:
+      block_uuid: weather_to_bq_ext
+      pipeline_uuid: collision_data_prep
+    name: collision_data_prep_weather_to_bq_ext
+version: 2
