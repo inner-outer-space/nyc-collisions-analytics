@@ -1,13 +1,24 @@
 # https://docs.getdbt.com/docs/core/connect-data-platform/profiles.yml
 
 base:
-  outputs:
-
-    dev:
-      type: duckdb
-
   target: dev
     outputs:
       dev:
         type: bigquery
         location: EU
+        method: service-account-json
+        project: nyc-auto-accidents
+        dataset: collisions-first-try
+        threads: 4
+        timeout_seconds: 300
+        keyfile: "/home/src/google_cloud_key.json"
+
+      prod:
+        type: bigquery
+        location: EU
+        method: service-account-json
+        project: nyc-auto-accidents
+        dataset: collisions-first-try
+        threads: 4
+        timeout_seconds: 300
+        keyfile: "/home/src/google_cloud_key.json"
