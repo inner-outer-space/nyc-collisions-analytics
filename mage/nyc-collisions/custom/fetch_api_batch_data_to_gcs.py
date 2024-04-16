@@ -62,10 +62,10 @@ def fetch_and_save_batch_from_api(*args, **kwargs):
         
         df.drop(columns='date_len', inplace = True)
         # Transform the time columns that are easier to handle in python
-        #df['crash_date'] = pd.to_datetime(df['crash_date']).dt.strftime('%Y/%m/%d')
-        #df['crash_time'] = pd.to_datetime(df['crash_time']).dt.strftime("%H:%M")
-        #df['crash_datetime'] = pd.to_datetime(df['crash_date'] + ' ' + df['crash_time'], format='%Y/%m/%d %H:%M')
-        #df['crash_year'] = df['crash_datetime'].dt.year
+        df['crash_date'] = pd.to_datetime(df['crash_date']).dt.strftime('%Y/%m/%d')
+        df['crash_time'] = pd.to_datetime(df['crash_time']).dt.strftime("%H:%M")
+        df['crash_datetime'] = pd.to_datetime(df['crash_date'] + ' ' + df['crash_time'], format='%Y/%m/%d %H:%M')
+        df['crash_year'] = df['crash_datetime'].dt.year
 
         # WRITE THE BATCHES TO GCS 
         # convert to a PyArrow table
