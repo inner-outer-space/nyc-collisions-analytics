@@ -10,12 +10,12 @@ blocks:
   language: python
   name: fetch_api_batch_data_to_gcs
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: custom
   upstream_blocks: []
   uuid: fetch_api_batch_data_to_gcs
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     data_provider: bigquery
@@ -38,7 +38,7 @@ blocks:
   upstream_blocks:
   - create_bq_dataset
   uuid: create_bq_ext_table
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: pink
   configuration:
     data_provider: bigquery
@@ -120,8 +120,7 @@ blocks:
     export_write_policy: append
     limit: 1000
     use_raw_sql: true
-  downstream_blocks:
-  - dbt_all
+  downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -134,59 +133,6 @@ blocks:
   upstream_blocks:
   - weather_to_gcs
   uuid: weather_to_bq_ext
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    data_provider: bigquery
-    data_provider_profile: default
-    dbt:
-      command: run
-    dbt_profile_target: dev
-    dbt_project_name: dbt/collisions
-    disable_query_preprocessing: false
-    export_write_policy: append
-    file_source:
-      path: dbts/dbt_all.yaml
-    use_raw_sql: false
-  downstream_blocks:
-  - wonderful_lake
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: yaml
-  name: dbt_all
-  retry_config: null
-  status: executed
-  timeout: null
-  type: dbt
-  upstream_blocks:
-  - weather_to_bq_ext
-  uuid: dbt_all
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    dbt:
-      command: run
-    dbt_profile_target: ''
-    dbt_project_name: dbt/collisions
-    disable_query_preprocessing: false
-    export_write_policy: append
-    file_source:
-      path: dbts/wonderful_lake.yaml
-    use_raw_sql: false
-  downstream_blocks: []
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: yaml
-  name: wonderful lake
-  retry_config: null
-  status: executed
-  timeout: null
-  type: dbt
-  upstream_blocks:
-  - dbt_all
-  uuid: wonderful_lake
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -208,7 +154,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-15 13:31:24'
+updated_at: '2024-04-16 12:00:47'
 uuid: collision_data_prep
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []
