@@ -6,7 +6,7 @@ sources:
     schema: nyc_collisions
 
     tables: 
-      - name: external_data
+      - name: crash_external_data
       - name: weather_external_data
 
 models:
@@ -36,7 +36,9 @@ models:
         - name: crash_dow_name
           description: crash_dow_name
         - name: crash_mon_yr
-          description: crash_mon_yr            
+          description: crash_mon_yr
+        - name: sun_phase
+          description: sun_phase             
         - name: borough
           description: borough
         - name: zip_code
