@@ -1,4 +1,4 @@
-import pandas as pd
+from google.cloud import storage
 from mage_ai.settings.repo import get_repo_path
 from mage_ai.io.config import ConfigFileLoader
 from mage_ai.io.google_cloud_storage import GoogleCloudStorage
@@ -21,25 +21,21 @@ def load_from_google_cloud_storage(*args, **kwargs):
     config_profile = 'default'
 
     bucket_name = 'collisions-first-try'
-    #object_key = 'ny_collision_data/0576784114e14db79eb8b50814139cc8-0.parquet'
-    object_key = 'ny_collisions_data/*.parquet'
+    #object_key = 'your_object_key'
 
-    df = GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).load(
-        bucket_name,
-        object_key,
-    )
-
+    # Create a Google Cloud Storage client
+    client = storage.Client()
     
-    #small_df = df[['crash_datetime']]
-    #smaller_df = small_df.head(5)
-    #df = df.withColumn("crash_datetime", col("crash_datetime").cast("timestamp"))
-    print(df.shape)
-    #small_df = df[['crash_datetime']].head(5)
-    #small_df['crash_datetime'] = pd.to_datetime(small_df['crash_datetime'])
+    # Get the bucket
+    bucket = client.get_bucket(bucket_name)
+    
+    # List all objects in the bucket
+    blobs = bucket.list_blobs()
+    
+    # Extract the names of the files
+    file_names = [blob.name for blob in blobs]
 
-    return df
-
-
+    return file_names
 
 
 @test
