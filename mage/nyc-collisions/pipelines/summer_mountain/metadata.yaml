@@ -1,0 +1,115 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/spark_stop.py
+  downstream_blocks:
+  - spark_session
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: spark_stop
+  retry_config: null
+  status: failed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: spark_stop
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/spark_session.py
+  downstream_blocks:
+  - data_from_gcs
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: spark_session
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - spark_stop
+  uuid: spark_session
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - load_into_spark
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: data_from_gcs
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - spark_session
+  uuid: data_from_gcs
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - spark_sunphase
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_into_spark
+  retry_config: null
+  status: failed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - data_from_gcs
+  uuid: load_into_spark
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_source:
+      path: transformers/spark_sunphase.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: spark_sunphase
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_into_spark
+  uuid: spark_sunphase
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-04-15 16:52:17.340040+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: summer mountain
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+updated_at: '2024-04-16 15:25:26'
+uuid: summer_mountain
+variables_dir: /home/src/mage_data/nyc-collisions
+widgets: []

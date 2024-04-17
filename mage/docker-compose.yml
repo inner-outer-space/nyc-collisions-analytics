@@ -1,7 +1,7 @@
 version: '3'
 services:
   magic:
-    image: mageai/mageai:latest
+    image: mageai/mageai_spark
     command: mage start --port 6788 ${PROJECT_NAME}
     env_file:
       - .env
