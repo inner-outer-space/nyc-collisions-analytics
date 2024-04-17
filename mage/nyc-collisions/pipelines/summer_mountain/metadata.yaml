@@ -1,42 +1,46 @@
 blocks:
 - all_upstream_blocks_executed: true
   color: null
-  configuration: {}
-  downstream_blocks:
-  - data_from_gcs
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: spark
-  retry_config: null
-  status: executed
-  timeout: null
-  type: data_loader
-  upstream_blocks: []
-  uuid: spark
-- all_upstream_blocks_executed: true
-  color: null
   configuration:
     file_source:
       path: data_loaders/spark_stop.py
-  downstream_blocks: []
+  downstream_blocks:
+  - spark_session
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
   name: spark_stop
   retry_config: null
-  status: executed
+  status: failed
   timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: spark_stop
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/spark_session.py
+  downstream_blocks:
+  - data_from_gcs
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: spark_session
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - spark_stop
+  uuid: spark_session
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks:
-  - spark_sunphase
+  - load_into_spark
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -47,9 +51,26 @@ blocks:
   timeout: null
   type: data_loader
   upstream_blocks:
-  - spark
+  - spark_session
   uuid: data_from_gcs
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - spark_sunphase
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_into_spark
+  retry_config: null
+  status: failed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - data_from_gcs
+  uuid: load_into_spark
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
@@ -65,7 +86,7 @@ blocks:
   timeout: null
   type: transformer
   upstream_blocks:
-  - data_from_gcs
+  - load_into_spark
   uuid: spark_sunphase
 cache_block_output_in_memory: false
 callbacks: []
@@ -88,7 +109,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-16 07:04:29'
+updated_at: '2024-04-16 15:25:26'
 uuid: summer_mountain
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []

@@ -1,21 +1,23 @@
 blocks:
 - all_upstream_blocks_executed: true
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: data_loaders/spark.py
   downstream_blocks:
-  - to_gcs_partitioned
+  - api_to_spark
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: fetch_and_save_batch
+  name: spark_session
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
-  uuid: fetch_and_save_batch
-- all_upstream_blocks_executed: false
+  uuid: spark_session
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks: []
@@ -23,26 +25,43 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: python
-  name: to_gcs_partitioned
+  name: api_to_spark
   retry_config: null
   status: executed
   timeout: null
-  type: data_exporter
+  type: data_loader
   upstream_blocks:
-  - fetch_and_save_batch
-  uuid: to_gcs_partitioned
+  - spark_session
+  uuid: api_to_spark
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/spark_stop.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: spark_stop
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: spark_stop
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
-created_at: '2024-04-04 21:46:11.796699+00:00'
+created_at: '2024-04-16 10:24:37.529591+00:00'
 data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: nyc-collisions
+name: test-api-to-spark
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -52,7 +71,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-16T20:17:46+00:00'
-uuid: nyc_collisions
+updated_at: '2024-04-16 21:11:26'
+uuid: test_api_to_spark
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []
