@@ -41,6 +41,8 @@ def load_data(*args, **kwargs):
     print(input_object_keys)
     return input_object_keys
 
+    return {}
+
 
 @test
 def test_output(output, *args) -> None:

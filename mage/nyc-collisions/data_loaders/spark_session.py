@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+import os
 
 if 'data_loader' not in globals():
     from mage_ai.data_preparation.decorators import data_loader
@@ -8,6 +9,7 @@ if 'test' not in globals():
 
 @data_loader
 def load_data(*args, **kwargs):
+
     #spark.stop()
     spark = (
         SparkSession
@@ -19,8 +21,9 @@ def load_data(*args, **kwargs):
         .config("spark.sql.legacy.timeParserPolicy", "LEGACY") # Set timeParserPolicy to LEGACY
         .getOrCreate()
     )
+
     kwargs['context']['spark'] = spark
-    #kwargs['context']['spark'] = spark
+
 
     print(spark.sparkContext.getConf().get("spark.jars"))
     print("Number of cores used:", spark.sparkContext.defaultParallelism)
