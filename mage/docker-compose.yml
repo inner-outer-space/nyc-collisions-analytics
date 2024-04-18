@@ -18,6 +18,7 @@ services:
       POSTGRES_PORT: ${POSTGRES_PORT}
     ports:
       - 6788:6788
+      - 4040:4040
     volumes:
       - .:/home/src/
       - ~/Documents/secrets/personal-gcp.json:/home/src/personal-gcp.json
