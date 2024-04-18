@@ -16,7 +16,7 @@ if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
 @data_loader
-def fetch_and_save_batch_from_api(*args, **kwargs):
+def batch_api_spark_gcs(*args, **kwargs):
 
     spark = kwargs['spark']
 
