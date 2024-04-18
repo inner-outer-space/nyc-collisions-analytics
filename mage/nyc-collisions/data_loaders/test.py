@@ -1,8 +1,14 @@
-from google.cloud import storage
+import os
+import requests
+from os import path
+import pandas as pd
+import time
 from mage_ai.settings.repo import get_repo_path
 from mage_ai.io.config import ConfigFileLoader
 from mage_ai.io.google_cloud_storage import GoogleCloudStorage
-from os import path
+from pyspark.sql.types import StructType, StructField, StringType, TimestampType, IntegerType, DoubleType
+from pyspark.sql.functions import udf, col, date_format, to_date, to_timestamp, concat, lit
+
 if 'data_loader' not in globals():
     from mage_ai.data_preparation.decorators import data_loader
 if 'test' not in globals():
@@ -17,26 +23,24 @@ def load_from_google_cloud_storage(*args, **kwargs):
 
     Docs: https://docs.mage.ai/design/data-loading#googlecloudstorage
     """
+    spark = kwargs.get('spark')
+    #print(spark_session)
+    #spark = kwargs['spark']
+    for key, value in kwargs.items():
+        print(key, value)
+
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
 
-    bucket_name = 'collisions-first-try'
-    #object_key = 'your_object_key'
+    bucket_name = 'your_bucket_name'
+    object_key = 'your_object_key'
 
-    # Create a Google Cloud Storage client
-    client = storage.Client()
-    
-    # Get the bucket
-    bucket = client.get_bucket(bucket_name)
-    
-    # List all objects in the bucket
-    blobs = bucket.list_blobs()
-    
-    # Extract the names of the files
-    file_names = [blob.name for blob in blobs]
+    df = GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).load(
+        bucket_name,
+        object_key,
+    )
 
-    return file_names
-
+    return {}
 
 @test
 def test_output(output, *args) -> None:

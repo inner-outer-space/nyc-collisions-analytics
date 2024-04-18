@@ -1,4 +1,4 @@
-# nyc-collisions
+# nyc-collisions-analytics
 
 Work in progress
 

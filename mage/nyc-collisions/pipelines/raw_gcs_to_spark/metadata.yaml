@@ -5,7 +5,7 @@ blocks:
     file_source:
       path: data_loaders/spark_session.py
   downstream_blocks:
-  - test_kwargs
+  - gcs_to_spark_transform
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -18,45 +18,48 @@ blocks:
   upstream_blocks: []
   uuid: spark_session
 - all_upstream_blocks_executed: true
-  color: blue
+  color: null
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - gcs_to_spark_transform
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: test_kwargs
+  name: get_raw_blob_list
   retry_config: null
   status: executed
   timeout: null
-  type: custom
-  upstream_blocks:
-  - spark_session
-  uuid: test_kwargs
+  type: data_loader
+  upstream_blocks: []
+  uuid: get_raw_blob_list
 - all_upstream_blocks_executed: true
   color: null
   configuration:
     file_source:
-      path: data_loaders/batch_api_spark_gcs.py
-  downstream_blocks: []
+      path: data_loaders/gcs_to_spark_transform.py
+  downstream_blocks:
+  - crash_to_bq_ext
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: batch_api_spark_gcs
+  name: gcs_to_spark_transform
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_loader
-  upstream_blocks: []
-  uuid: batch_api_spark_gcs
+  upstream_blocks:
+  - get_raw_blob_list
+  - spark_session
+  uuid: gcs_to_spark_transform
 - all_upstream_blocks_executed: true
   color: null
   configuration:
     data_provider: bigquery
     data_provider_profile: default
     dbt: {}
-    disable_query_preprocessing: false
+    disable_query_preprocessing: true
     export_write_policy: append
     limit: 1000
     use_raw_sql: true
@@ -65,25 +68,26 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: sql
-  name: spark_gcs_to_bq_ext
+  name: crash_to_bq_ext
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
-  upstream_blocks: []
-  uuid: spark_gcs_to_bq_ext
+  upstream_blocks:
+  - gcs_to_spark_transform
+  uuid: crash_to_bq_ext
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
-created_at: '2024-04-16 10:24:37.529591+00:00'
+created_at: '2024-04-17 17:56:55.437335+00:00'
 data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: test-api-to-spark
+name: raw_gcs_to_spark
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -93,7 +97,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-17 18:39:02'
-uuid: test_api_to_spark
+updated_at: '2024-04-18 09:11:32'
+uuid: raw_gcs_to_spark
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []
