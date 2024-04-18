@@ -1,5 +1,7 @@
 # Data folders 
 data/*
+
+# gcp key file
 google_cloud_key.json
 
 # mage files and folders to ignore
