@@ -1,5 +1,23 @@
 blocks:
 - all_upstream_blocks_executed: true
+  color: teal
+  configuration:
+    file_source:
+      path: custom/api_to_gcs_batched.py
+  downstream_blocks:
+  - get_raw_blob_list
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: api_to_gcs_batched
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: custom
+  upstream_blocks: []
+  uuid: api_to_gcs_batched
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file_source:
@@ -17,7 +35,7 @@ blocks:
   type: data_loader
   upstream_blocks: []
   uuid: spark_session
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
@@ -33,9 +51,10 @@ blocks:
   status: executed
   timeout: null
   type: data_loader
-  upstream_blocks: []
+  upstream_blocks:
+  - api_to_gcs_batched
   uuid: get_raw_blob_list
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: teal
   configuration:
     file_source:
@@ -55,7 +74,7 @@ blocks:
   - get_raw_blob_list
   - spark_session
   uuid: gcs_to_spark_trans
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     data_provider: bigquery
@@ -67,14 +86,15 @@ blocks:
       path: data_exporters/crash_to_bq_ext.sql
     limit: 1000
     use_raw_sql: true
-  downstream_blocks: []
+  downstream_blocks:
+  - run_all_dbt
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: sql
   name: crash_to_bq_ext
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
@@ -149,14 +169,14 @@ blocks:
     limit: 1000
     use_raw_sql: true
   downstream_blocks:
-  - dbt_all
+  - run_all_dbt
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: sql
   name: weather_to_bq_ext
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
@@ -168,27 +188,28 @@ blocks:
     data_provider: bigquery
     data_provider_profile: default
     dbt:
-      command: build
-    dbt_profile_target: prod
+      command: run
+    dbt_profile_target: ''
     dbt_project_name: dbt/collisions
     disable_query_preprocessing: false
     export_write_policy: append
     file_source:
-      path: dbts/dbt_all.yaml
+      path: dbts/halcyon_pond.yaml
     use_raw_sql: false
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: yaml
-  name: dbt_all
+  name: run-all-dbt
   retry_config: null
-  status: failed
+  status: executed
   timeout: null
   type: dbt
   upstream_blocks:
   - weather_to_bq_ext
-  uuid: dbt_all
+  - crash_to_bq_ext
+  uuid: run_all_dbt
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -200,7 +221,7 @@ executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: restless scholar
+name: nyc-collisions-enriched-full-pipeline
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -210,7 +231,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-18 18:00:04'
-uuid: restless_scholar
+updated_at: '2024-04-18T18:36:27+00:00'
+uuid: nyc_collisions_enriched_full_pipeline
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []
