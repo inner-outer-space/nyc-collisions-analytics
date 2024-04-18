@@ -15,7 +15,9 @@ https://www.worldweatheronline.com/weather-api/api/docs/historical-weather-api.a
 
 ## Google Cloud Platform  
 1. Create a project in GCP
-2. Add a service account and download the key to the the mage folder in this repo as `google_cloud_key.json`
+2. Add a service account
+    - set Role to owner (not good practice but simple here)
+    - download the key to the the mage folder in this repo as `google_cloud_key.json`
 
 ## Terraform 
 1. cd into the terraform dir
