@@ -1,6 +1,6 @@
 variable "credentials"  {
   description = "Credentials for GCP"
-  default     = "~/.gcp-keys/nyc-collisions-terraform-key.json"
+  default     = "../mage/google_cloud_key.json"
 }  
 
 variable "gcp_storage_location" {
@@ -10,13 +10,19 @@ variable "gcp_storage_location" {
 
 variable project {
   description = "Project"
-  default     = "nyc-collisions-418717"
+  default     = "nyc-collisions-analytics"
 }
 
 variable "region" {
   description = "Region"
   default     = "europe-west1"
   
+}
+
+variable "zone" {
+  type        = string
+  description = "The default compute zone"
+  default     = "europe-west1-b"
 }
 
 variable "bq_dataset_name" {
@@ -35,3 +41,7 @@ variable "gcs_bucket_name" {
 }
 
 
+#variable "vm_instance_name" {
+#  description = "Name for GCP VM instance"
+#  default     = "nyc-collisions-vm"
+#}

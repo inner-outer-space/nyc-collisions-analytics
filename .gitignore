@@ -19,21 +19,10 @@ logs/
 mage-ai.db
 mage_data/
 secrets/
+.env
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# EXTENSIVE LIST OF ITEMS THAT DONT PERTAIN TO THIS REPO. 
+# EXTENSIVE LIST OF ITEMS THAT DONT PERTAIN TO THIS REPO BUT ARE INCLUDED FOR FUTURE REFERENCE 
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
