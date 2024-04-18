@@ -10,7 +10,8 @@ if 'test' not in globals():
 @data_loader
 def load_data_from_api(*args, **kwargs):
     """
-    Template for loading data from API
+    Load weather data from a file stored in github. 
+    Data was previously retrieved for Jan 2013 - Mar 2024 from a paid REST API service. 
     """
     url = 'https://github.com/inner-outer-space/nyc-collisions/raw/main/mage/weather_data.parquet'
     df = pd.read_parquet(url)
