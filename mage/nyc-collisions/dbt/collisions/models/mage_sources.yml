@@ -11,4 +11,11 @@ sources:
       block_uuid: weather_to_bq_ext
       pipeline_uuid: collision_data_prep
     name: collision_data_prep_weather_to_bq_ext
+  - description: Dataframe for block `weather_to_bq_ext` of the `restless_scholar`
+      mage pipeline.
+    identifier: mage_restless_scholar_weather_to_bq_ext
+    meta:
+      block_uuid: weather_to_bq_ext
+      pipeline_uuid: restless_scholar
+    name: restless_scholar_weather_to_bq_ext
 version: 2

@@ -34,8 +34,12 @@ default:
   DUCKDB_SCHEMA: main
   # Google
   
-  GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/home/src/google_cloud_key.json"
-  GOOGLE_LOCATION: EU # Optional
+  GOOGLE_SERVICE_ACC_KEY_FILEPATH: "{{ env_var('GOOGLE_SERVICE_ACC_KEY_FILEPATH') }}"
+  GOOGLE_LOCATION:  "{{ env_var('GOOGLE_LOCATION') }}"
+  GOOGLE_PROJECT_ID: "{{ env_var('GOOGLE_PROJECT_ID') }}"
+  GOOGLE_BUCKET_NAME: "{{ env_var('GOOGLE_BUCKET_NAME') }}"
+  GOOGLE_BUCKET_RAW_FOLDER: "{{ env_var('GOOGLE_BUCKET_RAW_FOLDER') }}"
+ 
   # MongoDB
   # Specify either the connection string or the (host, password, user, port) to connect to MongoDB.
   MONGODB_CONNECTION_STRING: "mongodb://{username}:{password}@{host}:{port}/"

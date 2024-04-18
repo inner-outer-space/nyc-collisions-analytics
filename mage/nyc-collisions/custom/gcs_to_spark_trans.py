@@ -25,9 +25,8 @@ from pyspark.sql.functions import col, udf
 from pyspark.sql.types import StringType, TimestampType
 from astral import LocationInfo
 from astral.sun import sun
-
-if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
+if 'custom' not in globals():
+    from mage_ai.data_preparation.decorators import custom
 if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
@@ -49,9 +48,8 @@ def get_sun_phase(timestamp):
         return "night"
 
 
-@data_loader
+@custom
 def load_from_gcs_to_spark(*args, **kwargs):
-    print(args)
     """
     DESCRIPTION
     """
@@ -73,9 +71,10 @@ def load_from_gcs_to_spark(*args, **kwargs):
 
     client = storage.Client()
     bucket = client.bucket(bucket_name)
-  
-    object_keys = args[0]
-    print('input_files', object_keys)
+    
+    print(args)
+    input_object_keys = args[0]
+    print('input_files', input_object_keys)
 
 
     ### ideally read files in parallel ... i just need to figure out how to make it work
@@ -86,7 +85,7 @@ def load_from_gcs_to_spark(*args, **kwargs):
     #parquet_df = spark.read.parquet("gs://your_bucket/your_path")
 
     # Loop over the parquet files to process the data
-    for batch_num, object_key in enumerate(object_keys):
+    for batch_num, object_key in enumerate(input_object_keys):
         # Download the file contents as bytes
         blob = bucket.blob(object_key)
         file_contents = blob.download_as_string()
@@ -159,6 +158,7 @@ def load_from_gcs_to_spark(*args, **kwargs):
             break
     spark.stop()
     return {}
+
 
 @test
 def test_output(output, *args) -> None:
