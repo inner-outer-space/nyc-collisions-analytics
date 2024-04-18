@@ -18,4 +18,25 @@ sources:
       block_uuid: weather_to_bq_ext
       pipeline_uuid: restless_scholar
     name: restless_scholar_weather_to_bq_ext
+  - description: Dataframe for block `crash_to_bq_ext` of the `restless_scholar` mage
+      pipeline.
+    identifier: mage_restless_scholar_crash_to_bq_ext
+    meta:
+      block_uuid: crash_to_bq_ext
+      pipeline_uuid: restless_scholar
+    name: restless_scholar_crash_to_bq_ext
+  - description: Dataframe for block `weather_to_bq_ext` of the `nyc_collisions_enriched_full_pipeline`
+      mage pipeline.
+    identifier: mage_nyc_collisions_enriched_full_pipeline_weather_to_bq_ext
+    meta:
+      block_uuid: weather_to_bq_ext
+      pipeline_uuid: nyc_collisions_enriched_full_pipeline
+    name: nyc_collisions_enriched_full_pipeline_weather_to_bq_ext
+  - description: Dataframe for block `crash_to_bq_ext` of the `nyc_collisions_enriched_full_pipeline`
+      mage pipeline.
+    identifier: mage_nyc_collisions_enriched_full_pipeline_crash_to_bq_ext
+    meta:
+      block_uuid: crash_to_bq_ext
+      pipeline_uuid: nyc_collisions_enriched_full_pipeline
+    name: nyc_collisions_enriched_full_pipeline_crash_to_bq_ext
 version: 2
