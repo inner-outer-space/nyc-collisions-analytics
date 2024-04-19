@@ -25,7 +25,10 @@ To reproduce this project, see the [Set Up Instructions]([docs/.md](https://gith
 - Language - [**Python**](https://www.python.org)
 
 # ARCHITECTURE 
-<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="200" height="auto">
+<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="600" height="auto">
+
+
+
 ## MAGE PIPELINES 
 ### Extract pipeline <br/>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/extract_mage.png" width="200" height="auto">
