@@ -46,14 +46,17 @@ https://www.worldweatheronline.com/weather-api/api/docs/historical-weather-api.a
 
 4. Authenticate on GCloud
    `gcloud auth application-default login`
+5. Enable the following APIs
+   - Service Usage API
+   - Big Query API
    
 ## TERRAFORM
 In the Terraform folder:
 1. In the variables.tf file, update the default values for the following variables:
-    -  gcp storage location 
-    -  project name
-    -  region
-    -  zone
+    -  project name  (required)
+    -  gcp storage location (if needed)
+    -  region (if needed)
+    -  zone (if needed)
 
 2. Create or activate GCP resources - BigQuery DataSet, GCS Bucket, APIs
 [**More on Terraform Commands**]([https://cloud.google.com](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/01-docker-terraform/1_terraform_gcp/terraform))
