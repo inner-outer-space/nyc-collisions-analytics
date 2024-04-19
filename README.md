@@ -10,7 +10,7 @@ This repository contains my final project for the [Data Engineering Zoomcamp by 
 
 For my course notes and homework solutions, see my [DE Zoomcamp 2024 Repo](https://github.com/inner-outer-space/de-zoomcamp-2024). 
 
-To reproduce this project, see the [Set Up Instructions]([docs/.md](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md))
+To reproduce this project, see the [Set Up Instructions](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md))
 
 ### Tools and Technologies
 
