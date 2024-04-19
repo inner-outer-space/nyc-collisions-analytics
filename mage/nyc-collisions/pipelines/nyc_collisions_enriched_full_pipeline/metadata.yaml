@@ -10,12 +10,12 @@ blocks:
   language: python
   name: set_global_variables
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: custom
   upstream_blocks: []
   uuid: set_global_variables
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: teal
   configuration:
     file_source:
@@ -66,7 +66,7 @@ blocks:
   language: python
   name: get_raw_blob_list
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_loader
   upstream_blocks:
@@ -85,7 +85,7 @@ blocks:
   language: python
   name: gcs_to_spark_trans
   retry_config: null
-  status: updated
+  status: failed
   timeout: null
   type: custom
   upstream_blocks:
@@ -248,8 +248,14 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-19 09:11:31'
+updated_at: '2024-04-19 09:27:37'
 uuid: nyc_collisions_enriched_full_pipeline
-variables: {}
+variables:
+  google_bq_dataset: nyc_collisions_dataset
+  google_bucket: nyc-collisions-bucket
+  google_gcs_raw: raw_api_batched
+  google_gcs_spark: crash_data_spark_trans
+  google_project_id: nyc-collisions-analytics-test
+  key_path: /home/src/google_cloud_key.json
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []

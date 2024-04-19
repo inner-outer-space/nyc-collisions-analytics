@@ -28,7 +28,7 @@ def load_data(*args, **kwargs):
     # Set Google Env Variables 
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = kwargs['key_path']
     bucket_name = kwargs['google_bucket']
-    target_folder = kwargs['google_raw_folder']
+    target_folder = kwargs['google_gcs_raw']
     folder_path= f'{target_folder}/'
 
     # Retrieve list of raw api response files in GCS 
@@ -38,6 +38,10 @@ def load_data(*args, **kwargs):
     blobs = bucket.list_blobs(prefix=folder_path)
   
     input_object_keys = [blob.name for blob in blobs if blob.name.endswith('.parquet')]
+
+    for key, value in kwargs.items():
+        print (key, value)
+
     return input_object_keys
 
 
