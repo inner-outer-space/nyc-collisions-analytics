@@ -117,11 +117,11 @@ def gcs_to_spark_trans(*args, **kwargs):
 
         # Columns to clean up and convert to Int 
         columns_to_cast = {
-            "number_of_persons_injured": IntegerType(),
+            #"number_of_persons_injured": IntegerType(),
             "number_of_pedestrians_injured": IntegerType(),
             "number_of_cyclist_injured": IntegerType(),
             "number_of_motorist_injured": IntegerType(),
-            "number_of_persons_killed": IntegerType(),
+            #"number_of_persons_killed": IntegerType(),
             "number_of_pedestrians_killed": IntegerType(),
             "number_of_cyclist_killed": IntegerType(),
             "number_of_motorist_killed": IntegerType(),
@@ -139,8 +139,8 @@ def gcs_to_spark_trans(*args, **kwargs):
             .withColumn("sun_phase", get_sun_phase_udf(col("crash_timestamp")))
 
         ##### DROP COLUMNS ##########################################
-        #columns_to_drop = ['crash_date', 'crash_time', 'location.human_address','location.latitude', 'location.longitude']
-        columns_to_drop = ['location.human_address','location.latitude', 'location.longitude']
+        # going to add number of persons injured or killed back in as a calculation excercise in dbt. 
+        columns_to_drop = ['location.human_address','location.latitude', 'location.longitude','number_of_persons_injured','number_of_persons_killed']
         spark_df = spark_df.drop(*columns_to_drop)    
 
         ##### WRITE TO PARQUET FILES #################################
