@@ -220,7 +220,7 @@ blocks:
   language: yaml
   name: run-all-dbt
   retry_config: null
-  status: executed
+  status: failed
   timeout: null
   type: dbt
   upstream_blocks:
@@ -248,12 +248,14 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-19 00:05:37'
+updated_at: '2024-04-19 01:43:06'
 uuid: nyc_collisions_enriched_full_pipeline
 variables:
-  google_bucket: collisions-first-try
-  google_project_id: ny-auto-accidents
-  google_raw_folder: raw_api_batched
+  google_bq_dataset: nyc_collisions_dataset
+  google_bucket: nyc-collisions-bucket
+  google_gcs_raw: raw_api_batched
+  google_gcs_spark: crash_data_spark_trans
+  google_project_id: nyc-collisions-analytics-test
   key_path: /home/src/google_cloud_key.json
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []
