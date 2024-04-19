@@ -25,7 +25,15 @@ To reproduce this project, see the [Set Up Instructions]([docs/.md](https://gith
 - Language - [**Python**](https://www.python.org)
 
 
+## MAGE PIPELINES 
+### Extract pipeline <br/>
+<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/extract_mage.png" width="200" height="auto">
 
+### Processing pipeline <br/>
+<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/mage-tree.png" width="500" height="auto">
+
+## DBT Lineage <br/>
+<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/dbt-lineage.png" width="600" height="auto">
 
 
 
