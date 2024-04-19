@@ -7,8 +7,8 @@ collisions:
       type: bigquery
       location: EU
       method: service-account
-      project: "{{ var('project_id') }}"
-      dataset: "{{ var('bq_dataset') }}"
+      project: nyc-auto-accidents
+      dataset: nyc_collisions
       threads: 4
       timeout_seconds: 300
       keyfile: /home/src/google_cloud_key.json
@@ -19,8 +19,13 @@ collisions:
       type: bigquery
       location: EU
       method: service-account
+<<<<<<< HEAD
       project: "{{ var('project_id') }}"
       dataset: "{{ var('bq_dataset') }}_prod"
+=======
+      project: nyc-auto-accidents
+      dataset: nyc_collisions_prod
+>>>>>>> 88b3517c7c06c5c8f0ec059f6c8baa93baa86a3f
       threads: 4
       timeout_seconds: 300
       keyfile: /home/src/google_cloud_key.json
