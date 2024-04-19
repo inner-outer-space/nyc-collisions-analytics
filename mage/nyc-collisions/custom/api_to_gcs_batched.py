@@ -20,7 +20,7 @@ def api_to_gcs_partitioned(*args, **kwargs):
 
     collisions_df = pd.DataFrame()
     offset = 0
-    batch_size = 20000
+    batch_size = 15000
     batch_num = 0
 
     #api_endpoint = 'https://df.cityofnewyork.us/resource/h9gi-nx95.json'
@@ -71,7 +71,7 @@ def api_to_gcs_partitioned(*args, **kwargs):
         print(f'Batch: {batch_num} done')
 
         # Allow a break between calls
-        time.sleep(10)
+        time.sleep(5)
 
     return {}
 

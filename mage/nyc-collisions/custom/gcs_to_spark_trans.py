@@ -145,8 +145,8 @@ def gcs_to_spark_trans(*args, **kwargs):
         delta_t = time.time() - start_time
         print(f'batch {batch_num} done at: {delta_t}')
         
-        if batch_num == 1:
-            break
+        #if batch_num == 1:
+        #    break
             
     spark.stop()
     return {}
