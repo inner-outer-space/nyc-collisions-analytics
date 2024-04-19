@@ -66,8 +66,14 @@ In the Terraform folder:
 
 ## MAGE 
 In the Mage folder: 
-1. Change the my.env to .env
+1. Change name of the `my.env` file to `.env`
 2. In the .env file, update the following variables:
    - GOOGLE_PROJECT_ID
-3. In mage/nyc-collisions/dbt/collisions/profiles.yml update the project and dataset 
-4. In mage/nyc-collisions/dbt/collisions/models/staging/schema.yml update database (project_id) and schema (bq dataset)
+3. In mage/nyc-collisions/dbt/collisions/profiles.yml update: </br>
+   - dev > project --> to your project_id
+   - prod > project --> to your project_id
+5. In mage/nyc-collisions/dbt/collisions/models/staging/schema.yml update >/br>
+   - database --> to your project_id
+
+## RUNNING THE PIPELINE 
+1. In the Mage Folder run `docker-compose up`
