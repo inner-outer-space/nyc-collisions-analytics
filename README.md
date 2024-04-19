@@ -8,11 +8,9 @@ This repository contains my final project for the [Data Engineering Zoomcamp by 
 - [3-hr Metoe Data Set from Weather API](https://www.worldweatheronline.com/weather-api/) <br/>
   I was able to extract this data via a REST API through with the free trial. I've posted the data in parquet format on my GIT for download into this pipeline. 
 
-The project takes a look at the dataset into a Data Warehouse in the [Google Cloud Platform (GCP)](https://cloud.google.com/).
+For my course notes and homework solutions, see my [DE Zoomcamp 2024 Repo](https://github.com/inner-outer-space/de-zoomcamp-2024). 
 
-For my course notes and homework solutions, check my [DE Zoomcamp repository](https://github.com/inner-outer-space/de-zoomcamp-2024). 
-
-To reproduce this project, see the [Set Up Instructions]([docs/.md](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md)).
+To reproduce this project, see the [Set Up Instructions]([docs/.md](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md))
 
 ### Tools and Technologies
 
