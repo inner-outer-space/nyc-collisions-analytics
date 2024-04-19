@@ -29,9 +29,6 @@ def load_data(*args, **kwargs):
     print("Number of cores used:", spark.sparkContext.defaultParallelism)
     print("Driver memory:", spark.conf.get("spark.driver.memory"))
 
-    for key, value in kwargs.items():
-        print(key, value)
-
     return {}
 
 @test

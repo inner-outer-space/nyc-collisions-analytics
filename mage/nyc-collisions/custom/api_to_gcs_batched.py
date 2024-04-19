@@ -15,27 +15,25 @@ if 'custom' not in globals():
 if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
-# Set the environment variable to the location of the mounted key. json
-# This will tell pyarrow where our credentials are
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/home/src/google_cloud_key.json"
 
 # Define the project, bucket, and target folder  
-project_id = 'ny-auto-accidents'
-bucket_name = 'collisions-first-try'
-target_folder = 'raw_api_batched'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = kwargs['key_path']
+project_id = kwargs['google_project_id']
+bucket_name = kwargs['google_bucket']
+target_folder = kwargs['google_raw_folder']
 
 @custom
 def api_to_gcs_partitioned(*args, **kwargs):
 
     collisions_df = pd.DataFrame()
     offset = 0
-    batch_size = 25000
+    batch_size = 20000
     batch_num = 0
 
     #api_endpoint = 'https://df.cityofnewyork.us/resource/h9gi-nx95.json'
     api_endpoint = 'https://data.cityofnewyork.us/resource/h9gi-nx95.json'
 
-    # Fetch JSON data from the API in batches
+    # Fetch JSON data from the API in reasonable sized batches
     while True:
         print('start')
         url = f'{api_endpoint}?$limit={batch_size}&$offset={offset}'
@@ -47,17 +45,13 @@ def api_to_gcs_partitioned(*args, **kwargs):
             print(f"Failed to fetch data from API: {response.status_code}")
             break
 
-        # There are 2 nested layers. Normalize will take care of the first nested layer, 
+        # Normalize the json response 
         df = pd.json_normalize(response.json())
-
-        # the location nested json is deleted immediately as it is not needed.
-        #if 'location.human_address' in df.columns:
-        #    df.drop(columns = ['location.human_address','location.latitude', 'location.longitude'], inplace=True)
 
         # define the pyarrow table and read the df into it
         pa_table = pa.Table.from_pandas(df)
 
-        # define file syste - the google cloud object that is going to authorize using the environmental variable automatically
+        # define file syste 
         gcs = pa.fs.GcsFileSystem()
         
         output_path = f'{bucket_name}/{target_folder}/nyc_collisions_batch_{batch_num}.parquet'
@@ -72,12 +66,14 @@ def api_to_gcs_partitioned(*args, **kwargs):
 
         # Check if there are more records to fetch
         if len(df) < batch_size:
-        #if offset > 100000:
             break
         
         offset += batch_size
         batch_num += 1
+
         print(f'{batch_num} done')
+
+        # Allow a break between calls
         time.sleep(10)
 
     return {}
