@@ -1,9 +1,8 @@
 # STEPS TO REPRODUCE
 
-## clone this repo 
-1. `git clone git@github.com:inner-outer-space/nyc-collisions-analytics.git`
-2. change the my.env to .env 
-
+## clone this repo </br>
+`git clone git@github.com:inner-outer-space/nyc-collisions-analytics.git`
+ 
 ## Google Cloud Platform  
 1. Create a new project on GCP
 2. Add a service account
