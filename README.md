@@ -24,7 +24,8 @@ To reproduce this project, see the [Set Up Instructions]([docs/.md](https://gith
 - Data Visualization - [**Looker Studio**](https://support.google.com/looker-studio/community?hl=en&sjid=8237525324739923528-EU)
 - Language - [**Python**](https://www.python.org)
 
-
+# ARCHITECTURE 
+<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="200" height="auto">
 ## MAGE PIPELINES 
 ### Extract pipeline <br/>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/extract_mage.png" width="200" height="auto">
