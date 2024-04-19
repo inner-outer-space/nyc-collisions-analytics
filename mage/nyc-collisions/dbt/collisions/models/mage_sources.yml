@@ -2,7 +2,7 @@ sources:
 - description: Dataframes Mage upstream blocks
   loader: mage
   name: mage_collisions
-  schema: nyc_collisions_prod
+  schema: nyc_collisions_dataset_prod
   tables:
   - description: Dataframe for block `weather_to_bq_ext` of the `collision_data_prep`
       mage pipeline.

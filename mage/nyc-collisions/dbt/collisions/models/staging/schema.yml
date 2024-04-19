@@ -2,8 +2,8 @@ version: 2
 
 sources: 
   - name: staging
-    database: nyc-auto-accidents
-    schema: nyc_collisions
+    database: nyc-collisions-analytics-test
+    schema: nyc_collisions_dataset
 
     tables: 
       - name: crash_data_external
