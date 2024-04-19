@@ -32,7 +32,7 @@ To reproduce this project, see the [Set Up Instructions]([docs/.md](https://gith
 ### Processing pipeline <br/>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/mage-tree.png" width="500" height="auto">
 
-### DBT Lineage <br/>
+## DBT Lineage <br/>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/dbt-lineage.png" width="600" height="auto">
 
 
