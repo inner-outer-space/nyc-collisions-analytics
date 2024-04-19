@@ -16,6 +16,11 @@ if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
 
+# Define the project, bucket, and target folder  
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = kwargs['key_path']
+project_id = kwargs['google_project_id']
+bucket_name = kwargs['google_bucket']
+target_folder = kwargs['google_raw_folder']
 
 @custom
 def api_to_gcs_partitioned(*args, **kwargs):
@@ -28,17 +33,13 @@ def api_to_gcs_partitioned(*args, **kwargs):
     #api_endpoint = 'https://df.cityofnewyork.us/resource/h9gi-nx95.json'
     api_endpoint = 'https://data.cityofnewyork.us/resource/h9gi-nx95.json'
 
-    # Define the project, bucket, and target folder  
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = kwargs['key_path']
-    project_id = kwargs['google_project_id']
-    bucket_name = kwargs['google_bucket']
-    target_folder = kwargs['google_gcs_raw']
-
     # Fetch JSON data from the API in reasonable sized batches
     while True:
+        print('start')
         url = f'{api_endpoint}?$limit={batch_size}&$offset={offset}'
+        print(url)
         response = requests.get(url)
-      
+        print('response received')
         
         if not response.ok:
             print(f"Failed to fetch data from API: {response.status_code}")
@@ -54,7 +55,7 @@ def api_to_gcs_partitioned(*args, **kwargs):
         gcs = pa.fs.GcsFileSystem()
         
         output_path = f'{bucket_name}/{target_folder}/nyc_collisions_batch_{batch_num}.parquet'
-        #print(output_path)
+        print(output_path)
 
         # API response is partitioned by year and written to gcs as parquet
         pq.write_table(
@@ -70,7 +71,7 @@ def api_to_gcs_partitioned(*args, **kwargs):
         offset += batch_size
         batch_num += 1
 
-        print(f'batch: {batch_num} Records collected: {offset}')
+        print(f'{batch_num} done')
 
         # Allow a break between calls
         time.sleep(10)
