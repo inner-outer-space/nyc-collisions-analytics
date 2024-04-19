@@ -4,9 +4,9 @@ This repository contains my final project for the [Data Engineering Zoomcamp by 
 
 ## DATA SOURCES 
 - [New York City Motor Vehicle Collisions Data Set](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95) <br/>
-  This data is available from Jan 2013 till present
-- [3-hr Metoe Data Set from Weather API](https://www.worldweatheronline.com/weather-api/) <br/>
-  I was able to extract this data via a REST API through with the free trial. I've posted the data in parquet format on my GIT for download into this pipeline. 
+  This data is available from Jan 2013 till present.
+- [3-hr Meteorological Data Set from Weather API](https://www.worldweatheronline.com/weather-api/) <br/>
+  This data was extracted via a REST API through with the free trial. I've posted the data in parquet format on my GIT for download into this pipeline. 
 
 For my course notes and homework solutions, see my [DE Zoomcamp 2024 Repo](https://github.com/inner-outer-space/de-zoomcamp-2024). 
 
