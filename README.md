@@ -12,7 +12,7 @@ The project takes a look at the dataset into a Data Warehouse in the [Google Clo
 
 For my course notes and homework solutions, check my [DE Zoomcamp repository](). 
 
-To reproduce this project, see the [Set Up Instructions](docs/.md).
+To reproduce this project, see the [Set Up Instructions]([docs/.md](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md)).
 
 ## Description
 
