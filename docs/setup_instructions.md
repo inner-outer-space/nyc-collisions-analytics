@@ -6,10 +6,11 @@
 - Docker
 - Terraform 
 
-### Clone the Repo </br>
+## Clone the Repo </br>
 `git clone git@github.com:inner-outer-space/nyc-collisions-analytics.git`
+
  
-### Google Cloud Platform  
+## Google Cloud Platform  
 1. Create a new project on GCP
 2. Add a service account
     - Go to IAM & Admin > Service Account and `+ CREATE SERVICE ACCOUNT `.
@@ -28,6 +29,7 @@
 6. Enable the following APIs:
    - Service Usage API
    - Big Query API
+
    
 ## TERRAFORM
 In the Terraform folder:
@@ -43,6 +45,7 @@ In the Terraform folder:
     - `terraform plan`
     - `terraform apply`
 
+
 ## MAGE 
 In the Mage folder: 
 1. Change name of the `my.env` file to `.env`
@@ -54,6 +57,7 @@ In the Mage folder:
 5. In mage/nyc-collisions/dbt/collisions/models/staging/schema.yml update >/br>
    - database --> to your project_id
 
+
 ## RUNNING THE PIPELINE 
 In the Mage Folder: 
 1. Run `docker-compose up`
@@ -61,6 +65,7 @@ In the Mage Folder:
    `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/14/pipeline_runs/6f1fbec7c85b48b794a202618dcaef13`
 3. Trigger the Data Processing Pipeline via the cURL </br>
    `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/16/pipeline_runs/b28ad8aa9ba740ddb838dd9d36232a4f`
+
 
 ## TAKING THE PROJECT DOWN 
 When you are done with the project execute `terraform destroy` to take down the resources. Once the files and resources are removed, you can delete the project.   
