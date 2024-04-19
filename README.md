@@ -58,7 +58,7 @@ In the Terraform folder:
     -  region (if needed)
     -  zone (if needed)
 
-2. Create or activate GCP resources - BigQuery DataSet, GCS Bucket, APIs
+2. Create or activate GCP resources - BigQuery DataSet, GCS Bucket, APIs </br>
 [**More on Terraform Commands**]([https://cloud.google.com](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/01-docker-terraform/1_terraform_gcp/terraform))
     - `terraform init`
     - `terraform plan`
