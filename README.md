@@ -1,6 +1,18 @@
 # nyc-collisions-analytics
 
-Work in progress... still 
+This repository contains my final project for the [Data Engineering Zoomcamp by DataTalksClub](https://github.com/DataTalksClub/data-engineering-zoomcamp). In the course, we covered a wide varitey of data engineering topics and tools. This project aims to sythesize the information and put it to practice in the creation of a data pipeline. 
+
+## DATA SOURCES 
+- [New York City Motor Vehicle Collisions Data Set](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95)
+        * This data is available from Jan 2013 till present
+- [3-hr Metoe Data Set from Weather API](https://www.worldweatheronline.com/weather-api/)
+        * I was able to extract this data via a REST API through with the free trial. I've posted the data in parquet format on my GIT for download into this pipeline. 
+
+The project takes a look at the dataset into a Data Warehouse in the [Google Cloud Platform (GCP)](https://cloud.google.com/).
+
+For my course notes and homework solutions, check my [DE Zoomcamp repository](). 
+
+To reproduce this project, see the [Set Up Instructions](docs/.md).
 
 ## Description
 
