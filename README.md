@@ -78,5 +78,6 @@ In the Mage folder:
 ## RUNNING THE PIPELINE 
 1. In the Mage Folder run `docker-compose up`
 2. Trigger the Pipeline via the cURL to the API endpoint
-   `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/1/pipeline_runs/6efb525ffba048849f4276a5b581d964` 
+   `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/3/pipeline_runs/c232844b517e4aa98f2f921b70bd35fe \
+  --header 'Content-Type: application/json'` 
  
