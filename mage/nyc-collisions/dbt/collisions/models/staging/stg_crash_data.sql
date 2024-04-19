@@ -75,9 +75,9 @@ SELECT
 
     -- PEOPLE DETAILS
     number_of_persons_injured,
-    number_of_persons_killed,
+    cast(number_of_persons_killed as integer) as number_of_persons_killed,
     number_of_pedestrians_injured,
-    number_of_pedestrians_killed,
+    number_of_pedestrians_killed, 
     number_of_cyclist_injured,
     number_of_cyclist_killed,
     number_of_motorist_injured,
