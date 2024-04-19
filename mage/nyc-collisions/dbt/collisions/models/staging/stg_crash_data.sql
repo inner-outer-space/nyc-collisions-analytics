@@ -21,8 +21,8 @@ WITH formatted_data AS (
         cross_street_name,
 
         -- PEOPLE DETAILS
-        cast(number_of_persons_injured as integer) as number_of_persons_injured,
-        cast(number_of_persons_killed as integer) as number_of_persons_killed,
+        --cast(number_of_persons_injured as integer) as number_of_persons_injured,
+        --cast(number_of_persons_killed as integer) as number_of_persons_killed,
         cast(number_of_pedestrians_injured as integer) as number_of_pedestrians_injured,
         cast(number_of_pedestrians_killed as integer) as number_of_pedestrians_killed,
         cast(number_of_cyclist_injured as integer) as number_of_cyclist_injured,
@@ -74,8 +74,8 @@ SELECT
     cross_street_name,
 
     -- PEOPLE DETAILS
-    number_of_persons_injured,
-    cast(number_of_persons_killed as integer) as number_of_persons_killed,
+    --number_of_persons_injured,
+    --cast(number_of_persons_killed as integer) as number_of_persons_killed,
     number_of_pedestrians_injured,
     number_of_pedestrians_killed, 
     number_of_cyclist_injured,

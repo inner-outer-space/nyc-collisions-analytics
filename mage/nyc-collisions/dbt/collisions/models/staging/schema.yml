@@ -53,10 +53,6 @@ models:
           description: off_street_name
         - name: cross_street_name
           description: cross_street_name   
-        - name: number_of_persons_injured
-          description: number_of_persons_injured
-        - name: number_of_persons_killed
-          description: number_of_persons_killed
         - name: number_of_pedestrians_injured
           description: number_of_pedestrians_injured
         - name: number_of_pedestrians_killed
