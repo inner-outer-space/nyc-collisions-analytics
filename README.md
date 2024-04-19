@@ -17,11 +17,12 @@ https://www.worldweatheronline.com/weather-api/api/docs/historical-weather-api.a
 ## Google Cloud Platform  
 1. Create a project in GCP
 2. Add a service account
-    - set Role to owner (not good practice but simple here)
-    - download the key to the the mage folder in this repo as `google_cloud_key.json`
+    - For simplicity, set role to owner 
+    - Add storage admin role 
+    - Download the key to the the mage folder in this repo as `google_cloud_key.json`
 3. set the GOOGLE_APPLICATION_CREDENTIALS
    ``` bash
-   export GOOGLE_APPLICATION_CREDENTIALS=../mage/google_cloud_key.json
+   export GOOGLE_APPLICATION_CREDENTIALS = '../mage/google_cloud_key.json'
    # double check with 
    echo $GOOGLE_APPLICATION_CREDENTIALS
    ```
