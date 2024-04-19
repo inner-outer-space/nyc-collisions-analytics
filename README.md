@@ -32,12 +32,14 @@ https://www.worldweatheronline.com/weather-api/api/docs/historical-weather-api.a
 2. change the my.env to .env 
 
 ## Google Cloud Platform  
-1. Create a project in GCP
+1. Create a new project on GCP
 2. Add a service account
-    - set Role to owner (not good practice but simple here)
-    - download the key to the the mage folder in this repo as `google_cloud_key.json`
+    - Go to IAM & Admin > Service Account and `+ CREATE SERVICE ACCOUNT `
+    - For simplicity, set the Role to owner. Leave other fields blank. 
+    - Under Actions for the service account, click  `Manage Keys`
+    - Create a new JSON key and download it to the the mage folder in this repo as `google_cloud_key.json`
 3. set the GOOGLE_APPLICATION_CREDENTIALS
-   `export GOOGLE_APPLICATION_CREDENTIALS=../mage/google_cloud_key.json`
+   `export GOOGLE_APPLICATION_CREDENTIALS=/your/path/to/this/google_cloud_key.json`
 
     double check with 
    `echo $GOOGLE_APPLICATION_CREDENTIALS`
