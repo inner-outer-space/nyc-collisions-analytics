@@ -2,7 +2,7 @@ version: '3'
 services:
   magic:
     image: mageai/mageai_spark
-    command: mage start --port 6788 ${PROJECT_NAME}
+    command: mage start ${PROJECT_NAME}
     env_file:
       - .env
     build:
@@ -17,7 +17,7 @@ services:
       POSTGRES_HOST: ${POSTGRES_HOST}
       POSTGRES_PORT: ${POSTGRES_PORT}
     ports:
-      - 6788:6788
+      - 6789:6789
       - 4040:4040
     volumes:
       - .:/home/src/

@@ -9,28 +9,22 @@ import io
 import os
 from os import path
 import requests
+from datetime import datetime
 import time
 import pytz
 
 from pyspark.sql.types import StructType, StructField, StringType, TimestampType, IntegerType, DoubleType
 from pyspark.sql.functions import udf, col, date_format, to_date, to_timestamp, concat, lit
 
-import os
-from datetime import datetime
-import pytz
-from pyspark.conf import SparkConf
-from pyspark.context import SparkContext
-#from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, udf
-from pyspark.sql.types import StringType, TimestampType
 from astral import LocationInfo
 from astral.sun import sun
+
 if 'custom' not in globals():
     from mage_ai.data_preparation.decorators import custom
 if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
-# DEFINE THE SUNPHASE UDF 
+# DEFINE THE SUNPHASE UDF ##########################################
 def get_sun_phase(timestamp):
     """Determine the sun phase based on timestamp."""
     date = timestamp.date()
@@ -65,25 +59,13 @@ def load_from_gcs_to_spark(*args, **kwargs):
     get_sun_phase_udf = udf(get_sun_phase, StringType())
     spark.udf.register("get_sun_phase", get_sun_phase)
 
-    
     # Set GCS Variables 
-    bucket_name = 'collisions-first-try'
+    bucket_name = kwargs['google_bucket']
 
     client = storage.Client()
     bucket = client.bucket(bucket_name)
-    
-    print(args)
+
     input_object_keys = args[0]
-    print('input_files', input_object_keys)
-
-
-    ### ideally read files in parallel ... i just need to figure out how to make it work
-    # Set options for parallel reading
-    #spark.conf.set("spark.sql.files.maxPartitionBytes", "134217728")  # 128 MB
-
-    # Read Parquet files in parallel
-    #parquet_df = spark.read.parquet("gs://your_bucket/your_path")
-
     # Loop over the parquet files to process the data
     for batch_num, object_key in enumerate(input_object_keys):
         # Download the file contents as bytes
@@ -143,7 +125,6 @@ def load_from_gcs_to_spark(*args, **kwargs):
         config_path = path.join(get_repo_path(), 'io_config.yaml')
         config_profile = 'default'
 
-        bucket_name = 'collisions-first-try'
         output_object_key = f'crash_data_spark_trans/collisions_batch_{batch_num}.parquet'
 
         GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).export(

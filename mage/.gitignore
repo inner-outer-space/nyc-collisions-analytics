@@ -1,0 +1,25 @@
+# gcp key file
+google_cloud_key.json
+*.json
+
+# mage components
+.env
+.DS_Store
+.file_versions
+.gitkeep
+.log
+.logs/
+.mage_temp_profiles
+.preferences.yaml
+.variables/
+__pycache__/
+docker-compose.override.yml
+logs/
+mage-ai.db
+mage_data/
+secrets/
+
+# dbt components 
+target/
+dbt_packages/
+logs/
