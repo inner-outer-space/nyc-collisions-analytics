@@ -10,7 +10,7 @@ blocks:
   language: python
   name: set_global_variables
   retry_config: null
-  status: failed
+  status: updated
   timeout: null
   type: custom
   upstream_blocks: []
@@ -248,14 +248,8 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-19 02:55:07'
+updated_at: '2024-04-19 09:11:31'
 uuid: nyc_collisions_enriched_full_pipeline
-variables:
-  google_bq_dataset: nyc_collisions_dataset
-  google_bucket: nyc-collisions-bucket
-  google_gcs_raw: raw_api_batched
-  google_gcs_spark: crash_data_spark_trans
-  google_project_id: nyc-collisions-analytics-test
-  key_path: /home/src/google_cloud_key.json
+variables: {}
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []
