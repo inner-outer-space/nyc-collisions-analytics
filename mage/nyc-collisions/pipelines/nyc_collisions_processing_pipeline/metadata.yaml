@@ -1,5 +1,5 @@
 blocks:
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file_source:
@@ -12,7 +12,7 @@ blocks:
   language: python
   name: weather_col_names
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: transformer
   upstream_blocks:
@@ -31,12 +31,12 @@ blocks:
   language: python
   name: weather_data_from_api
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: weather_data_from_api
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file_source:
@@ -49,13 +49,13 @@ blocks:
   language: python
   name: weather_to_gcs
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
   - weather_col_names
   uuid: weather_to_gcs
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     data_provider: bigquery
@@ -75,7 +75,7 @@ blocks:
   language: sql
   name: weather_to_bq_ext
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
@@ -181,7 +181,7 @@ blocks:
   language: yaml
   name: run_all_dbt
   retry_config: null
-  status: not_executed
+  status: failed
   timeout: null
   type: dbt
   upstream_blocks:
@@ -209,7 +209,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-19T15:28:51+00:00'
+updated_at: '2024-04-19 15:56:50'
 uuid: nyc_collisions_processing_pipeline
 variables:
   google_bq_dataset: nyc_collisions_dataset
