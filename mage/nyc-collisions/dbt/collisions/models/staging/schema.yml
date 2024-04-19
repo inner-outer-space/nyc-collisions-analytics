@@ -2,8 +2,8 @@ version: 2
 
 sources: 
   - name: staging
-    project_id: 'nyc-auto-accidents'
-    bq_dataset: 'nyc_collisions'
+    database: nyc-auto-accidents
+    schema: nyc_collisions
 
     tables: 
       - name: crash_data_external
