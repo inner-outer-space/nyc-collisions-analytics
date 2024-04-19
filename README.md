@@ -38,10 +38,10 @@ https://www.worldweatheronline.com/weather-api/api/docs/historical-weather-api.a
     - For simplicity, set the Role to owner. Leave other fields blank. 
     - Under Actions for the service account, click  `Manage Keys`
     - Create a new JSON key and download it to the the mage folder in this repo as `google_cloud_key.json`
-3. set the GOOGLE_APPLICATION_CREDENTIALS
+3. set the GOOGLE_APPLICATION_CREDENTIALS</br>
    `export GOOGLE_APPLICATION_CREDENTIALS=/your/path/to/this/google_cloud_key.json`
 
-    double check with 
+    double check with </br>
    `echo $GOOGLE_APPLICATION_CREDENTIALS`
 
 4. Authenticate on GCloud
