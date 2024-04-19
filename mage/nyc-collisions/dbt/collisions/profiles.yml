@@ -7,8 +7,8 @@ collisions:
       type: bigquery
       location: EU
       method: service-account
-      project: nyc-auto-accidents
-      dataset: nyc_collisions
+      project: nyc-collisions-analytics-test
+      dataset: nyc_collisions_dataset
       threads: 4
       timeout_seconds: 300
       keyfile: /home/src/google_cloud_key.json
@@ -19,8 +19,8 @@ collisions:
       type: bigquery
       location: EU
       method: service-account
-      project: nyc-auto-accidents
-      dataset: nyc_collisions_prod
+      project: nyc-collisions-analytics-test
+      dataset: nyc_collisions_dataset_prod
       threads: 4
       timeout_seconds: 300
       keyfile: /home/src/google_cloud_key.json

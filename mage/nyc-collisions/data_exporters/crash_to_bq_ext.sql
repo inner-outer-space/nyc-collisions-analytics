@@ -1,6 +1,6 @@
-CREATE OR REPLACE EXTERNAL TABLE `nyc-auto-accidents.nyc_collisions.crash_data_external`
+CREATE OR REPLACE EXTERNAL TABLE `{{ google_project_id }}.{{ google_bq_dataset }}.crash_data_external`
 OPTIONS (
     format = 'parquet',
-    uris = ['gs://collisions-first-try/crash_data_spark_trans/*.parquet']
+    uris = ['gs://{{ google_bucket }}/{{ google_gcs_spark }}/*.parquet']
 );
 
