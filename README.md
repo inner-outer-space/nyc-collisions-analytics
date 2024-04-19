@@ -77,9 +77,9 @@ In the Mage folder:
 
 ## RUNNING THE PIPELINE 
 1. In the Mage Folder run `docker-compose up`
-2. Trigger the Extraction Pipeline via cURL. ** This will take about an hour **
+2. Trigger the Extraction Pipeline via cURL. ** This will take about an hour ** </br>
    `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/14/pipeline_runs/6f1fbec7c85b48b794a202618dcaef13`
-4. Trigger the Data Processing Pipeline via the cURL to the API endpoint
+4. Trigger the Data Processing Pipeline via the cURL to the API endpoint </br>
    `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/16/pipeline_runs/b28ad8aa9ba740ddb838dd9d36232a4f`
 
 
