@@ -1,29 +1,46 @@
 blocks:
 - all_upstream_blocks_executed: true
+  color: pink
+  configuration: {}
+  downstream_blocks:
+  - api_to_gcs_batched
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: set_global_variables
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks: []
+  uuid: set_global_variables
+- all_upstream_blocks_executed: true
   color: teal
   configuration:
     file_source:
       path: custom/api_to_gcs_batched.py
   downstream_blocks:
-  - get_raw_blob_list
+  - spark_session
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
   name: api_to_gcs_batched
   retry_config: null
-  status: not_executed
+  status: updated
   timeout: null
   type: custom
-  upstream_blocks: []
+  upstream_blocks:
+  - set_global_variables
   uuid: api_to_gcs_batched
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
       path: data_loaders/spark_session.py
   downstream_blocks:
-  - gcs_to_spark_trans
+  - get_raw_blob_list
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -33,7 +50,8 @@ blocks:
   status: executed
   timeout: null
   type: data_loader
-  upstream_blocks: []
+  upstream_blocks:
+  - api_to_gcs_batched
   uuid: spark_session
 - all_upstream_blocks_executed: false
   color: null
@@ -52,7 +70,7 @@ blocks:
   timeout: null
   type: data_loader
   upstream_blocks:
-  - api_to_gcs_batched
+  - spark_session
   uuid: get_raw_blob_list
 - all_upstream_blocks_executed: false
   color: teal
@@ -72,7 +90,6 @@ blocks:
   type: custom
   upstream_blocks:
   - get_raw_blob_list
-  - spark_session
   uuid: gcs_to_spark_trans
 - all_upstream_blocks_executed: false
   color: null
@@ -207,8 +224,8 @@ blocks:
   timeout: null
   type: dbt
   upstream_blocks:
-  - weather_to_bq_ext
   - crash_to_bq_ext
+  - weather_to_bq_ext
   uuid: run_all_dbt
 cache_block_output_in_memory: false
 callbacks: []
@@ -231,7 +248,12 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-18T18:36:27+00:00'
+updated_at: '2024-04-19 00:05:37'
 uuid: nyc_collisions_enriched_full_pipeline
+variables:
+  google_bucket: collisions-first-try
+  google_project_id: ny-auto-accidents
+  google_raw_folder: raw_api_batched
+  key_path: /home/src/google_cloud_key.json
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []

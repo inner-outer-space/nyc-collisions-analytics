@@ -1,3 +1,5 @@
+# main.tf
+
 terraform {
   required_providers {
     google = {
@@ -8,18 +10,45 @@ terraform {
 }
 
 provider "google" {
+  project = var.project
+  region  = var.region
+  zone    = var.zone
   credentials = file(var.credentials)
-  project     = var.project
-  region      = var.region
 }
 
-resource "google_storage_bucket" "nyc-collisions-bucket" {
+# #############################################
+# #               Enable API's                #
+# #############################################
+
+# Enable IAM API
+resource "google_project_service" "iam" {
+  service            = "iam.googleapis.com"
+  disable_on_destroy = false
+}
+
+# Enable Cloud Resource Manager API
+resource "google_project_service" "resourcemanager" {
+  service            = "cloudresourcemanager.googleapis.com"
+  disable_on_destroy = false
+}
+
+# Enable Cloud SQL Admin API
+resource "google_project_service" "sqladmin" {
+  service            = "sqladmin.googleapis.com"
+  disable_on_destroy = false
+}
+
+# #############################################
+# #               Enable Services             #
+# #############################################
+
+resource "google_storage_bucket" "collisions-bucket" {
   name          = var.gcs_bucket_name
   location      = var.gcp_storage_location
   force_destroy = true
 }
 
-resource "google_bigquery_dataset" "nyc-collisions-dataset" {
+resource "google_bigquery_dataset" "collisions-dataset" {
   dataset_id = var.bq_dataset_name
   location   = var.gcp_storage_location
 }
