@@ -26,11 +26,11 @@ To reproduce this project, see the [Set Up Instructions]([docs/.md](https://gith
 
 
 ## MAGE PIPELINES 
-Extract pipeline
+Extract pipeline <br/>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/extract_mage.png" width="350" height="auto">
-Processing pipeline 
+Processing pipeline <br/>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/mage-tree.png" width="350" height="auto">
-DBT Lineage 
+DBT Lineage <br/>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/dbt-lineage.png" width="350" height="auto">
 
 
