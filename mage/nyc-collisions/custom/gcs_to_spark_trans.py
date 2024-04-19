@@ -45,10 +45,14 @@ def get_sun_phase(timestamp):
 @custom
 def load_from_gcs_to_spark(*args, **kwargs):
     """
-    Update the columne dtypes and add the sun_phase with pyspark
+    DESCRIPTION
     """
     # Start timing
     start_time = time.time()
+    
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
     # SparkSession 
     spark = kwargs['spark']
     # Register UDFs
@@ -80,6 +84,7 @@ def load_from_gcs_to_spark(*args, **kwargs):
         spark_df = spark_df.withColumn("crash_date", to_date(col("crash_date"), "yyyy-MM-dd"))
         #spark_df = spark_df.withColumn("crash_date", to_date(col("crash_date").cast("string"), "yyyy-MM-dd"))
         spark_df = spark_df.withColumn("crash_time", date_format(col("crash_time"), "HH:mm"))
+
         # Combine date and time into a single timestamp column and drop date and time
         spark_df = spark_df.withColumn("crash_timestamp", to_timestamp(concat(col("crash_date"), lit(" "), col("crash_time"))))
         
@@ -100,6 +105,9 @@ def load_from_gcs_to_spark(*args, **kwargs):
             
         for col_name, col_type in columns_to_cast.items():
             spark_df = spark_df.withColumn(col_name, col(col_name).cast(col_type)) 
+
+        delta_t = time.time() - start_time
+        print(f'dtypes {delta_t}')
 
         ###### ADD SUNPHASE #########################################
         spark_df = spark_df \
@@ -126,9 +134,7 @@ def load_from_gcs_to_spark(*args, **kwargs):
         )   
         
         delta_t = time.time() - start_time
-        formatted_delta_t = "{:.2f}".format(delta_t)
-        print("batch {batch_num} done at:", formatted_delta_t, "s")
-
+        print(f'batch {batch_num} done at: {delta_t}')
         if batch_num == 1:
             break
     spark.stop()

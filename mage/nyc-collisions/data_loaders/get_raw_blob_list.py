@@ -28,7 +28,7 @@ def load_data(*args, **kwargs):
     # Set Google Env Variables 
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = kwargs['key_path']
     bucket_name = kwargs['google_bucket']
-    target_folder = kwargs['google_gcs_raw']
+    target_folder = kwargs['google_raw_folder']
     folder_path= f'{target_folder}/'
 
     # Retrieve list of raw api response files in GCS 

@@ -20,7 +20,7 @@ collisions:
       location: EU
       method: service-account
       project: "{{ var('project_id') }}"
-      dataset: "{{ var('bq_dataset') }}"_prod
+      dataset: "{{ var('bq_dataset') }}_prod"
       threads: 4
       timeout_seconds: 300
       keyfile: /home/src/google_cloud_key.json
