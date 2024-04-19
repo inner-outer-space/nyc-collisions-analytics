@@ -12,12 +12,12 @@ blocks:
   language: python
   name: set_global_variables
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: custom
   upstream_blocks: []
   uuid: set_global_variables
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: teal
   configuration:
     file_source:
@@ -29,7 +29,7 @@ blocks:
   language: python
   name: api_to_gcs_batched
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: custom
   upstream_blocks:
@@ -56,7 +56,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-19 14:18:27'
+updated_at: '2024-04-19 14:54:54'
 uuid: extract_collisions_from_api
 variables:
   google_bq_dataset: nyc_collisions_dataset
