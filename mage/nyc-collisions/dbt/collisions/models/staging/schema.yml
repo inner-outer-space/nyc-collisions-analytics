@@ -2,8 +2,8 @@ version: 2
 
 sources: 
   - name: staging
-    database: "{{ var('project_id') }}"
-    schema: "{{ var('bq_dataset') }}"
+    project_id: 'nyc-auto-accidents'
+    bq_dataset: 'nyc_collisions'
 
     tables: 
       - name: crash_data_external
