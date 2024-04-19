@@ -63,4 +63,6 @@ In the Mage Folder:
    `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/16/pipeline_runs/b28ad8aa9ba740ddb838dd9d36232a4f`
 
 ## TAKING THE PROJECT DOWN 
-When you are done with the project execute `terraform destroy` to take down the resources.  
+When you are done with the project execute `terraform destroy` to take down the resources. Once the files and resources are removed, you can delete the project.   
+
+note: a second dataset is created in BQ by DBT. This will need to be manually removed. 
