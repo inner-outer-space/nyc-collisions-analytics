@@ -13,6 +13,7 @@ from datetime import datetime
 import time
 import pytz
 
+from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, TimestampType, IntegerType, DoubleType
 from pyspark.sql.functions import udf, col, date_format, to_date, to_timestamp, concat, lit
 
@@ -43,20 +44,35 @@ def get_sun_phase(timestamp):
 
 
 @custom
-def load_from_gcs_to_spark(*args, **kwargs):
+def gcs_to_spark_trans(*args, **kwargs):
     """
-    DESCRIPTION
+    Adust the datatypes of the columns and add sun phase based on a calculation
     """
     # Start timing
     start_time = time.time()
     
-    # SparkSession 
-    spark = kwargs['spark']
+    # SparkSession - mage didnt consistently pass spark in the kwargs 
+    spark = (
+        SparkSession
+        .builder
+        .appName('Test spark')
+        .config("spark.jars", "https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-latest.jar")
+        .config("spark.master", "local[*]")  # Use all available cores
+        .config("spark.driver.memory", "4g")  # Set driver memory to 4GB  
+        .config("spark.sql.legacy.timeParserPolicy", "LEGACY") # Set timeParserPolicy to LEGACY
+        .getOrCreate()
+    )
+
+    print(spark.sparkContext.getConf().get("spark.jars"))
+    print("Number of cores used:", spark.sparkContext.defaultParallelism)
+    print("Driver memory:", spark.conf.get("spark.driver.memory"))
+
     # Register UDFs
     get_sun_phase_udf = udf(get_sun_phase, StringType())
     spark.udf.register("get_sun_phase", get_sun_phase)
 
-    # Set GCS Variables 
+    # Set GCS Variables
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = kwargs['key_path'] 
     bucket_name = kwargs['google_bucket']
 
     client = storage.Client()
@@ -131,6 +147,7 @@ def load_from_gcs_to_spark(*args, **kwargs):
         
         if batch_num == 1:
             break
+            
     spark.stop()
     return {}
 

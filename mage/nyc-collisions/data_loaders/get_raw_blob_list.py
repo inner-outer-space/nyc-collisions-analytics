@@ -39,9 +39,6 @@ def load_data(*args, **kwargs):
   
     input_object_keys = [blob.name for blob in blobs if blob.name.endswith('.parquet')]
 
-    for key, value in kwargs.items():
-        print (key, value)
-
     return input_object_keys
 
 

@@ -32,11 +32,46 @@ sources:
       block_uuid: weather_to_bq_ext
       pipeline_uuid: nyc_collisions_enriched_full_pipeline
     name: nyc_collisions_enriched_full_pipeline_weather_to_bq_ext
-  - description: Dataframe for block `crash_to_bq_ext` of the `nyc_collisions_enriched_full_pipeline`
+  - description: Dataframe for block `crash_to_bq_ext` of the `spellbinding_silence`
       mage pipeline.
-    identifier: mage_nyc_collisions_enriched_full_pipeline_crash_to_bq_ext
+    identifier: mage_spellbinding_silence_crash_to_bq_ext
     meta:
       block_uuid: crash_to_bq_ext
-      pipeline_uuid: nyc_collisions_enriched_full_pipeline
-    name: nyc_collisions_enriched_full_pipeline_crash_to_bq_ext
+      pipeline_uuid: spellbinding_silence
+    name: spellbinding_silence_crash_to_bq_ext
+  - description: Dataframe for block `weather_to_bq_ext` of the `spellbinding_silence`
+      mage pipeline.
+    identifier: mage_spellbinding_silence_weather_to_bq_ext
+    meta:
+      block_uuid: weather_to_bq_ext
+      pipeline_uuid: spellbinding_silence
+    name: spellbinding_silence_weather_to_bq_ext
+  - description: Dataframe for block `crash_to_bq_ext` of the `nyc_collisions_processing_pipeline_`
+      mage pipeline.
+    identifier: mage_nyc_collisions_processing_pipeline__crash_to_bq_ext
+    meta:
+      block_uuid: crash_to_bq_ext
+      pipeline_uuid: nyc_collisions_processing_pipeline_
+    name: nyc_collisions_processing_pipeline__crash_to_bq_ext
+  - description: Dataframe for block `weather_to_bq_ext` of the `nyc_collisions_processing_pipeline_`
+      mage pipeline.
+    identifier: mage_nyc_collisions_processing_pipeline__weather_to_bq_ext
+    meta:
+      block_uuid: weather_to_bq_ext
+      pipeline_uuid: nyc_collisions_processing_pipeline_
+    name: nyc_collisions_processing_pipeline__weather_to_bq_ext
+  - description: Dataframe for block `crash_to_bq_ext` of the `nyc_collisions_processing_pipeline`
+      mage pipeline.
+    identifier: mage_nyc_collisions_processing_pipeline_crash_to_bq_ext
+    meta:
+      block_uuid: crash_to_bq_ext
+      pipeline_uuid: nyc_collisions_processing_pipeline
+    name: nyc_collisions_processing_pipeline_crash_to_bq_ext
+  - description: Dataframe for block `weather_to_bq_ext` of the `nyc_collisions_processing_pipeline`
+      mage pipeline.
+    identifier: mage_nyc_collisions_processing_pipeline_weather_to_bq_ext
+    meta:
+      block_uuid: weather_to_bq_ext
+      pipeline_uuid: nyc_collisions_processing_pipeline
+    name: nyc_collisions_processing_pipeline_weather_to_bq_ext
 version: 2

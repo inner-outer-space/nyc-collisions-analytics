@@ -62,6 +62,7 @@ def api_to_gcs_partitioned(*args, **kwargs):
 
         # Check if there are more records to fetch
         if len(df) < batch_size:
+        #if batch_num > 4:
             break
         
         offset += batch_size
