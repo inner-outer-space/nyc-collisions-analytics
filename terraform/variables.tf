@@ -10,7 +10,7 @@ variable "gcp_storage_location" {
 
 variable project {
   description = "Project"
-  default     = "nyc-collisions-analytics"
+  default     = "nyc-collisions-analytics-test"
 }
 
 variable "region" {
