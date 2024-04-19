@@ -1,9 +1,93 @@
 blocks:
-- all_upstream_blocks_executed: true
-  color: pink
-  configuration: {}
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_source:
+      path: transformers/weather_col_names.py
   downstream_blocks:
-  - api_to_gcs_batched
+  - weather_to_gcs
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: weather_col_names
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - weather_data_from_api
+  uuid: weather_col_names
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/weather_data_from_api.py
+  downstream_blocks:
+  - weather_col_names
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: weather_data_from_api
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: weather_data_from_api
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_source:
+      path: data_exporters/weather_to_gcs.py
+  downstream_blocks:
+  - weather_to_bq_ext
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: weather_to_gcs
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - weather_col_names
+  uuid: weather_to_gcs
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file_source:
+      path: data_exporters/weather_to_bq_ext.sql
+    limit: 1000
+    use_raw_sql: true
+  downstream_blocks:
+  - run_all_dbt
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: weather_to_bq_ext
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - weather_to_gcs
+  uuid: weather_to_bq_ext
+- all_upstream_blocks_executed: true
+  color: teal
+  configuration:
+    file_source:
+      path: custom/set_global_variables.py
+  downstream_blocks:
+  - get_raw_blob_list
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -16,44 +100,6 @@ blocks:
   upstream_blocks: []
   uuid: set_global_variables
 - all_upstream_blocks_executed: true
-  color: teal
-  configuration:
-    file_source:
-      path: custom/api_to_gcs_batched.py
-  downstream_blocks:
-  - spark_session
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: api_to_gcs_batched
-  retry_config: null
-  status: updated
-  timeout: null
-  type: custom
-  upstream_blocks:
-  - set_global_variables
-  uuid: api_to_gcs_batched
-- all_upstream_blocks_executed: false
-  color: null
-  configuration:
-    file_source:
-      path: data_loaders/spark_session.py
-  downstream_blocks:
-  - get_raw_blob_list
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: spark_session
-  retry_config: null
-  status: executed
-  timeout: null
-  type: data_loader
-  upstream_blocks:
-  - api_to_gcs_batched
-  uuid: spark_session
-- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
@@ -70,9 +116,9 @@ blocks:
   timeout: null
   type: data_loader
   upstream_blocks:
-  - spark_session
+  - set_global_variables
   uuid: get_raw_blob_list
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: teal
   configuration:
     file_source:
@@ -85,7 +131,7 @@ blocks:
   language: python
   name: gcs_to_spark_trans
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: custom
   upstream_blocks:
@@ -97,7 +143,7 @@ blocks:
     data_provider: bigquery
     data_provider_profile: default
     dbt: {}
-    disable_query_preprocessing: false
+    disable_query_preprocessing: true
     export_write_policy: append
     file_source:
       path: data_exporters/crash_to_bq_ext.sql
@@ -117,128 +163,43 @@ blocks:
   upstream_blocks:
   - gcs_to_spark_trans
   uuid: crash_to_bq_ext
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    file_source:
-      path: data_loaders/weather_data_from_api.py
-  downstream_blocks:
-  - weather_col_names
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: weather_data_from_api
-  retry_config: null
-  status: executed
-  timeout: null
-  type: data_loader
-  upstream_blocks: []
-  uuid: weather_data_from_api
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    file_source:
-      path: transformers/weather_col_names.py
-  downstream_blocks:
-  - weather_to_gcs
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: weather_col_names
-  retry_config: null
-  status: executed
-  timeout: null
-  type: transformer
-  upstream_blocks:
-  - weather_data_from_api
-  uuid: weather_col_names
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    file_source:
-      path: data_exporters/weather_to_gcs.py
-  downstream_blocks:
-  - weather_to_bq_ext
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: weather_to_gcs
-  retry_config: null
-  status: executed
-  timeout: null
-  type: data_exporter
-  upstream_blocks:
-  - weather_col_names
-  uuid: weather_to_gcs
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    data_provider: bigquery
-    data_provider_profile: default
-    dbt: {}
-    disable_query_preprocessing: true
-    export_write_policy: append
-    file_source:
-      path: data_exporters/weather_to_bq_ext.sql
-    limit: 1000
-    use_raw_sql: true
-  downstream_blocks:
-  - run_all_dbt
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: sql
-  name: weather_to_bq_ext
-  retry_config: null
-  status: updated
-  timeout: null
-  type: data_exporter
-  upstream_blocks:
-  - weather_to_gcs
-  uuid: weather_to_bq_ext
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    data_provider: bigquery
-    data_provider_profile: default
-    dbt:
-      command: run
+    dbt: {}
     dbt_profile_target: ''
     dbt_project_name: dbt/collisions
     disable_query_preprocessing: false
     export_write_policy: append
     file_source:
-      path: dbts/halcyon_pond.yaml
+      path: dbts/run_all_dbt.yaml
     use_raw_sql: false
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: yaml
-  name: run-all-dbt
+  name: run_all_dbt
   retry_config: null
-  status: executed
+  status: not_executed
   timeout: null
   type: dbt
   upstream_blocks:
-  - crash_to_bq_ext
   - weather_to_bq_ext
+  - crash_to_bq_ext
   uuid: run_all_dbt
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
-created_at: '2024-04-18 17:09:56.106872+00:00'
+created_at: '2024-04-19 12:52:46.592595+00:00'
 data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: nyc-collisions-enriched-full-pipeline
+name: nyc_collisions_processing_pipeline
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -248,14 +209,14 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-19 09:41:29'
-uuid: nyc_collisions_enriched_full_pipeline
+updated_at: '2024-04-19 14:18:18'
+uuid: nyc_collisions_processing_pipeline
 variables:
   google_bq_dataset: nyc_collisions_dataset
   google_bucket: nyc-collisions-bucket
   google_gcs_raw: raw_api_batched
   google_gcs_spark: crash_data_spark_trans
-  google_project_id: nyc-collisions-analytics-test
+  google_project_id: collisions-pipeline
   key_path: /home/src/google_cloud_key.json
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []

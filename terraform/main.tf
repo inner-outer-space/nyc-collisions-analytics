@@ -22,19 +22,25 @@ provider "google" {
 
 # Enable IAM API
 resource "google_project_service" "iam" {
-  service            = "iam.googleapis.com"
+  service = "iam.googleapis.com"
   disable_on_destroy = false
 }
 
 # Enable Cloud Resource Manager API
 resource "google_project_service" "resourcemanager" {
-  service            = "cloudresourcemanager.googleapis.com"
+  service = "cloudresourcemanager.googleapis.com"
+  disable_on_destroy = false
+}
+
+resource "google_project_service" "serviceusage" {
+  project = var.project
+  service = "serviceusage.googleapis.com"
   disable_on_destroy = false
 }
 
 # Enable Cloud SQL Admin API
 resource "google_project_service" "sqladmin" {
-  service            = "sqladmin.googleapis.com"
+  service = "sqladmin.googleapis.com"
   disable_on_destroy = false
 }
 
@@ -43,8 +49,8 @@ resource "google_project_service" "sqladmin" {
 # #############################################
 
 resource "google_storage_bucket" "collisions-bucket" {
-  name          = var.gcs_bucket_name
-  location      = var.gcp_storage_location
+  name = var.gcs_bucket_name
+  location = var.gcp_storage_location
   force_destroy = true
 }
 

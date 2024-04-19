@@ -1,3 +1,4 @@
+from mage_ai.data_preparation.variable_manager import set_global_variable
 from pyspark.sql import SparkSession
 import os
 
@@ -23,14 +24,13 @@ def load_data(*args, **kwargs):
     )
 
     kwargs['context']['spark'] = spark
+    #set_global_variable('nyc_collisions_enriched_full_pipeline', 'spark', spark)
 
 
     print(spark.sparkContext.getConf().get("spark.jars"))
     print("Number of cores used:", spark.sparkContext.defaultParallelism)
     print("Driver memory:", spark.conf.get("spark.driver.memory"))
 
-    for key, value in kwargs.items():
-        print (key, value)
     return {}
 
 @test

@@ -7,7 +7,7 @@ collisions:
       type: bigquery
       location: EU
       method: service-account
-      project: nyc-collisions-analytics-test
+      project: collisions-pipeline
       dataset: nyc_collisions_dataset
       threads: 4
       timeout_seconds: 300
@@ -19,7 +19,7 @@ collisions:
       type: bigquery
       location: EU
       method: service-account
-      project: nyc-collisions-analytics-test
+      project: collisions-pipeline
       dataset: nyc_collisions_dataset_prod
       threads: 4
       timeout_seconds: 300

@@ -2,7 +2,7 @@ version: 2
 
 sources: 
   - name: staging
-    database: nyc-collisions-analytics-test
+    database: collisions-pipeline
     schema: nyc_collisions_dataset
 
     tables: 

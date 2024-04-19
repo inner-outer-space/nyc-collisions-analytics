@@ -1,0 +1,69 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: teal
+  configuration:
+    file_source:
+      path: custom/set_global_variables.py
+  downstream_blocks:
+  - api_to_gcs_batched
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: set_global_variables
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: custom
+  upstream_blocks: []
+  uuid: set_global_variables
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/api_to_gcs.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: api_to_gcs_batched
+  retry_config: null
+  status: updated
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - set_global_variables
+  uuid: api_to_gcs_batched
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-04-17 19:26:22.294789+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: extract_collisions_from_api
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+updated_at: '2024-04-19 14:18:27'
+uuid: extract_collisions_from_api
+variables:
+  google_bq_dataset: nyc_collisions_dataset
+  google_bucket: nyc-collisions-bucket
+  google_gcs_raw: raw_api_batched
+  google_gcs_spark: crash_data_spark_trans
+  google_project_id: collisions-pipeline
+  key_path: /home/src/google_cloud_key.json
+variables_dir: /home/src/mage_data/nyc-collisions
+widgets: []
