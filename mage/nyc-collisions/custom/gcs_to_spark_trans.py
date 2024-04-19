@@ -12,6 +12,7 @@ import requests
 from datetime import datetime
 import time
 import pytz
+import re
 
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, TimestampType, IntegerType, DoubleType
@@ -42,6 +43,15 @@ def get_sun_phase(timestamp):
     else:
         return "night"
 
+# DATA CLEAN UP STEP - REMOVE NON INT VALUES FROM INT COLUMNS 
+def remove_non_int(value):
+    if value is None:
+        return None
+    # Check if the value is composed of digits only
+    if str(value).isdigit():
+        return int(value)
+    else:
+        return None
 
 @custom
 def gcs_to_spark_trans(*args, **kwargs):
@@ -71,6 +81,9 @@ def gcs_to_spark_trans(*args, **kwargs):
     get_sun_phase_udf = udf(get_sun_phase, StringType())
     spark.udf.register("get_sun_phase", get_sun_phase)
 
+    remove_non_int_udf = udf(remove_non_int, IntegerType())
+    spark.udf.register("remove_non_int", remove_non_int)
+
     # Set GCS Variables
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = kwargs['key_path'] 
     bucket_name = kwargs['google_bucket']
@@ -99,10 +112,11 @@ def gcs_to_spark_trans(*args, **kwargs):
         # Combine date and time into a single timestamp column to use in sun_phase calc
         spark_df = spark_df.withColumn("crash_timestamp", to_timestamp(concat(col("crash_date"), lit(" "), col("crash_time"))))
         
-        # Set dtype of other columns
+        spark_df = spark_df.withColumn("latitude", col("latitude").cast("double")) \
+                   .withColumn("longitude", col("longitude").cast("double"))
+
+        # Columns to clean up and convert to Int 
         columns_to_cast = {
-            "latitude": DoubleType(),
-            "longitude": DoubleType(),
             "number_of_persons_injured": IntegerType(),
             "number_of_pedestrians_injured": IntegerType(),
             "number_of_cyclist_injured": IntegerType(),
@@ -116,7 +130,9 @@ def gcs_to_spark_trans(*args, **kwargs):
         }
             
         for col_name, col_type in columns_to_cast.items():
-            spark_df = spark_df.withColumn(col_name, col(col_name).cast(col_type)) 
+            spark_df = spark_df.withColumn(col_name, remove_non_int_udf(col(col_name)))
+            spark_df = spark_df.withColumn(col_name, col(col_name).cast(IntegerType()))
+   
 
         ###### ADD SUNPHASE #########################################
         spark_df = spark_df \
