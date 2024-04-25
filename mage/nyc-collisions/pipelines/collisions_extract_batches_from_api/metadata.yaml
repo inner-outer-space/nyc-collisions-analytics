@@ -44,7 +44,7 @@ executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: extract_collisions_from_api
+name: collisions-extract_batches_from_api
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -54,8 +54,8 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-25 13:52:57'
-uuid: extract_collisions_from_api
+updated_at: '2024-04-25T15:20:58+00:00'
+uuid: collisions_extract_batches_from_api
 variables:
   google_bq_dataset: nyc_collisions_dataset
   google_bucket: nyc-collisions-bucket
