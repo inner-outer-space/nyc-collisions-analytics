@@ -21,6 +21,8 @@ def set_global_variables(*args, **kwargs):
     set_global_variable(kwargs['pipeline_uuid'], 'google_gcs_spark', os.environ['GOOGLE_GCS_SPARK'])
     set_global_variable(kwargs['pipeline_uuid'], 'google_bq_dataset', os.environ['GOOGLE_BQ_DATASET'])
 
+    for key, value in kwargs.items():
+        print(key, value)
     return {}
 
 @test
