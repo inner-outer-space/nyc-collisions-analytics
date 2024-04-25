@@ -11,7 +11,7 @@ if 'test' not in globals():
 def set_global_variables(*args, **kwargs):
     """
     Set global variables programatically using env variables.
-    This makes it easier for someone to reproduce with their own gcs setup. 
+    Updates to the GCS project, bucket, etc can be made via the .env file. 
     """
 
     set_global_variable(kwargs['pipeline_uuid'], 'key_path', os.environ['GOOGLE_SERVICE_ACC_KEY_FILEPATH'])
