@@ -74,4 +74,25 @@ sources:
       block_uuid: weather_to_bq_ext
       pipeline_uuid: nyc_collisions_processing_pipeline
     name: nyc_collisions_processing_pipeline_weather_to_bq_ext
+  - description: Dataframe for block `crash_to_bq_ext` of the `prep_collisions_data`
+      mage pipeline.
+    identifier: mage_prep_collisions_data_crash_to_bq_ext
+    meta:
+      block_uuid: crash_to_bq_ext
+      pipeline_uuid: prep_collisions_data
+    name: prep_collisions_data_crash_to_bq_ext
+  - description: Dataframe for block `weather_to_bq_ext` of the `prep_collisions_data`
+      mage pipeline.
+    identifier: mage_prep_collisions_data_weather_to_bq_ext
+    meta:
+      block_uuid: weather_to_bq_ext
+      pipeline_uuid: prep_collisions_data
+    name: prep_collisions_data_weather_to_bq_ext
+  - description: Dataframe for block `crash_to_bq_ext` of the `collisions_prep_data`
+      mage pipeline.
+    identifier: mage_collisions_prep_data_crash_to_bq_ext
+    meta:
+      block_uuid: crash_to_bq_ext
+      pipeline_uuid: collisions_prep_data
+    name: collisions_prep_data_crash_to_bq_ext
 version: 2
