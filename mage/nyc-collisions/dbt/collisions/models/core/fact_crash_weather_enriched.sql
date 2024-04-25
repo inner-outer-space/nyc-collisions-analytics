@@ -1,6 +1,5 @@
 {{ config(
-    materialized='table',
-    partition_by=["crash_mon_yr"]
+    materialized='table'
 ) }}
 
 SELECT *
