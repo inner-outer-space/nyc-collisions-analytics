@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 import os
 from os import path
 import pandas as pd
@@ -15,26 +16,47 @@ if 'custom' not in globals():
 if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
+
+if 'custom' not in globals():
+    from mage_ai.data_preparation.decorators import custom
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+
 @custom
-def api_to_gcs_partitioned(*args, **kwargs):
+def api_to_gcs_by_month(*args, **kwargs):
+    """
+    args: The output from any upstream parent blocks (if applicable)
 
-    offset = 0
-    batch_size = 15000
-    batch_num = 0
-
-    #api_endpoint = 'https://df.cityofnewyork.us/resource/h9gi-nx95.json'
-    api_endpoint = 'https://data.cityofnewyork.us/resource/h9gi-nx95.json'
-
+    Returns:
+        Anything (e.g. data frame, dictionary, array, int, str, etc.)
+    """
 
     # Define the project, bucket, and target folder  
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = kwargs['key_path']
     project_id = kwargs['google_project_id']
     bucket_name = kwargs['google_bucket']
     target_folder = kwargs['google_gcs_raw']
+    
+    # Define the base URL
+    base_url = "https://data.cityofnewyork.us/resource/h9gi-nx95.json?"
 
-    # Fetch JSON data from the API in reasonable sized batches
-    while True:
-        url = f'{api_endpoint}?$limit={batch_size}&$offset={offset}'
+    # Define the start and end dates
+    start_date = datetime(2017, 1, 1)
+    end_date = datetime(2023, 12, 31)
+
+    # Loop through each month from Jan 2017 to Dec 2023
+    date_range_urls = []
+    while start_date <= end_date:
+        # Calculate the end date of the month
+        next_month = start_date.replace(day=28) + timedelta(days=4)
+        end_of_month = next_month - timedelta(days=next_month.day)
+
+        # Extract month and year
+        month_year = start_date.strftime("%B %Y")
+        
+        # Construct the URL for the current month
+        url = f"{base_url}$where=crash_date between '{start_date.isoformat()}' and '{end_of_month.isoformat()}'"
         response = requests.get(url)
         
         if not response.ok:
@@ -50,7 +72,7 @@ def api_to_gcs_partitioned(*args, **kwargs):
         # define file syste 
         gcs = pa.fs.GcsFileSystem()
         
-        output_path = f'{bucket_name}/{target_folder}/nyc_collisions_batch_{batch_num}.parquet'
+        output_path = f'{bucket_name}/{target_folder}/nyc_collisions_{month_year}.parquet'
 
         # API response is partitioned by year and written to gcs as parquet
         pq.write_table(
@@ -59,20 +81,12 @@ def api_to_gcs_partitioned(*args, **kwargs):
             filesystem=gcs
         )
 
-        # Check if there are more records to fetch
-        if len(df) < batch_size:
-        #if batch_num > 4:
-            break
+        print(f'Month: {month_year} done')
         
-        offset += batch_size
-        batch_num += 1
+        # Move to the next month
+        start_date = next_month
 
-        print(f'Batch: {batch_num} done')
-
-        # Allow a break between calls
-        time.sleep(5)
-
-    return {}
+        return {}
 
 
 @test

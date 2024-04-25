@@ -140,7 +140,8 @@ def gcs_to_spark_trans(*args, **kwargs):
 
         ##### DROP COLUMNS ##########################################
         # going to add number of persons injured or killed back in as a calculation excercise in dbt. 
-        columns_to_drop = ['location.human_address','location.latitude', 'location.longitude','number_of_persons_injured','number_of_persons_killed']
+        columns_to_drop = ['location.human_address','location.latitude', 'location.longitude']
+        #columns_to_drop = ['location.human_address','location.latitude', 'location.longitude','number_of_persons_injured','number_of_persons_killed']
         spark_df = spark_df.drop(*columns_to_drop)    
 
         ##### WRITE TO PARQUET FILES #################################
