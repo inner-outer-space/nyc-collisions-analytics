@@ -1,20 +1,16 @@
-{{ config(materialized='table') }}
+{{ config(
+    materialized='table',
+    partition_by=["crash_mon_yr"]
+) }}
 
-SELECT
-    C.*,
-    {{ calculate_severity('C.')}} as severity,
-    W.weather_datetime,
-    W.temp_c,
-    W.temp_f,
-    W.precip_mm,
-    W.weather_desc
+SELECT *
 FROM
-    {{ ref('stg_crash_data') }} C
+    {{ ref('stg_crash_inter') }} C
 LEFT JOIN (
     SELECT
         weather_datetime,
         temp_c,
-        temp_f,
+        --temp_f,
         precip_mm,
         weather_desc,
         lead(weather_datetime) over (order by weather_datetime) as next_weather_datetime
