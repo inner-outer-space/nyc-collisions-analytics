@@ -16,20 +16,15 @@ if 'custom' not in globals():
 if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
-
-if 'custom' not in globals():
-    from mage_ai.data_preparation.decorators import custom
-if 'test' not in globals():
-    from mage_ai.data_preparation.decorators import test
-
-
 @custom
 def api_to_gcs_by_month(*args, **kwargs):
     """
-    args: The output from any upstream parent blocks (if applicable)
+    Extracts NYC Collisions records by month from the api. 
 
-    Returns:
-        Anything (e.g. data frame, dictionary, array, int, str, etc.)
+    args: none
+
+    Returns: none
+       
     """
 
     # Define the project, bucket, and target folder  
@@ -53,7 +48,7 @@ def api_to_gcs_by_month(*args, **kwargs):
         end_of_month = next_month - timedelta(days=next_month.day)
 
         # Extract month and year
-        month_year = start_date.strftime("%B %Y")
+        month_year = start_date.strftime("%m %Y")
         
         # Construct the URL for the current month
         url = f"{base_url}$where=crash_date between '{start_date.isoformat()}' and '{end_of_month.isoformat()}'"
