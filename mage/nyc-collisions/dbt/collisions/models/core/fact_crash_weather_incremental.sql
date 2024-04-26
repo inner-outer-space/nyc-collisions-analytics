@@ -7,7 +7,7 @@
 
 SELECT *
 FROM
-    {{ ref('stg_crash_inter') }} C
+    {{ ref('inter_crash_data') }} C
 LEFT JOIN (
     SELECT
         weather_datetime,
