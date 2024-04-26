@@ -1,4 +1,9 @@
-{{ config(materialized='table') }}
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'crash_id'
+  )
+}}
 
 SELECT *
 FROM
