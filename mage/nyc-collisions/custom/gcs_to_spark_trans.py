@@ -95,6 +95,7 @@ def gcs_to_spark_trans(*args, **kwargs):
     # Loop over the parquet files to process the data
     for batch_num, object_key in enumerate(input_object_keys):
         # Download the file contents as bytes
+        object_key = 'raw_api_batched/nyc_collisions_2013_03_.parquet'
         blob = bucket.blob(object_key)
         file_contents = blob.download_as_string()
 
@@ -162,8 +163,8 @@ def gcs_to_spark_trans(*args, **kwargs):
         delta_t = time.time() - start_time
         print(f'batch {batch_num} done at: {delta_t}')
         
-        #if batch_num == 1:
-        #    break
+        if batch_num == 0:
+            break
             
     spark.stop()
     return {}
