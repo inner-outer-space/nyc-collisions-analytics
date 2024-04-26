@@ -126,7 +126,8 @@ blocks:
     file_source:
       path: dbts/fancy_bonsai.yaml
     use_raw_sql: false
-  downstream_blocks: []
+  downstream_blocks:
+  - dbt_deps
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -139,6 +140,31 @@ blocks:
   upstream_blocks:
   - sincere_inventor
   uuid: fancy_bonsai
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt:
+      command: deps
+    dbt_profile_target: ''
+    dbt_project_name: dbt/collisions
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file_source:
+      path: dbts/dbt_deps.yaml
+    use_raw_sql: false
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: yaml
+  name: dbt_deps
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - fancy_bonsai
+  uuid: dbt_deps
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -160,7 +186,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-26 21:09:34'
+updated_at: '2024-04-26 21:17:11'
 uuid: collisions_process_batch
 variables:
   google_bq_dataset: nyc_collisions_dataset
