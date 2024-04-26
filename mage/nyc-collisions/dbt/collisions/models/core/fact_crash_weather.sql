@@ -1,11 +1,15 @@
 {{
   config(
-    materialized = 'incremental',
-    unique_key = 'crash_id'
+    materialized = "incremental",
+    unique_key='crash_id'
   )
 }}
-
-SELECT *
+SELECT 
+        C.*, 
+        W.weather_datetime,
+        W.temp_c,
+        W.precip_mm,
+        W.weather_desc
 FROM
     {{ ref('inter_crash_data') }} C
 LEFT JOIN (
