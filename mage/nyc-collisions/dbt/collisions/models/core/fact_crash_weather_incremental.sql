@@ -1,13 +1,13 @@
 {{
-    config(
-        materialized='incremental',
-        unique_key='collision_id'
-    )
+  config(
+    materialized = 'incremental',
+    unique_key = 'crash_id'
+  )
 }}
 
 SELECT *
 FROM
-    {{ ref('stg_crash_inter') }} C
+    {{ ref('inter_crash_data') }} C
 LEFT JOIN (
     SELECT
         weather_datetime,
