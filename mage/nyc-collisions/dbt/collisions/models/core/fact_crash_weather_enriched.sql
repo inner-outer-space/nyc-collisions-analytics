@@ -24,3 +24,7 @@ LEFT JOIN (
 ) W 
 ON C.crash_datetime >= W.weather_datetime
      and (C.crash_datetime < W.next_weather_datetime or W.next_weather_datetime is null)
+{% if is_incremental() %}
+  -- Filter to include only new records where collision_id doesn't exist in the old data
+  WHERE collision_id NOT IN (SELECT collision_id FROM {{ this }})
+{% endif %}
