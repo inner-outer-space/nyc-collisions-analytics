@@ -25,4 +25,3 @@ LEFT JOIN (
 ) W 
 ON C.crash_datetime >= W.weather_datetime
      and (C.crash_datetime < W.next_weather_datetime or W.next_weather_datetime is null)
-{% endif %}
