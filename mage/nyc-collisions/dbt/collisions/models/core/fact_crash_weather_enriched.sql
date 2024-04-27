@@ -1,7 +1,6 @@
 {{
   config(
-    materialized = "incremental",
-    unique_key='crash_id'
+    materialized = "incremental"
   )
 }}
 SELECT 
