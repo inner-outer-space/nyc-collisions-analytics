@@ -168,7 +168,9 @@ def gcs_to_spark_trans(*args, **kwargs):
     )   
     
     delta_t = time.time() - start_time
-            
+    # Add a wait in the pipeline. The next step fails occassionally even though the files are available. 
+    time.sleep(10)        
+    
     spark.stop()
     return output_file_name
 
