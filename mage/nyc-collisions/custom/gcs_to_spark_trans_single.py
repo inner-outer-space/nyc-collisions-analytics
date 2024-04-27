@@ -92,8 +92,9 @@ def gcs_to_spark_trans(*args, **kwargs):
     client = storage.Client()
     bucket = client.bucket(bucket_name)
 
-    object_key = 'raw_api_batched/nyc_collisions_2016_10_.parquet'
-    
+    #object_key = 'raw_api_batched/nyc_collisions_2016_10_.parquet'
+    object_key = kwargs.get('object_key')
+
     # Extracting file name from object_key
     file_name = object_key.split('/')[-1]
     output_file_name = 'processed_' + file_name
@@ -124,11 +125,11 @@ def gcs_to_spark_trans(*args, **kwargs):
 
     # Columns to clean up and convert to Int 
     columns_to_cast = {
-        #"number_of_persons_injured": IntegerType(),
+        "number_of_persons_injured": IntegerType(),
         "number_of_pedestrians_injured": IntegerType(),
         "number_of_cyclist_injured": IntegerType(),
         "number_of_motorist_injured": IntegerType(),
-        #"number_of_persons_killed": IntegerType(),
+        "number_of_persons_killed": IntegerType(),
         "number_of_pedestrians_killed": IntegerType(),
         "number_of_cyclist_killed": IntegerType(),
         "number_of_motorist_killed": IntegerType(),
