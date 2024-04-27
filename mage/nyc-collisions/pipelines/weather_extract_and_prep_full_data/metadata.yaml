@@ -86,7 +86,8 @@ blocks:
       path: data_exporters/weather_to_bq_ext.sql
     limit: 1000
     use_raw_sql: true
-  downstream_blocks: []
+  downstream_blocks:
+  - stage_weather_data
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -99,6 +100,33 @@ blocks:
   upstream_blocks:
   - weather_to_gcs
   uuid: weather_to_bq_ext
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    dbt:
+      command: run
+    dbt_profile_target: ''
+    dbt_project_name: dbt/collisions
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file_source:
+      path: dbts/stage_weather_data.yaml
+    use_raw_sql: false
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: yaml
+  name: stage_weather_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - weather_to_bq_ext
+  uuid: stage_weather_data
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -120,7 +148,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-25 20:46:52'
+updated_at: '2024-04-27 07:07:42'
 uuid: weather_extract_and_prep_full_data
 variables:
   google_bq_dataset: nyc_collisions_dataset

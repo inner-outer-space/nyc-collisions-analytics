@@ -12,12 +12,12 @@ blocks:
   language: python
   name: set_global_variables
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: custom
   upstream_blocks: []
   uuid: set_global_variables
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: teal
   configuration: {}
   downstream_blocks:
@@ -28,13 +28,13 @@ blocks:
   language: python
   name: gcs_to_spark_trans_single
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: custom
   upstream_blocks:
   - set_global_variables
   uuid: gcs_to_spark_trans_single
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     data_provider: bigquery
@@ -47,7 +47,7 @@ blocks:
     limit: 1000
     use_raw_sql: true
   downstream_blocks:
-  - little_illusion
+  - sg_crash_data
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -60,87 +60,7 @@ blocks:
   upstream_blocks:
   - gcs_to_spark_trans_single
   uuid: crash_to_bq_ext
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    data_provider: bigquery
-    data_provider_profile: default
-    dbt:
-      command: run
-    dbt_profile_target: ''
-    dbt_project_name: dbt/collisions
-    disable_query_preprocessing: false
-    export_write_policy: append
-    file_source:
-      path: dbts/little_illusion.yaml
-    use_raw_sql: false
-  downstream_blocks:
-  - sincere_inventor
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: yaml
-  name: little illusion
-  retry_config: null
-  status: executed
-  timeout: null
-  type: dbt
-  upstream_blocks:
-  - crash_to_bq_ext
-  uuid: little_illusion
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    dbt:
-      command: run
-    dbt_profile_target: ''
-    dbt_project_name: dbt/collisions
-    disable_query_preprocessing: false
-    export_write_policy: append
-    file_source:
-      path: dbts/sincere_inventor.yaml
-    use_raw_sql: false
-  downstream_blocks:
-  - fancy_bonsai
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: yaml
-  name: sincere inventor
-  retry_config: null
-  status: executed
-  timeout: null
-  type: dbt
-  upstream_blocks:
-  - little_illusion
-  uuid: sincere_inventor
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    dbt:
-      command: run
-    dbt_profile_target: ''
-    dbt_project_name: dbt/collisions
-    disable_query_preprocessing: false
-    export_write_policy: append
-    file_source:
-      path: dbts/fancy_bonsai.yaml
-    use_raw_sql: false
-  downstream_blocks:
-  - dbt_deps
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: yaml
-  name: fancy bonsai
-  retry_config: null
-  status: executed
-  timeout: null
-  type: dbt
-  upstream_blocks:
-  - sincere_inventor
-  uuid: fancy_bonsai
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     dbt:
@@ -163,8 +83,88 @@ blocks:
   timeout: null
   type: dbt
   upstream_blocks:
-  - fancy_bonsai
+  - fact_crash_weather_enriched
   uuid: dbt_deps
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    data_provider: bigquery
+    data_provider_profile: default
+    dbt:
+      command: run
+    dbt_profile_target: ''
+    dbt_project_name: dbt/collisions
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file_source:
+      path: dbts/little_illusion.yaml
+    use_raw_sql: false
+  downstream_blocks:
+  - inter_crash_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: yaml
+  name: sg_crash_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - crash_to_bq_ext
+  uuid: sg_crash_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt:
+      command: run
+    dbt_profile_target: ''
+    dbt_project_name: dbt/collisions
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file_source:
+      path: dbts/sincere_inventor.yaml
+    use_raw_sql: false
+  downstream_blocks:
+  - fact_crash_weather_enriched
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: yaml
+  name: inter_crash_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - sg_crash_data
+  uuid: inter_crash_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt:
+      command: run
+    dbt_profile_target: ''
+    dbt_project_name: dbt/collisions
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file_source:
+      path: dbts/fancy_bonsai.yaml
+    use_raw_sql: false
+  downstream_blocks:
+  - dbt_deps
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: yaml
+  name: fact_crash_weather_enriched
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - inter_crash_data
+  uuid: fact_crash_weather_enriched
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -186,7 +186,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-26 21:17:11'
+updated_at: '2024-04-27T08:05:55+00:00'
 uuid: collisions_process_batch
 variables:
   google_bq_dataset: nyc_collisions_dataset
@@ -195,6 +195,6 @@ variables:
   google_gcs_spark: crash_data_spark_trans
   google_project_id: collisions-pipeline
   key_path: /home/src/google_cloud_key.json
-  output_file_name: processed_nyc_collisions_2016_10_.parquet
+  output_file_name: processed_nyc_collisions_2013_01_.parquet
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []
