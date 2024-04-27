@@ -195,6 +195,6 @@ variables:
   google_gcs_spark: crash_data_spark_trans
   google_project_id: collisions-pipeline
   key_path: /home/src/google_cloud_key.json
-  output_file_name: processed_nyc_collisions_2021_05_.parquet
+  output_file_name: processed_nyc_collisions_2013_01_.parquet
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []

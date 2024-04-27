@@ -73,7 +73,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-27 10:08:47'
+updated_at: '2024-04-27 10:23:51'
 uuid: collisions_process_all
 variables:
   google_bq_dataset: nyc_collisions_dataset
