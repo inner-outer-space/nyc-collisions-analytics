@@ -92,15 +92,16 @@ def gcs_to_spark_trans(*args, **kwargs):
     client = storage.Client()
     bucket = client.bucket(bucket_name)
 
-    #object_key = 'raw_api_batched/nyc_collisions_2016_10_.parquet'
+    #object_key = 'raw_api_batched/nyc_collisions_2014_06_.parquet'
     object_key = kwargs.get('object_key')
+    print(object_key)
 
     # Extracting file name from object_key
     file_name = object_key.split('/')[-1]
+    print(f'file name {file_name}')
+
     output_file_name = 'processed_' + file_name
-    set_global_variable(kwargs['pipeline_uuid'], 'output_file_name', output_file_name)
-    for key, value in kwargs.items():
-        print (key, value)
+    print(f'output_file_name {output_file_name}')
 
     # Download the file contents as bytes
     blob = bucket.blob(object_key)
@@ -142,15 +143,13 @@ def gcs_to_spark_trans(*args, **kwargs):
         spark_df = spark_df.withColumn(col_name, col(col_name).cast(IntegerType()))
 
 
+    ##### DROP COLUMNS ##########################################
+    columns_to_drop = ['location.human_address','location.latitude', 'location.longitude']
+    spark_df = spark_df.drop(*columns_to_drop)    
+
     ###### ADD SUNPHASE #########################################
     spark_df = spark_df \
         .withColumn("sun_phase", get_sun_phase_udf(col("crash_timestamp")))
-
-    ##### DROP COLUMNS ##########################################
-    # going to add number of persons injured or killed back in as a calculation excercise in dbt. 
-    columns_to_drop = ['location.human_address','location.latitude', 'location.longitude']
-    #columns_to_drop = ['location.human_address','location.latitude', 'location.longitude','number_of_persons_injured','number_of_persons_killed']
-    spark_df = spark_df.drop(*columns_to_drop)    
 
     ##### WRITE TO PARQUET FILES #################################
     spark_df = spark_df.coalesce(1)
@@ -168,8 +167,11 @@ def gcs_to_spark_trans(*args, **kwargs):
     )   
     
     delta_t = time.time() - start_time
-    # Add a wait in the pipeline. The next step fails occassionally even though the files are available. 
-    time.sleep(10)        
+    # Add a wait in the pipeline to prevent the next step failing. 
+    time.sleep(30) 
+
+    set_global_variable(kwargs['pipeline_uuid'], 'output_file_name', output_file_name)
+    print('kwargs', kwargs['output_file_name'])  
     
     spark.stop()
     return output_file_name

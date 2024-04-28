@@ -1,5 +1,30 @@
 blocks:
 - all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt:
+      command: deps
+    dbt_profile_target: ''
+    dbt_project_name: dbt/collisions
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file_source:
+      path: dbts/dbt_deps.yaml
+    use_raw_sql: false
+  downstream_blocks:
+  - collisions_batch_loop
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: yaml
+  name: dbt_deps
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: dbt_deps
+- all_upstream_blocks_executed: true
   color: teal
   configuration:
     file_source:
@@ -39,7 +64,8 @@ blocks:
 - all_upstream_blocks_executed: true
   color: teal
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - dim_monthly
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -51,7 +77,59 @@ blocks:
   type: custom
   upstream_blocks:
   - get_raw_blob_list
+  - dbt_deps
   uuid: collisions_batch_loop
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt:
+      command: run
+    dbt_profile_target: ''
+    dbt_project_name: dbt/collisions
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file_source:
+      path: dbts/dim_monthly.yaml
+    use_raw_sql: false
+  downstream_blocks:
+  - dim_annual_stats
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: yaml
+  name: dim_monthly
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - collisions_batch_loop
+  uuid: dim_monthly
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt:
+      command: run
+    dbt_profile_target: ''
+    dbt_project_name: dbt/collisions
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file_source:
+      path: dbts/dim_annual_stats.yaml
+    use_raw_sql: false
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: yaml
+  name: dim_annual_stats
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dim_monthly
+  uuid: dim_annual_stats
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -73,7 +151,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-27 10:23:51'
+updated_at: '2024-04-28 16:00:08'
 uuid: collisions_process_all
 variables:
   google_bq_dataset: nyc_collisions_dataset

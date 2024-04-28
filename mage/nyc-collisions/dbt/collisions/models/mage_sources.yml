@@ -109,4 +109,11 @@ sources:
       block_uuid: weather_to_bq_ext
       pipeline_uuid: weather_extract_and_prep_full_data
     name: weather_extract_and_prep_full_data_weather_to_bq_ext
+  - description: Dataframe for block `collisions_batch_loop` of the `collisions_process_all`
+      mage pipeline.
+    identifier: mage_collisions_process_all_collisions_batch_loop
+    meta:
+      block_uuid: collisions_batch_loop
+      pipeline_uuid: collisions_process_all
+    name: collisions_process_all_collisions_batch_loop
 version: 2
