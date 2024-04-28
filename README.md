@@ -15,14 +15,14 @@ To reproduce this project, see the [Set Up Instructions](https://github.com/inne
 ### Tools and Technologies
 
 - Cloud - **Google Cloud Platform**
-- Infrastructure as Code software - **Terraform**
+- Infrastructure as Code Software - **Terraform**
 - Containerization - **Docker** and **Docker Compose**
 - Orchestration - **Mage**
 - Transformation and Batch Processing - **Apache Spark**
 - Data Lake - **Google Cloud Storage**
 - Data Warehouse - **BigQuery**
 - Data Visualization - **Looker Studio**
-- Languages - Python, SQL, and Bash
+- Languages - **Python, SQL, and Bash**
 
 # ARCHITECTURE 
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="600" height="auto">
