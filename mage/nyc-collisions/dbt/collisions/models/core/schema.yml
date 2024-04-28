@@ -5,3 +5,7 @@ models:
     description: >
       NYC Collisions data for 2013-01-01 through 2024-03-31 enhanced with basic weather data
       Weather data was retrieved for 3 hour intervals. Weather is assigned if the collision timestamp is => then a weather timestamp but less than the next one. 
+  - name: dim_annual_stats
+    description: stats by year 
+  - name: dim_monthly_stats
+    description: stats by month 
