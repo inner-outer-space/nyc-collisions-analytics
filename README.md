@@ -5,8 +5,7 @@ This repository contains my final project for the [Data Engineering Zoomcamp by 
 ## OBJECTIVE 
 The goal is to sythesize the course information and put it to practice to creating an automated end-to-end data pipeline. The project will create a batch data pipeline to processes NYC auto collisions data and enrich it with meterological data. 
 
-### Tools and Technologies
-
+## Tools and Technologies
 - Cloud - **Google Cloud Platform**
 - Infrastructure as Code Software - **Terraform**
 - Containerization - **Docker** and **Docker Compose**
@@ -114,6 +113,7 @@ The goal is to sythesize the course information and put it to practice to creati
   <br>
   </details>
 
+## SET UP 
 To reproduce this project, see the [Set Up Instructions](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md)
 
 
