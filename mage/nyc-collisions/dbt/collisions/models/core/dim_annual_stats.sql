@@ -1,6 +1,6 @@
 {{ config(materialized='table') }}
 
-WITH monthly_data AS (
+WITH annual_data AS (
     SELECT
         crash_year,
         SUM(total_persons_injured) AS yr_total_persons_inj, 
@@ -33,7 +33,7 @@ SELECT
     ROUND(yr_total_mot_inj / 365, 1) AS avg_daily_mot_inj,
     ROUND(yr_total_mot_fatal / 365, 1) AS avg_daily_mot_fatal
 FROM
-    monthly_data
+    annual_data
 ORDER BY 
     crash_year
 
