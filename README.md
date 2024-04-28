@@ -1,14 +1,15 @@
 # nyc-collisions-analytics
 
-This repository contains my final project for the [Data Engineering Zoomcamp by DataTalksClub](https://github.com/DataTalksClub/data-engineering-zoomcamp). In the course, we covered a wide varitey of data engineering topics and tools. This project aims to sythesize the information and put it to practice to create an automated data pipeline. 
+This repository contains my final project for the [Data Engineering Zoomcamp by DataTalksClub](https://github.com/DataTalksClub/data-engineering-zoomcamp). The course covered a varitey of data engineering topics and tools. My course notes and homework can be found here: [DE Zoomcamp 2024 Repo](https://github.com/inner-outer-space/de-zoomcamp-2024). 
+
+This project aims to sythesize the information and put it to practice to create an automated end-to-end data pipeline that utilises Docker, Terraform, Google Cloud Platform (GCP), and Mage as an Orchestrator. 
+
 
 ## DATA SOURCES 
 - [New York City Motor Vehicle Collisions Data Set](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95) <br/>
   This data is available from Jan 2013 till present.
 - [3-hr Meteorological Data Set from Weather API](https://www.worldweatheronline.com/weather-api/) <br/>
   This data was extracted via a REST API through with the free trial. I've posted the data in parquet format on my GIT for download into this pipeline. 
-
-For my course notes and homework solutions, see my [DE Zoomcamp 2024 Repo](https://github.com/inner-outer-space/de-zoomcamp-2024). 
 
 To reproduce this project, see the [Set Up Instructions](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md)
 
