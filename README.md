@@ -2,8 +2,7 @@
 
 This repository contains my final project for the [Data Engineering Zoomcamp by DataTalksClub](https://github.com/DataTalksClub/data-engineering-zoomcamp). The course covered a varitey of data engineering topics and tools. My course notes and homework can be found here: [DE Zoomcamp 2024 Repo](https://github.com/inner-outer-space/de-zoomcamp-2024). 
 
-This project aims to sythesize the information and put it to practice to create an automated end-to-end data pipeline that utilises Docker, Terraform, Google Cloud Platform (GCP), and Mage as an Orchestrator. 
-
+This project aims to sythesize the information and put it to practice to create an automated end-to-end data pipeline utilizing Docker, Terraform, Spark, Google Cloud Platform (GCP), and Mage as an Orchestrator. 
 
 ## DATA SOURCES 
 - [New York City Motor Vehicle Collisions Data Set](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95) <br/>
@@ -15,15 +14,15 @@ To reproduce this project, see the [Set Up Instructions](https://github.com/inne
 
 ### Tools and Technologies
 
-- Cloud - [**Google Cloud Platform**](https://cloud.google.com)
-- Infrastructure as Code software - [**Terraform**](https://www.terraform.io)
-- Containerization - [**Docker**](https://www.docker.com), [**Docker Compose**](https://docs.docker.com/compose/)
-- Orchestration - [**Mage**](https://www.mage.ai/)
-- Transformation and Batch Processing - [**Apache Spark**](https://spark.apache.org/)
-- Data Lake - [**Google Cloud Storage**](https://cloud.google.com/storage)
-- Data Warehouse - [**BigQuery**](https://cloud.google.com/bigquery)
-- Data Visualization - [**Looker Studio**](https://support.google.com/looker-studio/community?hl=en&sjid=8237525324739923528-EU)
-- Language - [**Python**](https://www.python.org)
+- Cloud - **Google Cloud Platform**
+- Infrastructure as Code software - **Terraform**
+- Containerization - **Docker** and **Docker Compose**
+- Orchestration - **Mage**
+- Transformation and Batch Processing - **Apache Spark**
+- Data Lake - **Google Cloud Storage**
+- Data Warehouse - **BigQuery**
+- Data Visualization - **Looker Studio**
+- Languages - Python, SQL, and Bash
 
 # ARCHITECTURE 
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="600" height="auto">
