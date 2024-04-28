@@ -60,7 +60,7 @@ SELECT
     extract(year from crash_datetime) as crash_year, 
     extract(dayofweek from crash_datetime) as crash_dow,
     format_timestamp('%A', crash_datetime) as crash_dow_name,
-    format_timestamp('%B %Y', crash_datetime) as crash_mon_yr,
+    format_timestamp('%Y-%m', crash_datetime) as crash_yr_mon,
     sun_phase, 
 
 
