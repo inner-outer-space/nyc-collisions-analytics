@@ -92,7 +92,7 @@ def gcs_to_spark_trans(*args, **kwargs):
     client = storage.Client()
     bucket = client.bucket(bucket_name)
 
-    #object_key = 'raw_api_batched/nyc_collisions_2014_06_.parquet'
+    #object_key = 'raw_api_batched/nyc_collisions_2017_07_.parquet'
     object_key = kwargs.get('object_key')
     print(object_key)
 
@@ -109,6 +109,7 @@ def gcs_to_spark_trans(*args, **kwargs):
 
     # Read into pandas df and convrt to Spark df (i had trouble reading it directly into spark)
     df = pd.read_parquet(BytesIO(file_contents))
+    print(df.shape)
     spark_df = spark.createDataFrame(df)
 
     # Partition spark DF
@@ -154,6 +155,7 @@ def gcs_to_spark_trans(*args, **kwargs):
     ##### WRITE TO PARQUET FILES #################################
     spark_df = spark_df.coalesce(1)
     pandas_df = spark_df.toPandas()
+    print(pandas_df.shape)
 
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
