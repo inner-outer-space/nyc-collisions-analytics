@@ -15,10 +15,10 @@ WITH monthly_data AS (
     FROM
         {{ ref('fact_crash_weather_enriched') }}
     GROUP BY
-        crash_mon_yr
+        crash_yr_mon
 )
 SELECT
-    crash_mon_yr,
+    crash_yr_mon,
     mon_total_persons_inj,
     mon_total_persons_fatal,
     mon_total_ped_inj,
