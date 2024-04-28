@@ -36,7 +36,7 @@ SELECT
 FROM
     monthly_data
 ORDER BY 
-    crash_mon_yr
+    crash_yr_mon
 
 -- dbt build --m <model.sql> --vars 'is_test_run: false'
 --{% if var('is_test_run', default=true) %}
