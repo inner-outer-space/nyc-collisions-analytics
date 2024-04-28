@@ -2,10 +2,13 @@
 
 This repository contains my final project for the [Data Engineering Zoomcamp by DataTalksClub](https://github.com/DataTalksClub/data-engineering-zoomcamp). The course covered a varitey of data engineering topics and tools. My course notes and homework can be found here: [DE Zoomcamp 2024 Repo](https://github.com/inner-outer-space/de-zoomcamp-2024). 
 
-## OBJECTIVE 
+
+### OBJECTIVE 
 The goal is to sythesize the course information and put it to practice to creating an automated end-to-end data pipeline. The project will create a batch data pipeline to processes NYC auto collisions data and enrich it with meterological data. 
 
-## Tools and Technologies
+
+
+### Tools and Technologies
 - Cloud - **Google Cloud Platform**
 - Infrastructure as Code Software - **Terraform**
 - Containerization - **Docker** and **Docker Compose**
@@ -17,8 +20,7 @@ The goal is to sythesize the course information and put it to practice to creati
 - Languages - **Python, SQL, and Bash**
 
 
-
-## DATA SOURCES 
+### DATA SOURCES 
 - [New York City Motor Vehicle Collisions Data Set](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95) <br/>
   This data is available from Jan 2013 till present.
 - [3-hr Meteorological Data Set from Weather API](https://www.worldweatheronline.com/weather-api/) <br/>
