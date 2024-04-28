@@ -2,7 +2,7 @@
 
 WITH monthly_data AS (
     SELECT
-        crash_mon_yr,
+        crash_yr_mon,
         SUM(total_persons_injured) AS mon_total_persons_inj, 
         SUM(total_persons_killed) AS mon_total_persons_fatal,
         SUM(number_of_pedestrians_injured) AS mon_total_ped_inj,
