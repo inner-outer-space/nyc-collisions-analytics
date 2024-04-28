@@ -35,8 +35,8 @@ models:
           description: day of the week number
         - name: crash_dow_name
           description: day of the week name
-        - name: crash_mon_yr
-          description: month and year 
+        - name: crash_yr_mon
+          description: year month in YYYY-mm format 
         - name: sun_phase
           description: >
               sunphase is calculated using the python package astral for the NYC location 40.730610, -73.935242
