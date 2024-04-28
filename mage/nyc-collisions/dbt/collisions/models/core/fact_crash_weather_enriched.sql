@@ -5,7 +5,7 @@
   )
 }}
 SELECT 
-        C.*, 
+        C.*,
         W.weather_datetime,
         W.temp_c,
         W.precip_mm,
