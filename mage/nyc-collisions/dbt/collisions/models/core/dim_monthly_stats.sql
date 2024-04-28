@@ -17,7 +17,7 @@ WITH monthly_data AS (
     FROM
         {{ ref('fact_crash_weather_enriched') }}
     GROUP BY
-        crash_yr_mon
+        crash_yr_mon, crash_month, crash_year
 )
 SELECT
     crash_yr_mon,
