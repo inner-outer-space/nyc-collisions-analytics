@@ -120,6 +120,8 @@ To reproduce this project, please refer to the the [Set Up Instructions](https:/
 <div align = center>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="600" height="auto">
 </div>
+
+
 ## MAGE PIPELINES 
 ### Extract pipeline <br/>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/extract_mage.png" width="200" height="auto">
