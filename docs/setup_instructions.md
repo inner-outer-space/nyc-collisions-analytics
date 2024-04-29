@@ -82,13 +82,15 @@ Once the previous step is complete, execute the following command in the termina
 `curl -X POST FILL IN HERE \
   --header 'Content-Type: application/json'` </br>
 </br>
-
 The weather data used in this project was retrieved during an introductory free trial period for World Weather Online. The data was extracted and stored in CSV format for use in this pipeline. This script retrieves the CSV file from its GIT location, does some light processing, uploads it to GCS, and then creates an associated external table that can be accessed in BigQuery.  
 ### PROCESS THE COLLISION DATA 
 Once the previous step is complete execute the following command in the terminal:</br>
-''
+`curl -X POST FILL IN HERE \
+  --header 'Content-Type: application/json'` </br>
 </br>
+This triggers the collisions_process_all pipeline which reads in a list of the monthly files created in the extraction set. The collisions_process_batch pipeline is triggered within this pipeline for each file in the list. Local spark is used to create a datetime stamp, asign data types, and calculate the sun phase (day, dusk, dawn, dark) at the time of each collision. The collision staging and interim views are created. The month's collision data is enriched with the weather data and incrementally added to the fact table.    
 
+Once all extract files have been processd and the fact table has been built, then the collisions_process_all pipeline continues to create the dbt dimensional tables. 
   
 
 
