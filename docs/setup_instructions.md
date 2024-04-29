@@ -29,7 +29,8 @@
 6. Enable the following APIs:
    - Service Usage API
    - Big Query API
-
+  
+7. If you are using a paid account rather than the free trial, link a Billing Account to the Project. 
    
 ## TERRAFORM
 In the Terraform folder: <br/>
