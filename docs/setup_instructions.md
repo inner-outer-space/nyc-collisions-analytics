@@ -32,8 +32,8 @@
 
    
 ## TERRAFORM
-In the Terraform folder:
-2. In the variables.tf file, update the default values for the following variables:
+In the Terraform folder: <br/>
+1. In the variables.tf file, update the default values for the following variables:
     -  project name  (required)
     -  gcp storage location (if needed)
     -  region (if needed)
