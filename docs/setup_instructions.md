@@ -83,7 +83,10 @@ Once the previous step is complete, execute the following command in the termina
   --header 'Content-Type: application/json'` </br>
 </br>
 
-  
+### PROCESS THE COLLISION DATA 
+Once the previous step is complete execute the following command in the terminal:</br>
+''
+</br>
 
   
 
