@@ -19,6 +19,7 @@ WITH annual_data AS (
 )
 SELECT
     crash_year,
+    collisions_per_yr,
     yr_total_persons_inj,
     yr_total_persons_fatal,
     yr_total_ped_inj,
