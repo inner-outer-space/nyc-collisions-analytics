@@ -139,6 +139,7 @@ To reproduce this project, please refer to the the [Set Up Instructions](https:/
 
 
 <div align = center>
+  
 ## MAGE PIPELINES 
 ### Extract and Process Weather Data Pipeline <br/>
 <img src=images/mage-weather.png width="300" height="auto">
