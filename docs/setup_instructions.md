@@ -67,7 +67,7 @@ In the Mage folder:
 <div align = center> !!! PLEASE CLEAR YOUR BROWSER CACHE BEFORE RUNNING THE PIPELINES !!! </div>
 
 
-### EXTRACT THE HISTORIC COLLISIONS DATA 
+### EXTRACT THE HISTORIC COLLISIONS DATA (~30 min)
 In the Scripts folder, run  </br> 
 `./get_historic_api.sh 2015 2023` </br>
 </br>
@@ -75,7 +75,7 @@ This script submits an api request to the mage 'monthly_extract_trigger' for eac
 </br>
 The script includes a 20s pause between each pipeline run to avoid overwhelming the source. This step takes about ~30 min. 
 
-### EXTRACT AND PROCESS THE WEATHER DATA 
+### EXTRACT AND PROCESS THE WEATHER DATA (2 min)
 Once the previous step is complete, execute the following command in the terminal: </br>
 `curl -X POST FILL IN HERE \
   --header 'Content-Type: application/json'` </br>
