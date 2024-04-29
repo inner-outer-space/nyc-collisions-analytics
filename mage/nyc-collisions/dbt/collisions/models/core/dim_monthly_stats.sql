@@ -2,6 +2,7 @@
 
 WITH monthly_data AS (
     SELECT
+        COUNT(*) AS collisions_per_month, 
         crash_yr_mon,
         crash_month,
         crash_year,
@@ -21,6 +22,7 @@ WITH monthly_data AS (
 )
 SELECT
     ROW_NUMBER() OVER (ORDER BY crash_year, crash_month) AS index_column,
+    collisions_per_month,
     crash_yr_mon,
     crash_month,
     crash_year,

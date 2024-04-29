@@ -2,6 +2,7 @@
 
 WITH annual_data AS (
     SELECT
+        COUNT(*) AS collisions_per_yr,  
         crash_year,
         SUM(total_persons_injured) AS yr_total_persons_inj, 
         SUM(total_persons_killed) AS yr_total_persons_fatal,
