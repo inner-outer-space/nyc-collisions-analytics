@@ -20,10 +20,10 @@
 3. Set the GOOGLE_APPLICATION_CREDENTIALS</br>
    `export GOOGLE_APPLICATION_CREDENTIALS=/your/path/to/this/google_cloud_key.json`
 
-    Double check they have been correctly set </br>
+    Confirm it has been correctly set </br>
    `echo $GOOGLE_APPLICATION_CREDENTIALS`
 
-4. Authenticate on GCloud
+4. Authenticate on GCloud </br>
    `gcloud auth application-default login`
    
 6. Enable the following APIs:
