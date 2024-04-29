@@ -14,8 +14,10 @@ The goal of this project is to sythesize the course information and put it to pr
 </div>
 <br/>
 
-### DASHBOARD
+
 <div align = center>
+
+### DASHBOARD
 <img src=images/Collisions-Dashboard.png width="500" height="auto">
 </div>
 <br/>
