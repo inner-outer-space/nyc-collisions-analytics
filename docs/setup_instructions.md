@@ -14,7 +14,7 @@
 1. Create a new project on GCP
 2. Add a service account
     - Go to IAM & Admin > Service Account and `+ CREATE SERVICE ACCOUNT `.
-    - For simplicity, set the Role to owner. Leave other fields blank. 
+    - For simplicity, set the Role to owner and leave the other fields blank. 
     - Under Actions for the service account, click  `Manage Keys`.
     - Create a new JSON key and download it to the the mage folder in this repo as `google_cloud_key.json`.
 3. Set the GOOGLE_APPLICATION_CREDENTIALS</br>
