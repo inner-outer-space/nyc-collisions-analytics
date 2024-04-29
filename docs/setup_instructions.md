@@ -73,9 +73,9 @@ In the Terraform folder: <br/>
 In the Scripts folder, run  </br> 
 `./get_historic_api.sh 2015 2023` </br>
 </br>
-This script submits an api request to the mage 'monthly_extract_trigger' for each month between the start and end month specified (here jan 2015 - dec 2023). The pipeline sets global variables, makes batched requests to the NYC Open Data rest api until the full month of data is retrieved, and then writes the output raw parquet to the GCS bucket created previously with Terraform. </br>
+This script submits an api request to the mage 'monthly_extract_trigger' for each month between the start and end month specified (here jan 2015 - dec 2023). The pipeline sets global variables, makes batched requests to the NYC Open Data rest api until the full month of data is retrieved, and then writes the output parquet to the GCS bucket created previously with Terraform. </br>
 </br>
-The script includes a 20s pause between each pipeline run to avoid overwhelming the source. This step takes about ~30 min. 
+The script includes a 20s pause between each pipeline run to avoid overwhelming the source. 
 
 ### EXTRACT AND PROCESS THE WEATHER DATA (2 min)
 Once the previous step is complete, execute the following command in the terminal: </br>
@@ -83,6 +83,7 @@ Once the previous step is complete, execute the following command in the termina
   --header 'Content-Type: application/json'` </br>
 </br>
 
+The weather data used in this project was retrieved during an introductory free trial period for World Weather Online. The data was extracted and stored in CSV format for use in this pipeline. This script retrieves the CSV file from its GIT location, does some light processing, uploads it to GCS, and then creates an associated external table that can be accessed in BigQuery.  
 ### PROCESS THE COLLISION DATA 
 Once the previous step is complete execute the following command in the terminal:</br>
 ''
