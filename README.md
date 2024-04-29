@@ -155,10 +155,9 @@ To reproduce this project, please refer to the the [Set Up Instructions](https:/
 
 ### Process Collisions Full Data Pipeline <br/>
 <img src=images/mage-collisions-all.png width="300" height="auto">
-</div>
+<br/>
 
 ## DBT Lineage <br/>
-<div align = center>
 <img src=images/dbt-lineage.png width="600" height="auto">
 </div>
 
