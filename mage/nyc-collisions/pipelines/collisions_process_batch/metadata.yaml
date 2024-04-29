@@ -21,7 +21,7 @@ blocks:
   color: teal
   configuration: {}
   downstream_blocks:
-  - crash_to_bq_ext
+  - double_check_kwarg
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -34,6 +34,23 @@ blocks:
   upstream_blocks:
   - set_global_variables
   uuid: gcs_to_spark_trans_single
+- all_upstream_blocks_executed: false
+  color: pink
+  configuration: {}
+  downstream_blocks:
+  - crash_to_bq_ext
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: double_check_kwarg
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - gcs_to_spark_trans_single
+  uuid: double_check_kwarg
 - all_upstream_blocks_executed: false
   color: null
   configuration:
@@ -58,7 +75,7 @@ blocks:
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - gcs_to_spark_trans_single
+  - double_check_kwarg
   uuid: crash_to_bq_ext
 - all_upstream_blocks_executed: false
   color: null
@@ -160,7 +177,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-28T19:29:21+00:00'
+updated_at: '2024-04-28T23:21:10+00:00'
 uuid: collisions_process_batch
 variables:
   google_bq_dataset: nyc_collisions_dataset
@@ -169,6 +186,6 @@ variables:
   google_gcs_spark: crash_data_spark_trans
   google_project_id: collisions-pipeline
   key_path: /home/src/google_cloud_key.json
-  output_file_name: processed_nyc_collisions_2017_05_.parquet
+  output_file_name: processed_nyc_collisions_2023_12_.parquet
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []
