@@ -92,7 +92,7 @@ def gcs_to_spark_trans(*args, **kwargs):
     client = storage.Client()
     bucket = client.bucket(bucket_name)
 
-    #object_key = 'raw_api_batched/nyc_collisions_2017_07_.parquet'
+    #object_key = 'raw_api_batched/nyc_collisions_2017_09_.parquet'
     object_key = kwargs.get('object_key')
     print(object_key)
 
