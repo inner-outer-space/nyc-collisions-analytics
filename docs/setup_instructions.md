@@ -30,7 +30,8 @@
    - Service Usage API
    - Big Query API
   
-7. If you are using a paid account rather than the free trial, link a Billing Account to the Project. 
+7. If you are using a paid account rather than the free trial, link a Billing Account to the Project.
+8. Wait a few minutes for the previous steps to take affect. 
    
 ## TERRAFORM
 In the Terraform folder: <br/>
