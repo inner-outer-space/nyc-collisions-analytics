@@ -12,7 +12,7 @@ WITH formatted_data AS (
         sun_phase,
 
         -- LOCATION FIELDS 
-        borough,
+        COALESCE(borough, 'Unknown') as borough,
         cast(zip_code as integer) as zip_code,
         cast(latitude as numeric) as latitude,
         cast(longitude as numeric) as longitude,
