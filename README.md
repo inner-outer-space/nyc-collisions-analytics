@@ -6,8 +6,10 @@ This repository contains my final project for the [Data Engineering Zoomcamp by 
 ### OBJECTIVE 
 The goal of this project is to sythesize the course information and put it to practice creating an automated end-to-end data pipeline. The data pipeline extracts and transforms NYC auto collisions data and enriches it with meterological data. 
 
-### ARCHITECTURE 
+
 <div align = center>
+
+### ARCHITECTURE 
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="500" height="auto">
 </div>
 <br/>
