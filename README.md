@@ -127,15 +127,25 @@ To reproduce this project, please refer to the the [Set Up Instructions](https:/
 
 
 ## MAGE PIPELINES 
-### Extract pipeline <br/>
-<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/extract_mage.png" width="200" height="auto">
+### Extract and Process Weather Data Pipeline <br/>
+<div align = center>
+<img src=images/mage-weather.png width="400" height="auto">
+</div>
 
-### Processing pipeline <br/>
+### Extract Collisions Data Pipeline <br/>
+<div align = center>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/mage-tree.png" width="500" height="auto">
+</div>
+
+### Process Collisions Data Pipeline <br/>
+<div align = center>
+<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/mage-tree.png" width="500" height="auto">
+</div>
 
 ## DBT Lineage <br/>
+<div align = center>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/dbt-lineage.png" width="600" height="auto">
-
+</div>
 
 
  
