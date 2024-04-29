@@ -15,7 +15,6 @@ SELECT
     vehicle, 
     contributing_factor,
     COUNT(*) AS collision_count,
-    COUNT(DISTINCT contributing_factor) AS unique_factors
 FROM 
     vehicle_join
 GROUP BY 
