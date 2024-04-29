@@ -127,8 +127,9 @@ To reproduce this project, please refer to the the [Set Up Instructions](https:/
 
 
 ## MAGE PIPELINES 
-### Extract pipeline <br/>
-<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/extract_mage.png" width="200" height="auto">
+### Extract and Process Weather Data Pipeline <br/>
+<img src=images/mage-weather.png width="200" height="auto">
+
 
 ### Processing pipeline <br/>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/mage-tree.png" width="500" height="auto">
