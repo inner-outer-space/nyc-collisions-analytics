@@ -51,13 +51,17 @@ In the Terraform folder: <br/>
 ## MAGE 
 1. In the Mage folder: <br/>
    - Change name of the `my.env` file to `.env`
+   <br/>
 2. In the `.env` file: </br>
-   - GOOGLE_PROJECT_ID  --> _change to your google project id_ 
+   - GOOGLE_PROJECT_ID  --> _change to your google project id_
+     <br/>
 3. In the `mage/nyc-collisions/dbt/collisions/profiles.yml` file: </br>
    - dev > project -->  _change to your google project id_ 
-   - prod > project -->  _change to your google project id_ 
+   - prod > project -->  _change to your google project id_
+     <br/>
 4. In `mage/nyc-collisions/dbt/collisions/models/staging/schema.yml` update >/br>
    - database --> to your project_id
+    <br/>
 5. Run `docker-compose up`
 
 
