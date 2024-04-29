@@ -23,4 +23,4 @@ GROUP BY
     contributing_factor
 ORDER BY 
     vehicle, 
-    collision_count DESC;
+    collision_count DESC
