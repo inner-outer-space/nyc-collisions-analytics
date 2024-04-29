@@ -20,6 +20,7 @@ WITH monthly_data AS (
         crash_yr_mon, crash_month, crash_year
 )
 SELECT
+    ROW_NUMBER() OVER (ORDER BY crash_year, crash_month) AS index_column,
     crash_yr_mon,
     crash_month,
     crash_year,
