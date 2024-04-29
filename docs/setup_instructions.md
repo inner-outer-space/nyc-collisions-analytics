@@ -52,21 +52,21 @@ In the Terraform folder: <br/>
 1. In the Mage folder: <br/>
    - Change name of the `my.env` file to `.env`
    <br/>
-2. In the `.env` file: </br>
+2. In `.env` update: </br>
    - GOOGLE_PROJECT_ID  --> _change to your google project id_
    <br/>
-3. In the `mage/nyc-collisions/dbt/collisions/profiles.yml` file: </br>
+3. In `mage/nyc-collisions/dbt/collisions/profiles.yml` update: </br>
    - dev > project -->  _change to your google project id_ 
    - prod > project -->  _change to your google project id_
    <br/>
-4. In `mage/nyc-collisions/dbt/collisions/models/staging/schema.yml` update >/br>
+4. In `mage/nyc-collisions/dbt/collisions/models/staging/schema.yml` update: </br>
    - database --> to your project_id
     <br/>
 5. Run `docker-compose up`
 
 
 # RUNNING THE PIPELINE 
-<div align = center> !!! PLEASE CLEAR YOUR BROWSER CACHE BEFORE RUNNING THE PIPELINES !!! </div>
+<div align = center> *** TO BE SAFE, PLEASE CLEAR YOUR BROWSER CACHE BEFORE RUNNING THE PIPELINES *** </div>
 
 
 ### EXTRACT THE HISTORIC COLLISIONS DATA (~30 min)
