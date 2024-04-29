@@ -46,7 +46,7 @@ blocks:
   language: python
   name: month_api_data_to_gcs
   retry_config: null
-  status: failed
+  status: updated
   timeout: null
   type: data_exporter
   upstream_blocks:
@@ -73,7 +73,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-04-25T16:56:06+00:00'
+updated_at: '2024-04-29 15:33:32'
 uuid: collisions_extract_monthly_from_api
 variables:
   google_bq_dataset: nyc_collisions_dataset
