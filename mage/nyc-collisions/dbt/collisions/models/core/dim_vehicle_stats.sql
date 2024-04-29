@@ -17,7 +17,7 @@ WITH vehicle_join AS (
         UNNEST([contributing_factor_vehicle_1, contributing_factor_vehicle_2, contributing_factor_vehicle_3, contributing_factor_vehicle_4, contributing_factor_vehicle_5]) AS contributing_factor
         WITH OFFSET AS factor_offset
     WHERE
-        vehicle_offset = factor_offset
+        vehicle_offset = factor_offset AND vehicle is not null
 )
 SELECT
     vehicle, 
