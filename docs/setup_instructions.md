@@ -60,15 +60,16 @@ In the Mage folder:
    - prod > project --> to your project_id
 5. In mage/nyc-collisions/dbt/collisions/models/staging/schema.yml update >/br>
    - database --> to your project_id
+6. Run `docker-compose up`
 
 
-## RUNNING THE PIPELINE 
-In the Mage Folder: 
-1. Run `docker-compose up`
-2. Trigger the Extraction Pipeline via cURL. ** This will take at least 20 min** </br>
-   `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/14/pipeline_runs/6f1fbec7c85b48b794a202618dcaef13`
-3. Trigger the Data Processing Pipeline via the cURL </br>
-   `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/16/pipeline_runs/b28ad8aa9ba740ddb838dd9d36232a4f`
+# RUNNING THE PIPELINE 
+### EXTRACT THE COLLISIONS DATA 
+In the Scripts Folder, run `./get_historic_api.sh 2015 2023`
+This script triggers the mage 'monthly_extract_trigger' to extract the data from the NYC Open Data portal. API requests are made for each month from Jan of the start year to Dec of the End year via a curl request. The data is then stored in the GCS bucket created previously with Terraform. 
+
+The script includes a 30s pause between each pipeline run.  built into the script to avoid overwhelming the source. This step 
+
 
 
 ## TAKING THE PROJECT DOWN 
