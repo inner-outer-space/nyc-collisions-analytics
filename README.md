@@ -10,15 +10,18 @@ The goal of this project is to sythesize the course information and put it to pr
 <div align = center>
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="500" height="auto">
 </div>
+<br/>
 
 ### DASHBOARD
 <div align = center>
 <img src=images/Collisions-Dashboard.png width="500" height="auto">
 </div>
+<br/>
 
 
 ### SET UP 
 To reproduce this project, please refer to the the [Set Up Instructions](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md)
+<br/>
 
 ### Tools and Technologies
 - Cloud - **Google Cloud Platform**
