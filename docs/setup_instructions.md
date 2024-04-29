@@ -43,8 +43,6 @@ In the Terraform folder: <br/>
 
 2. Run the following terraform commands to create GCP resources - **BigQuery DataSet, GCS Bucket, more APIs** </br>
 
-[**More on Terraform Commands**](https://cloud.google.com](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/01-docker-terraform/1_terraform_gcp/terraform)
-
     - `terraform init`
     - `terraform plan`
     - `terraform apply`
