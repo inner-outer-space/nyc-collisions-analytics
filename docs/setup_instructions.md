@@ -64,11 +64,25 @@ In the Mage folder:
 
 
 # RUNNING THE PIPELINE 
-### EXTRACT THE COLLISIONS DATA 
-In the Scripts Folder, run `./get_historic_api.sh 2015 2023`
-This script triggers the mage 'monthly_extract_trigger' to extract the data from the NYC Open Data portal. API requests are made for each month from Jan of the start year to Dec of the End year via a curl request. The data is then stored in the GCS bucket created previously with Terraform. 
+<div align = center> !!! PLEASE CLEAR YOUR BROWSER CACHE BEFORE RUNNING THE PIPELINES !!! </div>
 
-The script includes a 30s pause between each pipeline run.  built into the script to avoid overwhelming the source. This step 
+
+### EXTRACT THE HISTORIC COLLISIONS DATA 
+In the Scripts folder, run `./get_historic_api.sh 2015 2023` </br>
+</br>
+This script submits an api request to the mage 'monthly_extract_trigger' for each month between the start and end month specified (here jan 2015 - dec 2023). The pipeline sets global variables, makes batched requests to the NYC Open Data rest api until the full month of data is retrieved, and then writes the output raw parquet to the GCS bucket created previously with Terraform. </br>
+</br>
+The script includes a 20s pause between each pipeline run to avoid overwhelming the source. This step takes about ~30 min. 
+
+### PROCESS THE WEATHER DATA 
+Once the previous step is complete, execute the following command in the terminal: </br>
+`curl -X POST FILL IN HERE \
+  --header 'Content-Type: application/json'` </br>
+</br>
+
+  
+
+  
 
 
 
