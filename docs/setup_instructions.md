@@ -14,57 +14,85 @@
 1. Create a new project on GCP
 2. Add a service account
     - Go to IAM & Admin > Service Account and `+ CREATE SERVICE ACCOUNT `.
-    - For simplicity, set the Role to owner. Leave other fields blank. 
+    - For simplicity, set the Role to owner and leave the other fields blank. 
     - Under Actions for the service account, click  `Manage Keys`.
     - Create a new JSON key and download it to the the mage folder in this repo as `google_cloud_key.json`.
 3. Set the GOOGLE_APPLICATION_CREDENTIALS</br>
    `export GOOGLE_APPLICATION_CREDENTIALS=/your/path/to/this/google_cloud_key.json`
 
-    Double check they have been correctly set </br>
+    Confirm it has been correctly set </br>
    `echo $GOOGLE_APPLICATION_CREDENTIALS`
 
-4. Authenticate on GCloud
+4. Authenticate on GCloud </br>
    `gcloud auth application-default login`
    
 6. Enable the following APIs:
    - Service Usage API
    - Big Query API
-
+  
+7. If you are using a paid account rather than the free trial, link a Billing Account to the Project.
+8. Wait a few minutes for the previous steps to take affect. 
    
 ## TERRAFORM
-In the Terraform folder:
-2. In the variables.tf file, update the default values for the following variables:
+In the Terraform folder: <br/>
+1. In the variables.tf file, update the default values for the following variables:
     -  project name  (required)
     -  gcp storage location (if needed)
     -  region (if needed)
     -  zone (if needed)
 
-2. Run the following terraform commands to create GCP resources - BigQuery DataSet, GCS Bucket, more APIs </br>
-[**More on Terraform Commands**]([https://cloud.google.com](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/01-docker-terraform/1_terraform_gcp/terraform))
+2. Run the following terraform commands to create GCP resources - **BigQuery DataSet, GCS Bucket, more APIs** </br>
+
     - `terraform init`
     - `terraform plan`
     - `terraform apply`
 
 
 ## MAGE 
-In the Mage folder: 
-1. Change name of the `my.env` file to `.env`
-2. In the .env file, update the following variables:
-   - GOOGLE_PROJECT_ID
-3. In mage/nyc-collisions/dbt/collisions/profiles.yml update: </br>
-   - dev > project --> to your project_id
-   - prod > project --> to your project_id
-5. In mage/nyc-collisions/dbt/collisions/models/staging/schema.yml update >/br>
+1. In the Mage folder: <br/>
+   - Change name of the `my.env` file to `.env`
+   <br/>
+2. In `.env` update: </br>
+   - GOOGLE_PROJECT_ID  --> _change to your google project id_
+   <br/>
+3. In `mage/nyc-collisions/dbt/collisions/profiles.yml` update: </br>
+   - dev > project -->  _change to your google project id_ 
+   - prod > project -->  _change to your google project id_
+   <br/>
+4. In `mage/nyc-collisions/dbt/collisions/models/staging/schema.yml` update: </br>
    - database --> to your project_id
+    <br/>
+5. Run `docker-compose up`
 
 
-## RUNNING THE PIPELINE 
-In the Mage Folder: 
-1. Run `docker-compose up`
-2. Trigger the Extraction Pipeline via cURL. ** This will take at least 20 min** </br>
-   `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/14/pipeline_runs/6f1fbec7c85b48b794a202618dcaef13`
-3. Trigger the Data Processing Pipeline via the cURL </br>
-   `curl -X POST http://127.0.0.1:6789/api/pipeline_schedules/16/pipeline_runs/b28ad8aa9ba740ddb838dd9d36232a4f`
+# RUNNING THE PIPELINE 
+<div align = center> *** TO BE SAFE, PLEASE CLEAR YOUR BROWSER CACHE BEFORE RUNNING THE PIPELINES *** </div>
+
+
+### EXTRACT THE HISTORIC COLLISIONS DATA (~30 min)
+In the Scripts folder, run  </br> 
+`./get_historic_api.sh 2015 2023` </br>
+</br>
+This script submits an api request to the mage 'monthly_extract_trigger' for each month between the start and end month specified (here jan 2015 - dec 2023). The pipeline sets global variables, makes batched requests to the NYC Open Data rest api until the full month of data is retrieved, and then writes the output parquet to the GCS bucket created previously with Terraform. </br>
+</br>
+The script includes a 20s pause between each pipeline run to avoid overwhelming the source. 
+
+### EXTRACT AND PROCESS THE WEATHER DATA (2 min)
+Once the previous step is complete, execute the following command in the terminal: </br>
+`curl -X POST FILL IN HERE \
+  --header 'Content-Type: application/json'` </br>
+</br>
+The weather data used in this project was retrieved during an introductory free trial period for World Weather Online. The data was extracted and stored in CSV format for use in this pipeline. This script retrieves the CSV file from its GIT location, does some light processing, uploads it to GCS, and then creates an associated external table that can be accessed in BigQuery.  
+### PROCESS THE COLLISION DATA 
+Once the previous step is complete execute the following command in the terminal:</br>
+`curl -X POST FILL IN HERE \
+  --header 'Content-Type: application/json'` </br>
+</br>
+This triggers the collisions_process_all pipeline which reads in a list of the monthly files created in the extraction set. The collisions_process_batch pipeline is triggered within this pipeline for each file in the list. Local spark is used to create a datetime stamp, asign data types, and calculate the sun phase (day, dusk, dawn, dark) at the time of each collision. The collision staging and interim views are created. The month's collision data is enriched with the weather data and incrementally added to the fact table.    
+
+Once all extract files have been processd and the fact table has been built, then the collisions_process_all pipeline continues to create the dbt dimensional tables. 
+  
+
 
 
 ## TAKING THE PROJECT DOWN 
