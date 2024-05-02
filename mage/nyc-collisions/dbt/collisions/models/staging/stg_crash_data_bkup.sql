@@ -5,8 +5,10 @@ WITH formatted_data AS (
         -- UNIQUE KEY
         cast(collision_id as integer) as crash_id,
 
-        -- TIME FIELDS (local timezone - NYC, the UTC timezone is incorrect and needs to be dropped)
-        format_timestamp('%Y-%m-%d %H:%M', crash_timestamp) AS crash_timestamp_string,  
+        -- TIME FIELDS (local timezone - NYC)
+        parse_datetime('%Y-%m-%d %H:%M', concat(crash_date, ' ', crash_time)) as formatted_crash_date,
+        format_time('%H:%M', parse_time('%H:%M', crash_time)) as formatted_crash_time,
+        parse_datetime('%Y-%m-%d %H:%M', concat(date(crash_date),' ', format_time('%H:%M', parse_time('%H:%M', crash_time)))) as crash_datetime,
         sun_phase,
 
         -- LOCATION FIELDS 
@@ -51,8 +53,7 @@ SELECT
     crash_id,
 
     -- TIME_FIELDS (local timezone - NYC)
-    crash_timestamp_string, 
-    parse_datetime('%Y-%m-%d %H:%M', crash_timestamp_string) as crash_datetime,
+    crash_datetime,
     extract(date from crash_datetime) as crash_date,
     extract(time from crash_datetime) as crash_time,
     extract(month from crash_datetime) as crash_month, 
