@@ -18,7 +18,7 @@ def transform_custom(input_object_keys, _, **kwargs):
     wait_seconds = 80 
     #input_object_keys = ['raw_api_batched/nyc_collisions_2020_09_.parquet', 'raw_api_batched/nyc_collisions_2020_10_.parquet']
     input_object_keys = sorted(input_object_keys)
-    object_keys = input_object_keys
+    object_keys = input_object_keys[12:14]
     for object_key in object_keys:
         trigger_pipeline(
             'collisions_process_batch',  
@@ -37,6 +37,6 @@ def transform_custom(input_object_keys, _, **kwargs):
 @test
 def test_output(output, *args) -> None:
     """
-    Template code for testing the output of the block.
+    Later: add check that the pipelines completed succesfully. 
     """
     assert output is not None, 'The output is undefined'
