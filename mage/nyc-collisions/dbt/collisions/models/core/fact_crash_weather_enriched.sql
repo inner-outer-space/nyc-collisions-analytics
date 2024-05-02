@@ -1,7 +1,13 @@
 {{
   config(
     materialized = "incremental",
-    unique_key = "crash_id"
+    unique_key = "crash_id",
+    partition_by={
+      "field": "crash_datetime",
+      "data_type": "timestamp",
+      "granularity": "year"
+    },
+    cluster_by= "crash_month",
   )
 }}
 SELECT 
