@@ -1,1 +1,3 @@
 astral
+mage-ai[dbt]
+mage-ai[spark]
