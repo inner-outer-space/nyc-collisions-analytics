@@ -39,15 +39,13 @@ def load_data(*args, **kwargs):
   
     input_object_keys = [blob.name for blob in blobs if blob.name.endswith('.parquet')]
     print(len(input_object_keys))
+    print(input_object_keys)
     return input_object_keys
 
 
 @test
-def test_output(*output) -> None:
+def test_output(output, *args) -> None:
     """
-    The file list created in the data loader is passed as a tuple. 
-    Output is the first value in that tuple. The assert that output is not none
-    confirms that at least one file was retrieved. 
+    Template code for testing the output of the block.
     """
-    assert len(output) > 0, 'There are no files in the file list'
-    #assert output is not None, 'There are no files in the file list'
+    assert output is not None, 'The output is undefined'
