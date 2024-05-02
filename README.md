@@ -6,15 +6,26 @@ This repository contains my final project for the [Data Engineering Zoomcamp by 
 ### OBJECTIVE 
 The goal of this project is to sythesize the course information and put it to practice creating an automated end-to-end data pipeline. The data pipeline extracts and transforms NYC auto collisions data and enriches it with meterological data. 
 
-### ARCHITECTURE 
-<div align = center>
-<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="600" height="auto">
-</div>
 
-Description of the flow 
+<div align = center>
+
+### ARCHITECTURE 
+<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="500" height="auto">
+</div>
+<br/>
+
+
+<div align = center>
+
+### DASHBOARD
+<img src=images/Collisions-Dashboard.png width="500" height="auto">
+</div>
+<br/>
+
 
 ### SET UP 
 To reproduce this project, please refer to the the [Set Up Instructions](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md)
+<br/>
 
 ### Tools and Technologies
 - Cloud - **Google Cloud Platform**
@@ -126,16 +137,29 @@ To reproduce this project, please refer to the the [Set Up Instructions](https:/
 
 
 
-## MAGE PIPELINES 
-### Extract pipeline <br/>
-<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/extract_mage.png" width="200" height="auto">
 
-### Processing pipeline <br/>
-<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/mage-tree.png" width="500" height="auto">
+<div align = center>
+  
+## MAGE PIPELINES 
+### Extract and Process Weather Data Pipeline <br/>
+<img src=images/mage-weather.png width="300" height="auto">
+<br/>
+
+### Extract Collisions Data Pipeline <br/>
+<img src=images/mage-extract-collisions-monthly.png width="300" height="auto">
+<br/>
+
+### Process Collisions Batch Data Pipeline <br/>
+<img src=images/mage-collisions-batch-process.png width="300" height="auto">
+<br/>
+
+### Process Collisions Full Data Pipeline <br/>
+<img src=images/mage-collisions-all.png width="300" height="auto">
+<br/>
 
 ## DBT Lineage <br/>
-<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/dbt-lineage.png" width="600" height="auto">
-
+<img src=images/dbt-lineage.png width="600" height="auto">
+</div>
 
 
  
