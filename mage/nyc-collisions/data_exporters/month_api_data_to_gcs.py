@@ -26,7 +26,7 @@ def export_data_to_google_cloud_storage(df: DataFrame, **kwargs) -> None:
     print(output_parquet)
     
     bucket_name =kwargs['google_bucket']
-    object_key = f"{kwargs['google_gcs_raw']}/{'output_parquet'}"
+    object_key = f"{kwargs['google_gcs_raw']}/{output_parquet}"
 
     GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).export(
         df,
