@@ -7,7 +7,7 @@ collisions:
       type: bigquery
       location: EU
       method: service-account
-      project: collisions-pipeline 
+      project: collisions_pipeline_dev 
       dataset: nyc_collisions_dataset
       threads: 4
       timeout_seconds: 300
@@ -20,7 +20,7 @@ collisions:
       location: EU
       method: service-account
       project: collisions-pipeline
-      dataset: nyc_collisions_dataset_prod
+      dataset: nyc_collisions_dataset
       threads: 4
       timeout_seconds: 300
       keyfile: /home/src/google_cloud_key.json
