@@ -4,7 +4,7 @@ WITH vehicle_join AS (
         contributing_factor, 
         total_injured, 
         total_killed,
-        number_of_persons_injured,
+        number_of_persons_injuries,
         number_of_persons_killed,
         number_of_cyclist_injured,
         number_of_cyclist_killed,
