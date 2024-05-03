@@ -1,0 +1,12 @@
+collisions:
+  outputs:
+    prod:
+      dataset: nyc_collisions_dataset
+      keyfile: /home/src/google_cloud_key.json
+      location: EU
+      method: service-account
+      project: collisions-pipeline
+      threads: 4
+      timeout_seconds: 300
+      type: bigquery
+  target: prod

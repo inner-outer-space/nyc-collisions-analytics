@@ -94,7 +94,7 @@ def gcs_to_spark_trans(*args, **kwargs):
     bucket = client.bucket(bucket_name)
 
     # object key is passed in from the pipeline that triggers this pipeline. 
-    object_key = 'raw_api_batched/nyc_collisions_2017_09.parquet'
+    object_key = 'raw_api_batched/nyc_collisions_2017_02.parquet'
     #object_key = kwargs.get('object_key')
     print(object_key)
 
@@ -126,6 +126,8 @@ def gcs_to_spark_trans(*args, **kwargs):
                 .withColumn("longitude", col("longitude").cast("double"))
 
     # Columns to clean up and convert to Int 
+    spark_df = spark_df.fillna({'number_of_persons_injured': 0})
+
     columns_to_cast = {
         "number_of_persons_injured": IntegerType(),
         "number_of_pedestrians_injured": IntegerType(),
@@ -161,6 +163,7 @@ def gcs_to_spark_trans(*args, **kwargs):
     config_profile = 'default'
 
     output_object_key = 'crash_data_spark_trans/' + output_file_name
+    print(f'output objeck: {output_object_key}')
 
     GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).export(
         pandas_df,
@@ -169,14 +172,13 @@ def gcs_to_spark_trans(*args, **kwargs):
     )   
     
     delta_t = time.time() - start_time
-    # Add a wait in the pipeline to prevent the next step failing. 
-    time.sleep(30) 
+    print(delta_t)
 
+    # this setting will only be available after the block is completed. 
     set_global_variable(kwargs['pipeline_uuid'], 'output_file_name', output_file_name)
-    print('kwargs', kwargs['output_file_name'])  
     
     spark.stop()
-    return {}
+    return output_file_name
 
 @test
 def test_output(output, *args) -> None:
