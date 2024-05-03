@@ -45,7 +45,7 @@ WITH formatted_data AS (
         vehicle_type_code_5
 
     FROM
-        {{ source('staging','crash_data_external') }}
+        {{ source('staging','external_crash_data') }}
 )
 
 SELECT
