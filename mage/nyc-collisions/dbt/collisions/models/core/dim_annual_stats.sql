@@ -4,8 +4,10 @@ WITH annual_data AS (
     SELECT
         COUNT(*) AS collisions_per_yr,  
         crash_year,
-        SUM(total_persons_injured) AS yr_total_persons_inj, 
-        SUM(total_persons_killed) AS yr_total_persons_fatal,
+        SUM(total_injuries) as yr_total_injuries,
+        SUM(total_fatalities) as yr_total_fatalities,
+        SUM(number_of_persons_injured) AS yr_total_persons_inj, 
+        SUM(number_of_persons_killed) AS yr_total_persons_fatal,
         SUM(number_of_pedestrians_injured) AS yr_total_ped_inj,
         SUM(number_of_pedestrians_killed) AS yr_total_ped_fatal, 
         SUM(number_of_cyclist_injured) AS yr_total_cyc_inj,
