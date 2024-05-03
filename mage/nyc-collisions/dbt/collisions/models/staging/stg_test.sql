@@ -19,7 +19,7 @@ WITH formatted_data AS (
 
         -- PEOPLE DETAILS
         COALESCE(number_of_persons_injured, 0) AS number_of_persons_injured,
-        number_of_persons_killed,
+        COALESCE(number_of_persons_killed, 0) AS number_of_persons_killed,
         number_of_pedestrians_injured,
         number_of_pedestrians_killed, 
         number_of_cyclist_injured,
