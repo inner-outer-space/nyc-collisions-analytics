@@ -15,7 +15,7 @@ def transform_custom(*args, **kwargs):
     """
     output_file_name = args[0]
     set_global_variable(kwargs['pipeline_uuid'], 'output_file_name', output_file_name)
-    print('kwargs', kwargs['output_file_name'])  
+    print('kwargs output file name', kwargs['output_file_name'])  
 
     return {}
 
