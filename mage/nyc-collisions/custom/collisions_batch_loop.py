@@ -37,6 +37,6 @@ def transform_custom(input_object_keys, _, **kwargs):
 @test
 def test_output(output, *args) -> None:
     """
-    Later: add check that the pipelines completed succesfully. 
+    Template code for testing the output of the block.
     """
     assert output is not None, 'The output is undefined'
