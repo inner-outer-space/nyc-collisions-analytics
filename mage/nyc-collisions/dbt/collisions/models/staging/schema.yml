@@ -6,8 +6,8 @@ sources:
     schema: nyc_collisions_dataset
 
     tables: 
-      - name: crash_data_external
-      - name: weather_data_external
+      - name: external_crash_data
+      - name: external_weather_data
 
 models:
   - name: stg_crash_data
