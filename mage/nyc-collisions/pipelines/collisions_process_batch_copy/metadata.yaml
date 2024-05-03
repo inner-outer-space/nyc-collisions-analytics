@@ -99,7 +99,7 @@ blocks:
   language: yaml
   name: sg_crash_data
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:
@@ -150,7 +150,7 @@ blocks:
   language: yaml
   name: fact_crash_weather_enriched
   retry_config: null
-  status: failed
+  status: executed
   timeout: null
   type: dbt
   upstream_blocks:
@@ -167,7 +167,7 @@ executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: collisions_process_batch
+name: collisions_process_batch_copy
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -178,7 +178,7 @@ spark_config: {}
 tags: []
 type: python
 updated_at: '2024-05-03 08:28:46'
-uuid: collisions_process_batch
+uuid: collisions_process_batch_copy
 variables:
   google_bq_dataset: nyc_collisions_dataset
   google_bucket: nyc-collisions-bucket
