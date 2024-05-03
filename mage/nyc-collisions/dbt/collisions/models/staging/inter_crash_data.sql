@@ -30,5 +30,5 @@ SELECT
     + COALESCE(number_of_cyclist_killed, 0) 
     + COALESCE(number_of_motorist_killed, 0) AS total_fatalities
 FROM
-    {{ ref('stg_test') }} as C
+    {{ ref('stg_crash_data') }} as C
     --{{ ref('stg_crash_data') }} as C
