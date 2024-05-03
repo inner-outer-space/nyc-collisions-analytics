@@ -17,7 +17,7 @@ WITH formatted_weather_data AS (
         weather_desc,
         precip_mm
     FROM
-        {{ source('staging','weather_data_external') }}
+        {{ source('staging','external_weather_data') }}
 )
 
 SELECT 
