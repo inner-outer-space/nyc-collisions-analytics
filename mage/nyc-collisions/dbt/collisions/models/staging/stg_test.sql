@@ -18,7 +18,7 @@ WITH formatted_data AS (
         cross_street_name,
 
         -- PEOPLE DETAILS
-        number_of_persons_injured,
+        COALESCE(number_of_persons_injured, 0) AS number_of_persons_injured,
         number_of_persons_killed,
         number_of_pedestrians_injured,
         number_of_pedestrians_killed, 
