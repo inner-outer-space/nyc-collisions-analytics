@@ -3,7 +3,7 @@
 SELECT
     C.*,
 
-    -- Add Calculated Time values
+    -- Add calculated time values here instead of in looker
     extract(date from crash_datetime) as crash_date,
     extract(time from crash_datetime) as crash_time,
     extract(month from crash_datetime) as crash_month, 
