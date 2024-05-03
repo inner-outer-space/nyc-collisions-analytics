@@ -28,6 +28,8 @@ SELECT
     crash_yr_mon,
     crash_month,
     crash_year,
+    mon_total_injuries,
+    mon_total_fatalities,
     CAST(mon_total_persons_inj as integer) as mon_total_persons_inj,
     CAST(mon_total_persons_fatal as integer) as mon_total_persons_fatal,
     mon_total_ped_inj,
