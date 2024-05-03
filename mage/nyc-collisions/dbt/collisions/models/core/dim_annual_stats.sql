@@ -22,8 +22,8 @@ WITH annual_data AS (
 SELECT
     crash_year,
     collisions_per_yr,
-    yr_total_persons_inj,
-    yr_total_persons_fatal,
+    CAST(yr_total_persons_inj as integer) as yr_total_persons_inj,
+    CAST(yr_total_persons_fatal as integer) as yr_total_persons_fatal,
     yr_total_ped_inj,
     yr_total_ped_fatal,
     yr_total_cyc_inj,
