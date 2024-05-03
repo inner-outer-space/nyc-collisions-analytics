@@ -2,7 +2,7 @@ WITH vehicle_join AS (
     SELECT
         vehicle,
         contributing_factor, 
-        total_injured, 
+        total_injuries, 
         total_killed,
         number_of_persons_injuries,
         number_of_persons_killed,
