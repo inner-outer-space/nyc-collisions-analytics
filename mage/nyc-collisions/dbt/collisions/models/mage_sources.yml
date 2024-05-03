@@ -116,4 +116,11 @@ sources:
       block_uuid: collisions_batch_loop
       pipeline_uuid: collisions_process_all
     name: collisions_process_all_collisions_batch_loop
+  - description: Dataframe for block `crash_to_bq_ext` of the `collisions_process_batch_copy`
+      mage pipeline.
+    identifier: mage_collisions_process_batch_copy_crash_to_bq_ext
+    meta:
+      block_uuid: crash_to_bq_ext
+      pipeline_uuid: collisions_process_batch_copy
+    name: collisions_process_batch_copy_crash_to_bq_ext
 version: 2
