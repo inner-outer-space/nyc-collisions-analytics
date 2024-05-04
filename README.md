@@ -4,8 +4,12 @@ This repository contains my final project for the [Data Engineering Zoomcamp by 
 
 
 ### OBJECTIVE 
-To apply the principles and techniques learned in the data engineering course by building an end-to-end cloud data pipeline for the NYC Collisions dataset. The project ingests, transforms, and enriches the data with local meterological data in monthly batches and visualizes the combined dataset.    
+To apply the principles and techniques learned in the data engineering course by building an end-to-end cloud data pipeline for the NYC Collisions dataset. The project ingests, transforms, and enriches the data with local meterological data in monthly batches and visualizes the combined dataset.  
 
+### DATA SOURCES 
+The City of New York provides access to a comprehensive collection of open data through the NYC Open Data platform (https://opendata.cityofnewyork.us/). The [New York City Motor Vehicle Collisions Data Set](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95), which is available on this platform, documents various types of traffic collisions reported within the city. The dataset encompasses a wide range of collision types, including but not limited to, vehicle-to-vehicle crashes, pedestrian-involved incidents, and cyclist accidents. Key attributes include the date and time of the collision, location details such as the borough and street, as well as additional factors contributing factors vehicle types involved.
+
+As part of this excercise, the dataset will be enriched with meteorological data obtained from [World Weather Online](https://www.worldweatheronline.com/weather-api/). Additionally, the sun phase will be calculated based on the day of the year and latitude/longitude coordinates, providing further insights into environmental factors potentially influencing collision occurrences. This enriched dataset will enable a more comprehensive analysis of traffic collisions in New York City.
 
 <div align = center>
 
