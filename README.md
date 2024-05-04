@@ -32,7 +32,7 @@ To reproduce this project, please refer to the the [Set Up Instructions](https:/
 - Infrastructure as Code Software - **Terraform**
 - Containerization - **Docker** and **Docker Compose**
 - Orchestration - **Mage**
-- Transformation and Batch Processing - **Apache Spark**
+- Transformation - **DBT & Apache Spark**
 - Data Lake - **Google Cloud Storage**
 - Data Warehouse - **BigQuery**
 - Data Visualization - **Looker Studio**
@@ -133,6 +133,15 @@ To reproduce this project, please refer to the the [Set Up Instructions](https:/
   <br>
   </details>
 
+# PROJECT WORKFLOW 
+
+##1. Cloud Platform 
+##2. Infrastructure as Code: Terraform 
+##3. Orchestration: Mage 
+##4. Data Ingestion
+##5. Data Processing 
+##6. Data Load 
+##7. Visualization
 
 
 
