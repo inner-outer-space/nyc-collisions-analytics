@@ -31,11 +31,11 @@
 ## TERRAFORM
 In the Terraform folder: <br/>
 1. In the variables.tf file, update the default values for the following variables:
-    -  project name  (required)
-    -  bucket name (required) _This must be globally unique_ 
-    -  gcp storage location (if yours differes from mine)
-    -  region (if yours differes from mine)
-    -  zone (if yours differes from mine)
+    -  **project name**  (required)
+    -  **bucket name** (required) _This must be globally unique_ 
+    -  **gcp storage** location (if yours differes from mine)
+    -  **region** (if yours differes from mine)
+    -  **zone** (if yours differes from mine)
 
 2. Run the following terraform commands to create GCP resources - **BigQuery DataSet, GCS Bucket, more APIs** </br>
 
