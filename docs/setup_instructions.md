@@ -1,7 +1,7 @@
 # STEPS TO REPRODUCE
 
 ### Prerequisites
-- GCP access
+- Google Cloud Platform Account
 - Google Cloud CLI
 - Docker
 - Terraform 
