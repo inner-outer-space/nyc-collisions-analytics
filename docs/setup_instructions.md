@@ -16,30 +16,26 @@
     - Go to IAM & Admin > Service Account and `+ CREATE SERVICE ACCOUNT `.
     - For simplicity, set the Role to owner and leave the other fields blank. 
     - Under Actions for the service account, click  `Manage Keys`.
-    - Create a new JSON key and download it to the the mage folder in this repo as `google_cloud_key.json`.
-3. Set the GOOGLE_APPLICATION_CREDENTIALS</br>
-   `export GOOGLE_APPLICATION_CREDENTIALS=/your/path/to/this/google_cloud_key.json`
+    - Create a new JSON key and download it to the MAGE FOLDER in this repo as `google_cloud_key.json`.
+3. Set the GOOGLE_APPLICATION_CREDENTIALS appropriately</br>
+   `export GOOGLE_APPLICATION_CREDENTIALS=/path/to/mage/google_cloud_key.json`
 
     Confirm it has been correctly set </br>
    `echo $GOOGLE_APPLICATION_CREDENTIALS`
 
 4. Authenticate on GCloud </br>
    `gcloud auth application-default login`
-   
-6. Enable the following APIs:
-   - Service Usage API
-   - Big Query API
-  
-7. If you are using a paid account rather than the free trial, link a Billing Account to the Project.
-8. Wait a few minutes for the previous steps to take affect. 
+     
+5. If you are using a paid account rather than the free trial, link a Billing Account to the Project.
    
 ## TERRAFORM
 In the Terraform folder: <br/>
 1. In the variables.tf file, update the default values for the following variables:
     -  project name  (required)
-    -  gcp storage location (if needed)
-    -  region (if needed)
-    -  zone (if needed)
+    -  bucket name (required) _This must be globally unique_ 
+    -  gcp storage location (if yours differes from mine)
+    -  region (if yours differes from mine)
+    -  zone (if yours differes from mine)
 
 2. Run the following terraform commands to create GCP resources - **BigQuery DataSet, GCS Bucket, more APIs** </br>
 
