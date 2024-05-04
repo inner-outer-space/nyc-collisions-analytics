@@ -1,6 +1,8 @@
 # nyc-collisions-analytics
 
-This repository contains my final project for the [Data Engineering Zoomcamp by DataTalksClub](https://github.com/DataTalksClub/data-engineering-zoomcamp). The course covered a varitey of data engineering topics and tools including docker, terraform, dbt, dlt, google cloud platform, spark, and kafka. My course notes and homework can be found here: [DE Zoomcamp 2024 Repo](https://github.com/inner-outer-space/de-zoomcamp-2024). 
+This repository contains my final project for the [Data Engineering Zoomcamp by DataTalksClub](https://github.com/DataTalksClub/data-engineering-zoomcamp). The course covered a varitey of data engineering topics and tools including docker, terraform, dbt, dlt, google cloud platform, spark, and kafka. <br/>
+
+My course notes and homework can be found here: [DE Zoomcamp 2024 Repo](https://github.com/inner-outer-space/de-zoomcamp-2024). 
 
 
 ### OBJECTIVE 
