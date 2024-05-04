@@ -14,12 +14,13 @@ def set_global_variables(*args, **kwargs):
     Updates to the GCS project, bucket, etc can be made via the .env file. 
     """
 
-    #set_global_variable(kwargs['pipeline_uuid'], 'key_path', os.environ['GOOGLE_SERVICE_ACC_KEY_FILEPATH'])
+    set_global_variable(kwargs['pipeline_uuid'], 'key_path', os.environ['GOOGLE_SERVICE_ACC_KEY_FILEPATH'])
     set_global_variable(kwargs['pipeline_uuid'], 'google_project_id', os.environ['GOOGLE_PROJECT_ID'])
     set_global_variable(kwargs['pipeline_uuid'], 'google_bucket', os.environ['GOOGLE_BUCKET'])
     set_global_variable(kwargs['pipeline_uuid'], 'google_gcs_raw', os.environ['GOOGLE_GCS_RAW'])
     set_global_variable(kwargs['pipeline_uuid'], 'google_gcs_spark', os.environ['GOOGLE_GCS_SPARK'])
     set_global_variable(kwargs['pipeline_uuid'], 'google_bq_dataset', os.environ['GOOGLE_BQ_DATASET'])
+    
 
     return {}
 
