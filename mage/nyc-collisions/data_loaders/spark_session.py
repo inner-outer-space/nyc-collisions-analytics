@@ -11,7 +11,6 @@ if 'test' not in globals():
 @data_loader
 def load_data(*args, **kwargs):
 
-    #spark.stop()
     spark = (
         SparkSession
         .builder
@@ -24,8 +23,7 @@ def load_data(*args, **kwargs):
     )
 
     kwargs['context']['spark'] = spark
-    #set_global_variable('nyc_collisions_enriched_full_pipeline', 'spark', spark)
-
+    #set_global_variable(kwargs['pipeline_uuid'], 'spark', spark)
 
     print(spark.sparkContext.getConf().get("spark.jars"))
     print("Number of cores used:", spark.sparkContext.defaultParallelism)

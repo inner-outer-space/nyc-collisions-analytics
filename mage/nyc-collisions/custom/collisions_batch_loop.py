@@ -8,7 +8,7 @@ if 'test' not in globals():
 
 
 @custom
-def transform_custom(input_object_keys, _, **kwargs):
+def collisions_batch_loop(input_object_keys, _, **kwargs):
     """
     args: The output from any upstream parent blocks (if applicable)
 

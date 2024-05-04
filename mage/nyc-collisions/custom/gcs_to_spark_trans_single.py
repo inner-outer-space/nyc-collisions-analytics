@@ -61,12 +61,12 @@ def gcs_to_spark_trans(*args, **kwargs):
     """
     # Start timing
     start_time = time.time()
-    ######  CREATE SPARKSESSION ###############
-    # Mage didnt consistently pass spark in the kwargs so creating in the same block. 
+    
+    # SparkSession - mage didnt consistently pass spark in the kwargs 
     spark = (
         SparkSession
         .builder
-        .appName('Spark Transforms')
+        .appName('Test spark')
         .config("spark.jars", "https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-latest.jar")
         .config("spark.master", "local[*]")  # Use all available cores
         .config("spark.driver.memory", "4g")  # Set driver memory to 4GB  
@@ -78,14 +78,13 @@ def gcs_to_spark_trans(*args, **kwargs):
     print("Number of cores used:", spark.sparkContext.defaultParallelism)
     print("Driver memory:", spark.conf.get("spark.driver.memory"))
 
-    ######  REGISTER UDFs ###############
+    # Register UDFs
     get_sun_phase_udf = udf(get_sun_phase, StringType())
     spark.udf.register("get_sun_phase", get_sun_phase)
 
     remove_non_int_udf = udf(remove_non_int, IntegerType())
     spark.udf.register("remove_non_int", remove_non_int)
 
-    ######  RETRIEVE DATA FROM GCS ###############
     # Set GCS Variables
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = kwargs['key_path'] 
     bucket_name = kwargs['google_bucket']
@@ -93,15 +92,16 @@ def gcs_to_spark_trans(*args, **kwargs):
     client = storage.Client()
     bucket = client.bucket(bucket_name)
 
-    # object key is passed in from the pipeline that triggers this pipeline. 
-    object_key = 'raw_api_batched/nyc_collisions_2017_02.parquet'
-    #object_key = kwargs.get('object_key')
+    #object_key = 'raw_api_batched/nyc_collisions_2017_02.parquet'
+    object_key = kwargs.get('object_key')
     print(object_key)
 
-    # Extracting file names from object_key
-    input_file_name = object_key.split('/')[-1]
-    output_file_name = 'processed_' + input_file_name
-    print(f'input file name: {input_file_name}  output file name: {output_file_name}')
+    # Extracting file name from object_key
+    file_name = object_key.split('/')[-1]
+    print(f'file name {file_name}')
+
+    output_file_name = 'processed_' + file_name
+    print(f'output_file_name {output_file_name}')
 
     # Download the file contents as bytes
     blob = bucket.blob(object_key)
@@ -126,8 +126,6 @@ def gcs_to_spark_trans(*args, **kwargs):
                 .withColumn("longitude", col("longitude").cast("double"))
 
     # Columns to clean up and convert to Int 
-    spark_df = spark_df.fillna({'number_of_persons_injured': 0})
-
     columns_to_cast = {
         "number_of_persons_injured": IntegerType(),
         "number_of_pedestrians_injured": IntegerType(),
@@ -163,7 +161,6 @@ def gcs_to_spark_trans(*args, **kwargs):
     config_profile = 'default'
 
     output_object_key = 'crash_data_spark_trans/' + output_file_name
-    print(f'output objeck: {output_object_key}')
 
     GoogleCloudStorage.with_config(ConfigFileLoader(config_path, config_profile)).export(
         pandas_df,
@@ -172,17 +169,19 @@ def gcs_to_spark_trans(*args, **kwargs):
     )   
     
     delta_t = time.time() - start_time
-    print(delta_t)
+    # Add a wait in the pipeline to prevent the next step failing. 
+    time.sleep(30) 
 
-    # this setting will only be available after the block is completed. 
     set_global_variable(kwargs['pipeline_uuid'], 'output_file_name', output_file_name)
+    print('kwargs', kwargs['output_file_name'])  
     
     spark.stop()
     return output_file_name
 
+
 @test
 def test_output(output, *args) -> None:
     """
-    Check if file creation can be tested. 
+    Template code for testing the output of the block.
     """
     assert output is not None, 'The output is undefined'
