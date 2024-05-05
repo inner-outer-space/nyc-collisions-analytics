@@ -11,6 +11,9 @@ To reproduce this project, please refer to the the [Set Up Instructions](https:/
   
 ### DASHBOARD
 <img src=images/Collisions-Dashboard.png width="700" height="auto">
+<br/>
+
+[View Dashboard](https://lookerstudio.google.com/reporting/f738bd1c-d126-4e76-8c11-0446923e1a8e)
 </div>
 <br/>
 
