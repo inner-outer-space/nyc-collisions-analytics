@@ -35,26 +35,26 @@ As part of this excercise, the dataset will be enriched with meteorological data
 - Data Visualization - **Looker Studio**
 - Languages - **Python, SQL, and Bash**
 
-# PROJECT WORKFLOW 
+## PROJECT WORKFLOW 
 
 ### 1. Cloud Platform Provisioning with Terraform
-Google Cloud Platform (GCP) resources are provisioned and Google Cloud APIs are enabled using Terraform.
+- Google Cloud Platform (GCP) resources are provisioned and Google Cloud APIs are enabled using Terraform.
 <br/>
 ### 2. Containerization with Docker
-Docker and Docker-Compose are used to create a local container environment for running Mage with integrated DBT and Spark.
+- Docker and Docker-Compose are used to create a local container environment for running Mage with integrated DBT and Spark.
 <br/>
 ### 3. Orchestration with Mage
-Mage is employed for orchestrating the data pipeline, managing dependencies between tasks, and automating workflows.
+- Mage is employed for orchestrating the data pipeline, managing dependencies between tasks, and automating workflows.
 <br/>
 ### 4. Data Ingestion
-Collision Data Ingestion 
-- The collision data is retrieved on a per month basis. 
-- Requests are made in batches until the full month of data has been retrieved (2-3 requests/ mos).     
-- The raw data is then written to the GCP bucket. 
-- The full historic dataset is retrieved by running a bash script that triggers the monthly extract pipeline for the full timeframe, with a wait is included between each month.
-Weather Data Ingestion  
-- The data is retrieved and saved to CSV using a python script. Since the weather dataset is not publicly available, this step was done in order for this pipeline to be reproducible. 
-- The CSV file is ingested into Mage, where some light column name transformations are performed, and then written to the GCS bucket. 
+- Collision Data Ingestion 
+  - The collision data is retrieved on a per month basis. 
+  - Requests are made in batches until the full month of data has been retrieved (2-3 requests/ mos).     
+  - The raw data is then written to the GCP bucket. 
+  - The full historic dataset is retrieved by running a bash script that triggers the monthly extract pipeline for the full timeframe, with a wait is included between each month. <br/>
+- Weather Data Ingestion  
+  - The data is retrieved and saved to CSV using a python script. Since the weather dataset is not publicly available, this step was done in order for this pipeline to be reproducible. 
+  - The CSV file is ingested into Mage, where some light column name transformations are performed, and then written to the GCS bucket. 
 ### 5. Data Processing with Spark
 - Initial processing of the collisions dataset is handled using Spark.
 Data types are assigned.
@@ -62,18 +62,9 @@ Data types are assigned.
 ### 6. Data Transformation with DBT
 - The data is then made available in BigQuery, where the collision data is further transformed and enriched with weather data using DBT.
 - Collision data is joined to 3-hour weather data using a lead function.
-Monthly and annual views are created as well as a vehicle view from the unnested data.
+- Monthly and annual views are created as well as a vehicle view from the unnested data.
 ### 7. Visualization with Looker
 - Looker is utilized for visualizing and analyzing the transformed data stored in BigQuery.
-
-
-## 1. Cloud Platform: GCP  
-## 2. Infrastructure as Code: TERRAFORM AND DOCKER  
-## 3. Orchestration: MAGE 
-## 4. Data Ingestion: REST API 
-## 5. Data Processing:  
-## 6. Data Load 
-## 7. Visualization: LOOKER
 
 <div align = center>
   
