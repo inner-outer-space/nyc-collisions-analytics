@@ -10,7 +10,7 @@ To reproduce this project, please refer to the the [Set Up Instructions](https:/
 <div align = center>
   
 ### DASHBOARD
-<img src=images/Collisions-Dashboard.png width="500" height="auto">
+<img src=images/Collisions-Dashboard.png width="700" height="auto">
 </div>
 <br/>
 
@@ -25,7 +25,7 @@ As part of this excercise, the dataset will be enriched with meteorological data
 <div align = center>
 
 ### ARCHITECTURE 
-<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="500" height="auto">
+<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="700" height="auto">
 </div>
 <br/>
 
@@ -79,20 +79,24 @@ Data types are assigned.
   
 ## MAGE PIPELINES 
 ### Extract and Process Weather Data Pipeline <br/>
-<img src=images/mage-weather.png width="350" height="auto">
+<img src=images/mage-weather.png width="400" height="auto">
+<br/>
 <br/>
 
 ### Extract Collisions Data Pipeline <br/>
-<img src=images/mage-extract-collisions-monthly.png width="350" height="auto">
+<img src=images/mage-extract-collisions-monthly.png width="500" height="auto">
+<br/>
 <br/>
 
 ### Process Collisions Full Data Pipeline <br/>
-<img src=images/mage-collisions-all.png width="350" height="auto">
+<img src=images/mage-collisions-all.png width="500" height="auto">
+<br/>
 <br/>
 
 ### Process Collisions Batch Data Pipeline <br/>
 This previous pipeline loops through a list of raw data files and calls this pipeline to process each file. 
-<img src=images/mage-collisions-batch-process.png width="350" height="auto">
+<img src=images/mage-collisions-batch-process.png width="500" height="auto">
+<br/>
 <br/>
 
 ## DBT Lineage <br/>
