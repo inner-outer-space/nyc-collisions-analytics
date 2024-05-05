@@ -23,8 +23,6 @@ As part of this excercise, the dataset will be enriched with meteorological data
 </div>
 <br/>
 
-<div align = center>
-
 ### Tools and Technologies
 - Cloud - **Google Cloud Platform**
 - Infrastructure as Code Software - **Terraform**
@@ -77,6 +75,8 @@ Monthly and annual views are created as well as a vehicle view from the unnested
 ## 6. Data Load 
 ## 7. Visualization: LOOKER
 
+<div align = center>
+  
 ### DASHBOARD
 <img src=images/Collisions-Dashboard.png width="500" height="auto">
 </div>
@@ -177,6 +177,7 @@ Monthly and annual views are created as well as a vehicle view from the unnested
   ```
   <br>
   </details>
+
 
 
 
