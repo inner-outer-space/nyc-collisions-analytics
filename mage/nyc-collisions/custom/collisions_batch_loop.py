@@ -8,14 +8,15 @@ if 'test' not in globals():
 
 
 @custom
-def collisions_batch_loop(input_object_keys, _, **kwargs):
+def transform_custom(input_object_keys, _, **kwargs):
     """
     args: The output from any upstream parent blocks (if applicable)
 
     Returns:
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
-    wait_seconds = 80 
+    wait_seconds = 90 
+    
     #input_object_keys = ['raw_api_batched/nyc_collisions_2020_09_.parquet', 'raw_api_batched/nyc_collisions_2020_10_.parquet']
     input_object_keys = sorted(input_object_keys)
     object_keys = input_object_keys
