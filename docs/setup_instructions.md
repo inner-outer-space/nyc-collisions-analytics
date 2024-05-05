@@ -33,8 +33,8 @@ _Instructions for Linux_
 ## TERRAFORM
 In the Terraform folder: <br/>
 1. In the variables.tf file, update the default values for the following variables:
-    -  **project name**  (required)
-    -  **bucket name** (required) _This must be globally unique_ 
+    -  **project name**  (required) _To the name of the project you just created_
+    -  **bucket name** (required) _Pick one that is globally unique_ 
     -  **gcp storage location** _(if yours differes from mine)_
     -  **region** _(if yours differes from mine)_
     -  **zone** _(if yours differes from mine)_
