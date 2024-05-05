@@ -17,7 +17,7 @@ start_year=$1
 end_year=$2
 
 # Define the base URL and pipeline run template
-base_url="http://localhost:6789/api/pipeline_schedules/17/pipeline_runs/dd9d0f7f95474dd1aaab9f8d0cd6ff0c"
+base_url="http://localhost:6789/api/pipeline_schedules/21/pipeline_runs/81ec754a748a453681dd30d3e12e3f1d"
 template='
 {
   "pipeline_run": {
