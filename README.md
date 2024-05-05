@@ -7,6 +7,12 @@ My course notes and homework can be found here: [DE Zoomcamp 2024 Repo](https://
 To reproduce this project, please refer to the the [Set Up Instructions](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md)
 <br/>
 
+<div align = center>
+  
+### DASHBOARD
+<img src=images/Collisions-Dashboard.png width="500" height="auto">
+</div>
+<br/>
 
 ### OBJECTIVE 
 To apply the principles and techniques learned in the data engineering course by building an end-to-end cloud data pipeline for the NYC Collisions dataset. The project ingests, transforms, and enriches the data with local meterological data in monthly batches and visualizes the combined dataset.  
@@ -34,21 +40,17 @@ As part of this excercise, the dataset will be enriched with meteorological data
 - Data Warehouse - **BigQuery**
 - Data Visualization - **Looker Studio**
 - Languages - **Python, SQL, and Bash**
+<br/>
+
 
 ## PROJECT WORKFLOW 
 
 ### 1. Cloud Platform Provisioning with Terraform
 - Google Cloud Platform (GCP) resources are provisioned and Google Cloud APIs are enabled using Terraform.
-<br/>
-
 ### 2. Containerization with Docker
 - Docker and Docker-Compose are used to create a local container environment for running Mage with integrated DBT and Spark.
-<br/>
-
 ### 3. Orchestration with Mage
 - Mage is employed for orchestrating the data pipeline, managing dependencies between tasks, and automating workflows.
-<br/>
-
 ### 4. Data Ingestion
 - Collision Data Ingestion 
   - The collision data is retrieved on a per month basis. 
@@ -71,12 +73,7 @@ Data types are assigned.
 ### 7. Visualization with Looker
 - Looker is utilized for visualizing and analyzing the transformed data stored in BigQuery.
 
-<div align = center>
-  
-### DASHBOARD
-<img src=images/Collisions-Dashboard.png width="500" height="auto">
-</div>
-<br/>
+
 
 
 ### DATA SOURCES 
