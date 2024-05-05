@@ -70,10 +70,12 @@ In the Scripts folder: </br>
 2. Run the script that retrieves the historic collisions data for Jan 2015 - Dec 2023 <br/>
    `./get_historic_api.sh 2015 2023` </br>
 </br>
+ 
  - This script submits an api request to the mage 'monthly_extract_trigger' for each month between the start and end month specified (here jan 2015 - dec 2023).
  - The pipeline makes batched requests to the NYC Open Data rest api until the full month of data is retrieved, and then writes the output parquet to the GCS bucket created previously with Terraform.
  - The script includes a pause between each pipeline run to avoid overwhelming the source. 
 </br>
+
 ### EXTRACT AND PROCESS THE WEATHER DATA (2 min)
 Once the previous step is complete, execute the following command in the terminal: </br>
 `curl -X POST FILL IN HERE \
