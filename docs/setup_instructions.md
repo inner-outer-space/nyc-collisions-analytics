@@ -1,5 +1,5 @@
 # STEPS TO REPRODUCE
-
+_Instructions for Linux_ 
 ### Prerequisites
 - Google Cloud Platform Account
 - Google Cloud CLI
@@ -66,8 +66,11 @@ In the Terraform folder: <br/>
 
 
 ### EXTRACT THE HISTORIC COLLISIONS DATA (~30 min)
-In the Scripts folder, run  </br> 
-`./get_historic_api.sh 2015 2023` </br>
+In the Scripts folder: </br> 
+1. Grant yourself execution privilidges on all the files<br/>
+   `chmod -x *.*`
+2. Run the script that retrieves the historic collisions data for Jan 2015 - Dec 2023 <br/>
+   `./get_historic_api.sh 2015 2023` </br>
 </br>
 This script submits an api request to the mage 'monthly_extract_trigger' for each month between the start and end month specified (here jan 2015 - dec 2023). The pipeline sets global variables, makes batched requests to the NYC Open Data rest api until the full month of data is retrieved, and then writes the output parquet to the GCS bucket created previously with Terraform. </br>
 </br>
