@@ -1,8 +1,8 @@
 """
 Description:
     This script fetches weather data from the World Weather Online API
-    for each month within a specified range of years. A subset of the JSON response is aggregated into 
-    a df and saved to a parquet in the same folder. 
+    for each month within a specified range of years. A subset of the JSON 
+    response is aggregated into a df and saved to a parquet in the same folder. 
     
 Usage:
     python weather_data.py <start_year> <end_year> <api_key>
