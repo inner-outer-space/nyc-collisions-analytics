@@ -38,9 +38,9 @@ def load_data(*args, **kwargs):
     blobs = bucket.list_blobs(prefix=folder_path)
   
     input_object_keys = [blob.name for blob in blobs if blob.name.endswith('.parquet')]
-    #print(len(input_object_keys))
-    #print(input_object_keys[24:30])
-    return input_object_keys
+    print(len(input_object_keys))
+    print(input_object_keys[24:48])
+    return input_object_keys[24:48]
 
 
 @test
