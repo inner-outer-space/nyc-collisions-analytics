@@ -11,11 +11,14 @@ _Instructions for Linux_
 
  
 ## Google Cloud Platform  
-1. Create a new project on GCP
-2. Add a service account
-    - Go to IAM & Admin > Service Account and `+ CREATE SERVICE ACCOUNT `.
-    - For simplicity, set the Role to owner and leave the other fields blank. 
-    - Under Actions for the service account, click  `Manage Keys`.
+1. Create a new project on GCP.
+2. Add a service account.
+    - Go to IAM & Admin > Service Account and click `+ CREATE SERVICE ACCOUNT `.
+    - For simplicity, set the Role to Owner.
+    - Leave the other fields blank.
+    - Click `Done`
+3. Download a Service Account JSON Key. 
+    - On the Service Account page, in the Actions menu for the service account, click  `Manage Keys`.
     - Create a new JSON key and download it to the MAGE FOLDER in this repo as `google_cloud_key.json`.
 3. Set the GOOGLE_APPLICATION_CREDENTIALS appropriately</br>
    `export GOOGLE_APPLICATION_CREDENTIALS=/path/to/mage/google_cloud_key.json`
@@ -25,9 +28,8 @@ _Instructions for Linux_
 
 4. Authenticate on GCloud </br>
    `gcloud auth application-default login`
+
      
-5. If you are using a paid account rather than the free trial, link a Billing Account to the Project.
-   
 ## TERRAFORM
 In the Terraform folder: <br/>
 1. In the variables.tf file, update the default values for the following variables:
@@ -76,22 +78,23 @@ In the Scripts folder: </br>
  - The script includes a pause between each pipeline run to avoid overwhelming the source. 
 </br>
 
-### EXTRACT AND PROCESS THE WEATHER DATA (2 min)
+### EXTRACT, PROCESS, AND STAGE THE WEATHER DATA (2 min)
 Once the previous step is complete, execute the following command in the terminal: </br>
-`curl -X POST FILL IN HERE \
+`curl -X POST http://localhost:6789/api/pipeline_schedules/17/pipeline_runs/ea94aa87644445e08b0ff330ec66b17a \
   --header 'Content-Type: application/json'` </br>
 </br>
 The weather data used in this project was retrieved during an introductory free trial period for World Weather Online. The data was extracted and stored in CSV format for use in this pipeline. This script retrieves the CSV file from its GIT location, does some light processing, uploads it to GCS, and then creates an associated external table that can be accessed in BigQuery.  
-### PROCESS THE COLLISION DATA 
+
+### PROCESS COLLISION DATA AND INCORMPORATE WEATHER (90 min)
 Once the previous step is complete execute the following command in the terminal:</br>
-`curl -X POST FILL IN HERE \
+`curl -X POST http://localhost:6789/api/pipeline_schedules/19/pipeline_runs/877f905db450443292b277fe6af18537 \
   --header 'Content-Type: application/json'` </br>
 </br>
 This triggers the collisions_process_all pipeline which reads in a list of the monthly files created in the extraction set. The collisions_process_batch pipeline is triggered within this pipeline for each file in the list. Local spark is used to create a datetime stamp, asign data types, and calculate the sun phase (day, dusk, dawn, dark) at the time of each collision. The collision staging and interim views are created. The month's collision data is enriched with the weather data and incrementally added to the fact table.    
 
 Once all extract files have been processd and the fact table has been built, then the collisions_process_all pipeline continues to create the dbt dimensional tables. 
   
-
+### PROCESS THE COLLISIONS DATA AND INCORPORATE THE WEATHER DATA 
 
 
 ## TAKING THE PROJECT DOWN 
