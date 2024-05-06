@@ -68,6 +68,7 @@ In the Scripts folder: </br>
    `./get_historic_api.sh 2015 2023` </br>
 3. Monitor the pipeline at `http://localhost:6789/pipelines/collisions_extract_monthly_from_api/triggers`  
 </br>
+
  - This script submits an api request to the mage 'monthly_extract_trigger' for each month between the start and end month specified.
  - The pipeline makes batched requests to the NYC Open Data rest api until the full month of data is retrieved and then writes the output parquet to the GCS bucket created previously with Terraform.
  - The script includes a pause between each pipeline run to avoid overwhelming the source. 
