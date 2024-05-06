@@ -61,6 +61,16 @@ In the Terraform folder: <br/>
 
 # RUNNING THE PIPELINES 
 
+### EXTRACT, PROCESS, AND STAGE THE WEATHER DATA (2 min)
+The weather data used in this project was retrieved during an introductory free trial period for World Weather Online. The data was extracted and stored in CSV format for use in this pipeline. This script retrieves the CSV file from its GIT location, does some light processing, uploads it to GCS, and then creates an associated external table that can be accessed in BigQuery.  <br/> <br/>
+
+1. Goto `http://localhost:6789/pipelines/weather_extract_and_prep_full_data/triggers`
+2. Click `Run@once` and then `Run now`
+
+### EXTRACT THE HISTORIC COLLISIONS DATA (~30 min)
+
+
+
 ### EXTRACT THE HISTORIC COLLISIONS DATA (~30 min)
 In the Scripts folder: </br> 
 1. Grant yourself execution privilidges on all the files<br/>
