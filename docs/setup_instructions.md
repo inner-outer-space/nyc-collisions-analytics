@@ -85,7 +85,17 @@ This pipeline processes the collisions data, enriches it with the weather data, 
 
 
 ## TAKING THE PROJECT DOWN 
-When you are done with the project execute `terraform destroy` to take down the resources. Once the files and resources are removed, you can delete the project.  
+1. Go to the Mage folder and execute `docker-compose down'
+2. Go to the Terraform folder and execute `terraform destroy` to take down the resources.
+3. Once the files and resources are removed, you can delete the project.  
+
+
+
+
+
+
+
+
 
 ### EXTRACT THE HISTORIC COLLISIONS DATA (~30 min)
 `curl -X POST http://localhost:6789/api/pipeline_schedules/22/pipeline_runs/b56488f84b104f1aaf789347a109b1c0`
