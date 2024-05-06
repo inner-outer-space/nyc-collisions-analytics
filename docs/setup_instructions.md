@@ -88,6 +88,8 @@ This triggers the collisions_process_all pipeline which reads in a list of the m
 When you are done with the project execute `terraform destroy` to take down the resources. Once the files and resources are removed, you can delete the project.  
 
 ### EXTRACT THE HISTORIC COLLISIONS DATA (~30 min)
+`http://localhost:6789/api/pipeline_schedules/22/pipeline_runs/b56488f84b104f1aaf789347a109b1c0`
+
 In the Scripts folder: </br> 
 1. Grant yourself execution privilidges on all the files<br/>
    `chmod +x *`
