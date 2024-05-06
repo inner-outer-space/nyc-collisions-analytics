@@ -61,7 +61,7 @@ Collision Data Ingestion
   - Collision data is retrieved on a monthly basis.
   - Requests are made in batches until the full month of data has been retrieved (typically 2-3 requests/ mos).     
   - The raw data is then written to the GCP bucket. 
-  - The full historic dataset for 2015 - 2023 is retrieved by running a bash script that triggers the monthly extract pipeline for the full timeframe, with necessary pauses between each month to avoid overwhelming the source. <br/>
+  - The full historic dataset for 2015 - 2023 is retrieved by running a bash script that triggers the monthly extract pipeline for each month in the time range, with necessary pauses between each month to avoid overwhelming the source. <br/>
   
 Weather Data Ingestion  
   - Since the weather dataset is not publicly available, it was retrieved and saved to CSV outside of this process via a python script. 
