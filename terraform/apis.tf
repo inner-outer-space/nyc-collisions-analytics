@@ -9,10 +9,16 @@
 # Use `gcloud` to enable:
 # - serviceusage.googleapis.com
 # - bigquery.googleapis.com
+resource "null_resource" "activate_service_account" {
+  provisioner "local-exec" {
+     command = "gcloud auth activate-service-account --key-file=${var.credentials}"
+  }
+}
 resource "null_resource" "enable_service_usage_and_bq_api" {
   provisioner "local-exec" {
     command = "gcloud services enable serviceusage.googleapis.com bigquery.googleapis.com --project ${var.project}"
   }
+  depends_on = [null_resource.activate_service_account]
 }
 
 # Wait for the new configuration to propagate
@@ -34,16 +40,3 @@ resource "google_project_service" "resourcemanager" {
   disable_on_destroy = false
   depends_on = [time_sleep.wait_api_init]
 }
-
-# This needs to be enabled manually in the GCP console
-# resource "google_project_service" "serviceusage" {
-#   project = var.project
-#   service = "serviceusage.googleapis.com"
-#   disable_on_destroy = true
-# }
-
-# # This needs to be enabled manually in the GCP console
-# resource "google_project_service" "bigquery" {
-#   service = "bigquery.googleapis.com"
-#   disable_on_destroy = true
-# }
