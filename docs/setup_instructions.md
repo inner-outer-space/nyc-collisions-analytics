@@ -77,7 +77,7 @@ This pipeline extracts the historical collision data from the REST API. It loops
 ### PROCESS COLLISION DATA AND INCORMPORATE WEATHER (90 min)
 This pipeline processes the collisions data, enriches it with the weather data, and then creates annual, monthly, and vehicle dimension tables. The pipeline loops through the list of the monthly raw files and triggers the collisions_process_batch pipeline for each file.  Local spark is used to create a datetime stamp, asign data types, and calculate the sun phase (day, dusk, dawn, dark) at the time of each collision. DBT is used to further transform the collision data and join it with the weather data. The final data is incrementally added to the BigQuery fact table. The pipeline then creates annual, monthly, and vehicle dimension tables.   
 
-1. Goto `http://localhost:6789/pipelines/weather_extract_and_prep_full_data/triggers`
+1. Goto `http://localhost:6789/pipelines/collisions_process_all/triggers`
 2. Click `Run@once` and then `Run now`
 
 ### VIEW THE DATA IN BIG QUERY 
