@@ -179,13 +179,6 @@ tags: []
 type: python
 updated_at: '2024-05-03T13:51:00+00:00'
 uuid: collisions_process_batch
-variables:
-  google_bq_dataset: nyc_collisions_dataset
-  google_bucket: nyc-collisions-bucket
-  google_gcs_raw: raw_api_batched
-  google_gcs_spark: crash_data_spark_trans
-  google_project_id: collisions-pipeline
-  key_path: /home/src/google_cloud_key.json
-  output_file_name: processed_nyc_collisions_2023_12.parquet
+variables: {}
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []

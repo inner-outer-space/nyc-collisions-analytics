@@ -177,14 +177,8 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-05-05 17:45:30'
+updated_at: '2024-05-05T17:45:30+00:00'
 uuid: collisions_process_all
-variables:
-  google_bq_dataset: nyc_collisions_dataset
-  google_bucket: nyc-collisions-bucket
-  google_gcs_raw: raw_api_batched
-  google_gcs_spark: crash_data_spark_trans
-  google_project_id: collisions-pipeline
-  key_path: /home/src/google_cloud_key.json
+variables: {}
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []

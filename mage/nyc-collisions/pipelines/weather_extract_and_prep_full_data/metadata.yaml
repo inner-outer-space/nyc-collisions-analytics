@@ -150,12 +150,6 @@ tags: []
 type: python
 updated_at: '2024-05-03T08:58:17+00:00'
 uuid: weather_extract_and_prep_full_data
-variables:
-  google_bq_dataset: nyc_collisions_dataset
-  google_bucket: nyc-collisions-bucket
-  google_gcs_raw: raw_api_batched
-  google_gcs_spark: crash_data_spark_trans
-  google_project_id: collisions-pipeline
-  key_path: /home/src/google_cloud_key.json
+variables: {}
 variables_dir: /home/src/mage_data/nyc-collisions
 widgets: []
