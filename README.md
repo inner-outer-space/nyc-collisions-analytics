@@ -58,19 +58,19 @@ Docker and Docker-Compose are used to create a local container environment for r
 Mage is employed for orchestrating the data pipeline, managing dependencies between tasks, and automating workflows.
 ### 4. Data Ingestion
 Collision Data Ingestion 
-  - The collision data is retrieved on a per month basis. 
-  - Requests are made in batches until the full month of data has been retrieved (2-3 requests/ mos).     
+  - Collision data is retrieved on a monthly basis.
+  - Requests are made in batches until the full month of data has been retrieved (typically 2-3 requests/ mos).     
   - The raw data is then written to the GCP bucket. 
-  - The full historic dataset is retrieved by running a bash script that triggers the monthly extract pipeline for the full timeframe, with a wait is included between each month. <br/>
+  - The full historic dataset for 2015 - 2023 is retrieved by running a bash script that triggers the monthly extract pipeline for the full timeframe, with necessary pauses between each month to avoid overwhelming the source. <br/>
   
 Weather Data Ingestion  
-  - The data is retrieved and saved to CSV using a python script. Since the weather dataset is not publicly available, this step was done in order for this pipeline to be reproducible. 
-  - The CSV file is ingested into Mage, where some light column name transformations are performed, and then written to the GCS bucket.
+  - Since the weather dataset is not publicly available, it was retrieved and saved to CSV outside of this process via a python script. 
+  - The CSV file is ingested into Mage where column name transformations are performed before writing the file to the GCS bucket.
 
 ### 5. Data Processing with Spark
-- Initial processing of the collisions dataset is handled using Spark.
-Data types are assigned.
-- A user-defined function (UDF) is applied to calculate the sun phase (day, night, dusk, or dawn) based on date and time.
+Initial processing of the collisions dataset is handled using Spark.
+  - The data types are assigned.
+  - A user-defined function (UDF) is applied to calculate the sun phase (day, night, dusk, or dawn) based on date and time.
 ### 6. Data Transformation with DBT
 - The collision data is further transformed and enriched with weather data using DBT.
 - Monthly and annual views are created as well as a vehicle view from the unnested data.
