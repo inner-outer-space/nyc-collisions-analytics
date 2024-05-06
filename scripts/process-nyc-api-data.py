@@ -4,7 +4,6 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import os
 import time
-import utils
 import transforms
 import geopandas as gpd
 import matplotlib.pyplot as plt
