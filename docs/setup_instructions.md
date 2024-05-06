@@ -69,34 +69,25 @@ In the Scripts folder: </br>
 3. Monitor the pipeline at `http://localhost:6789/pipelines/collisions_extract_monthly_from_api/triggers`  
 </br>
 
- - This script submits an api request to the mage 'monthly_extract_trigger' for each month between the start and end month specified.
- - The pipeline makes batched requests to the NYC Open Data rest api until the full month of data is retrieved and then writes the output parquet to the GCS bucket created previously with Terraform.
+ - This script tirggers the 'collisions_extract_monthly_from_api' pipeline	for each month within the start and end years specified.
+ - The pipeline makes batched requests to the NYC Open Data rest api until the full month of data is retrieved and then writes the output parquet to the GCS bucket.
  - The script includes a pause between each pipeline run to avoid overwhelming the source. 
 </br>
 
 ### EXTRACT, PROCESS, AND STAGE THE WEATHER DATA (2 min)
 Once the previous step is complete, execute the following command in the terminal: </br>
-`curl -X POST http://localhost:6789/api/pipeline_schedules/17/pipeline_runs/ea94aa87644445e08b0ff330ec66b17a \
-  --header 'Content-Type: application/json'` </br>
+`curl -X POST http://localhost:6789/api/pipeline_schedules/17/pipeline_runs/ea94aa87644445e08b0ff330ec66b17a` </br>
 </br>
 The weather data used in this project was retrieved during an introductory free trial period for World Weather Online. The data was extracted and stored in CSV format for use in this pipeline. This script retrieves the CSV file from its GIT location, does some light processing, uploads it to GCS, and then creates an associated external table that can be accessed in BigQuery.  
 
 ### PROCESS COLLISION DATA AND INCORMPORATE WEATHER (90 min)
 Once the previous step is complete execute the following command in the terminal:</br>
-`curl -X POST http://localhost:6789/api/pipeline_schedules/19/pipeline_runs/877f905db450443292b277fe6af18537 \
-  --header 'Content-Type: application/json'` </br>
+`curl -X POST http://localhost:6789/api/pipeline_schedules/19/pipeline_runs/877f905db450443292b277fe6af18537` </br>
 </br>
-This triggers the collisions_process_all pipeline which reads in a list of the monthly files created in the extraction set. The collisions_process_batch pipeline is triggered within this pipeline for each file in the list. Local spark is used to create a datetime stamp, asign data types, and calculate the sun phase (day, dusk, dawn, dark) at the time of each collision. The collision staging and interim views are created. The month's collision data is enriched with the weather data and incrementally added to the fact table.    
-
-Once all extract files have been processd and the fact table has been built, then the collisions_process_all pipeline continues to create the dbt dimensional tables. 
-  
-### PROCESS THE COLLISIONS DATA AND INCORPORATE THE WEATHER DATA 
-
+This triggers the collisions_process_all pipeline which reads in a list of the monthly files created in the extraction set. The collisions_process_batch pipeline is triggered within this pipeline for each file in the list. Local spark is used to create a datetime stamp, asign data types, and calculate the sun phase (day, dusk, dawn, dark) at the time of each collision. DBT is used to further transform the collision data and enrich it with the weather data. The final data is incrementally added to the BigQuery fact table. The pipeline then creates annual, monthly, and vehicle dimension tables.   
 
 ## TAKING THE PROJECT DOWN 
 When you are done with the project execute `terraform destroy` to take down the resources. Once the files and resources are removed, you can delete the project.   
-
-note: a second dataset is created in BQ by DBT. This will need to be manually removed. 
 
 ### EXTRA 
 3. Set the GOOGLE_APPLICATION_CREDENTIALS appropriately</br>
