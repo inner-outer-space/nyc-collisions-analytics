@@ -20,6 +20,7 @@ _Instructions for Linux_
 3. Download a Service Account JSON Key. 
     - On the Service Account page, in the Actions menu for the service account, click  `Manage Keys`.
     - Create a new JSON key and download it to the MAGE FOLDER in this repo as `google_cloud_key.json`.
+4. Enable the `Service Usage API`
 <br/>
 
 ## TERRAFORM
