@@ -4,11 +4,11 @@ variable "credentials"  {
 }  
 variable project {
   description = "Project"
-  default     = "collisions-pipeline"     # This must be changed to your GCP project
+  default     = "project-nyc-collisions"     # This must be changed to your GCP project
 }
 variable "gcs_bucket_name" {
   description = "Name for GCP bucket"
-  default     = "nyc-collisions-bucket"   # This must be changed to your globally unique bucket name
+  default     = "project-nyc-collisions-bucket"   # This must be changed to your globally unique bucket name
 }
 
 variable "bq_dataset_name" {
