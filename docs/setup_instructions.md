@@ -68,8 +68,24 @@ The weather data used in this project was retrieved during an introductory free 
 2. Click `Run@once` and then `Run now`
 
 ### EXTRACT THE HISTORIC COLLISIONS DATA (~30 min)
+This pipeline runs a loop for all of the months within 2015 - 2023 and script tirggers the 'collisions_extract_monthly_from_api' pipeline for each month. The monthly pipeline makes batched requests to the NYC Open Data rest api until the full month of data is retrieved and then ouputs the full months data as a parquet to GCS. The script includes a pause between each pipeline run to avoid overwhelming the source.
+
+1. Goto `http://localhost:6789/pipelines/weather_extract_and_prep_full_data/triggers`
+2. Click `Run@once` and then `Run now`
+
+### PROCESS COLLISION DATA AND INCORMPORATE WEATHER (90 min)
+This triggers the collisions_process_all pipeline which reads in a list of the monthly files created in the extraction set. The collisions_process_batch pipeline is triggered within this pipeline for each file in the list. Local spark is used to create a datetime stamp, asign data types, and calculate the sun phase (day, dusk, dawn, dark) at the time of each collision. DBT is used to further transform the collision data and enrich it with the weather data. The final data is incrementally added to the BigQuery fact table. The pipeline then creates annual, monthly, and vehicle dimension tables.   
+
+1. Goto `http://localhost:6789/pipelines/weather_extract_and_prep_full_data/triggers`
+2. Click `Run@once` and then `Run now`
+3. Stop the first run after a minute and click `Run@once` again
+
+### VIEW THE DATA IN BIG QUERY 
+![image](https://github.com/inner-outer-space/nyc-collisions-analytics/assets/12296455/b9dc0ba7-33a7-4151-9325-c5564a80fa5b)
 
 
+## TAKING THE PROJECT DOWN 
+When you are done with the project execute `terraform destroy` to take down the resources. Once the files and resources are removed, you can delete the project.  
 
 ### EXTRACT THE HISTORIC COLLISIONS DATA (~30 min)
 In the Scripts folder: </br> 
@@ -97,8 +113,7 @@ Once the previous step is complete execute the following command in the terminal
 </br>
 This triggers the collisions_process_all pipeline which reads in a list of the monthly files created in the extraction set. The collisions_process_batch pipeline is triggered within this pipeline for each file in the list. Local spark is used to create a datetime stamp, asign data types, and calculate the sun phase (day, dusk, dawn, dark) at the time of each collision. DBT is used to further transform the collision data and enrich it with the weather data. The final data is incrementally added to the BigQuery fact table. The pipeline then creates annual, monthly, and vehicle dimension tables.   
 
-## TAKING THE PROJECT DOWN 
-When you are done with the project execute `terraform destroy` to take down the resources. Once the files and resources are removed, you can delete the project.   
+ 
 
 ### EXTRA 
 3. Set the GOOGLE_APPLICATION_CREDENTIALS appropriately</br>
