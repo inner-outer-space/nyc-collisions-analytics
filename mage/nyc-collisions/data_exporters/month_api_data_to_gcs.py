@@ -21,6 +21,7 @@ def export_data_to_google_cloud_storage(df: DataFrame, **kwargs) -> None:
 
     year = kwargs['year']
     month = kwargs['month']
+
     month_str = str(month).zfill(2)
     output_parquet = f'nyc_collisions_{year}_{month_str}.parquet'
     print(output_parquet)

@@ -5,65 +5,46 @@ blocks:
     file_source:
       path: custom/set_global_variables.py
   downstream_blocks:
-  - extract_month_from_api
+  - collisions_extract_loop
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
   name: set_global_variables
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: custom
   upstream_blocks: []
   uuid: set_global_variables
-- all_upstream_blocks_executed: false
-  color: null
-  configuration:
-    file_source:
-      path: data_loaders/extract_month_from_api.py
-  downstream_blocks:
-  - month_api_data_to_gcs
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: extract_month_from_api
-  retry_config: null
-  status: updated
-  timeout: null
-  type: data_loader
-  upstream_blocks:
-  - set_global_variables
-  uuid: extract_month_from_api
-- all_upstream_blocks_executed: false
-  color: null
+- all_upstream_blocks_executed: true
+  color: pink
   configuration: {}
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: month_api_data_to_gcs
+  name: collisions_extract_loop
   retry_config: null
   status: updated
   timeout: null
-  type: data_exporter
+  type: custom
   upstream_blocks:
-  - extract_month_from_api
-  uuid: month_api_data_to_gcs
+  - set_global_variables
+  uuid: collisions_extract_loop
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
-created_at: '2024-04-25 15:21:48.567246+00:00'
+created_at: '2024-05-06 15:46:04.526394+00:00'
 data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: collisions-extract_monthly_from_api
+name: collisions_extract_all
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -73,8 +54,8 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-05-06T16:01:55+00:00'
-uuid: collisions_extract_monthly_from_api
+updated_at: '2024-05-06 17:09:48'
+uuid: collisions_extract_all
 variables:
   google_bq_dataset: nyc_collisions_dataset
   google_bucket: nyc-collisions-bucket

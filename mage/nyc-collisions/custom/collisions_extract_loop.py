@@ -8,22 +8,32 @@ if 'test' not in globals():
 
 
 @custom
-def collisions_batch_loop(input_object_keys, _, **kwargs):
+def collisions_extract_loop(*args, **kwargs):
     """
     args: The output from any upstream parent blocks (if applicable)
 
     Returns:
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
-    wait_seconds = 90 
-    
-    #input_object_keys = ['raw_api_batched/nyc_collisions_2020_09_.parquet', 'raw_api_batched/nyc_collisions_2020_10_.parquet']
-    input_object_keys = sorted(input_object_keys)
-    object_keys = input_object_keys
-    for object_key in object_keys:
+    # Define start and end years
+    start_year = 2015
+    end_year = 2023
+
+    # Generate list of tuples (year, month) for each month between start and end years
+    all_months = [(year, month) for year in range(start_year, end_year + 1) for month in range(1, 13)]
+
+    base_url="http://localhost:6789/api/pipeline_schedules/21/pipeline_runs/81ec754a748a453681dd30d3e12e3f1d"
+
+    wait_seconds = 20
+
+    # Iterate over all year-month tuples
+    for year, month in all_months:
         trigger_pipeline(
-            'collisions_process_batch',  
-            variables={'object_key': object_key}, 
+            'collisions_extract_monthly_from_api',  
+            variables={
+                'year': year, 
+                'month': month
+            }, 
             check_status=False,
             error_on_failure=False,
             poll_interval=60,
@@ -31,10 +41,11 @@ def collisions_batch_loop(input_object_keys, _, **kwargs):
             schedule_name=None, 
             verbose=True,
         )
-        print(f"Pipeline triggered for {object_key}. Waiting for next iteration.")
+        print(f"Pipeline triggered for {month}-{year}. Waiting for next iteration.")
         time.sleep(wait_seconds)  
     return {}
-    
+
+
 @test
 def test_output(output, *args) -> None:
     """
