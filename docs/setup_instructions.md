@@ -63,19 +63,19 @@ In the Terraform folder: <br/>
 # RUNNING THE PIPELINES 
 
 ### EXTRACT, PROCESS, AND STAGE THE WEATHER DATA (2 min)
-The weather data from World Weather Online used in this project is not publically available. The data was extracted from the REST API and stored in CSV format for use in this pipeline. This script retrieves the CSV file from its GIT location, does some light processing, uploads it to GCS, and then creates an associated external table that can be accessed in BigQuery.  <br/> <br/>
+The weather data from World Weather Online used in this project is not publically available. The data was extracted from the REST API and stored in CSV format for use in this pipeline. This pipeline retrieves the CSV file from its GIT location, does some light processing, uploads it to GCS, and then creates an associated external table that can be accessed in BigQuery.  <br/> <br/>
 
 1. Goto `http://localhost:6789/pipelines/weather_extract_and_prep_full_data/triggers`
 2. Click `Run@once` and then `Run now`
 
 ### EXTRACT THE HISTORIC COLLISIONS DATA (~36 min)
-This pipeline extracts the historical collision data from the REST API. It loops through the months within 2015 - 2023 and tirggers the 'collisions_extract_monthly_from_api' pipeline for each month. The monthly pipeline makes batch requests to the NYC Open Data rest api until the full month of data is retrieved and then ouputs each month's data as a parquet to GCS. The script includes a 20s pause between each month to be respectful of the source.
+This pipeline extracts the historical collision data from the REST API. It loops through the months within 2015 - 2023 and triggers the 'collisions_extract_monthly_from_api' pipeline for each month. The monthly pipeline makes batch requests to the NYC Open Data rest api until the full month of data is retrieved and then ouputs each month's data as a parquet to GCS. The script includes a 20s pause between each month to be respectful of the source.
 
 1. Goto `http://localhost:6789/pipelines/collisions_extract_all/triggers`
 2. Click `Run@once` and then `Run now`
 
 ### PROCESS COLLISION DATA AND INCORMPORATE WEATHER (90 min)
-This pipeline processes the collisions data, enriches it with the weather data, and then creates annual, monthly, and vehicle dimension tables. The pipeline loops through the list of the monthly raw files and triggers the collisions_process_batch pipeline for each file.  Local spark is used to create a datetime stamp, asign data types, and calculate the sun phase (day, dusk, dawn, dark) at the time of each collision. DBT is used to further transform the collision data and join it with the weather data. The final data is incrementally added to the BigQuery fact table. The pipeline then creates annual, monthly, and vehicle dimension tables.   
+This pipeline processes the collisions data, enriches it with the weather data, and then creates annual, monthly, and vehicle dimension tables. The pipeline loops through the list of the monthly raw files and triggers the collisions_process_batch pipeline for each file.  Local spark is used to create a datetime stamp, assign data types, and calculate the sun phase (day, dusk, dawn, dark) at the time of each collision. DBT is used to further transform the collision data and join it with the weather data. The final data is incrementally added to the BigQuery fact table. The pipeline then creates annual, monthly, and vehicle dimension tables.   
 
 1. Goto `http://localhost:6789/pipelines/collisions_process_all/triggers`
 2. Click `Run@once` and then `Run now`
