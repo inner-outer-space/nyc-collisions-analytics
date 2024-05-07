@@ -16,35 +16,8 @@ The City of New York provides access to The [New York City Motor Vehicle Collisi
 As part of this excercise, the dataset was enriched with meteorological data obtained from [World Weather Online](https://www.worldweatheronline.com/weather-api/). In order to provide further insights into factors potentially influencing collisions, additional categorical representations were derived from the data. These representations include severity and sun phase, which were calculated based on the day of the year and latitude/longitude coordinates. This enriched dataset enables a more comprehensive analysis of traffic collisions in New York City.
 <div align = center>
 
-
-
-
-    Tools and Technologies
-
-    <tr>
-      <th scope="row">Cloud</th>
-      <td>**Google Cloud Platform**</td>
-      <th scope="row">Transformation</th>
-      <td>**DBT & Apache Spark**</td>
-    </tr>
-    <tr>
-      <th scope="row">Infrastructure as Code Software</th>
-      <td>**Terraform**</td>
-      <th scope="row">Data Lake</th>
-      <td>Google Cloud Storag</td>
-      <td>45</td>
-    </tr>
-    <tr>
-      <th scope="row">Infrastructure as Code Software</th>
-      <td>**Terraform**</td>
-      <td>45</td>
-    </tr>
-    <tr>
-      <th scope="row">Dennis</th>
-      <td>Web accessibility</td>
-      <td>45</td>
-    </tr>
 ### Tools and Technologies
+|--|--|
 | Cloud - **Google Cloud Platform**| Infrastructure as Code Software - **Terraform**|
 | Containerization - **Docker** and **Docker Compose**| Orchestration - **Mage**|
 | Data Extract - **REST API**| Transformation - **DBT & Apache Spark**|
