@@ -20,6 +20,8 @@ As part of this excercise, the dataset was enriched with meteorological data obt
 |--|--|
 | Cloud - **Google Cloud Platform**| Infrastructure as Code Software - **Terraform**| Containerization - **Docker** and **Docker Compose**| Orchestration - **Mage**| Data Extract - **REST API**| Transformation - **DBT & Apache Spark**| Data Lake - **Google Cloud Storage**| Data Warehouse - **BigQuery**| Data Visualization - **Looker Studio**| Languages - **Python, SQL, and Bash**|
 
+|--|--|
+|- Raw data is imported into the data warehouse<br> - Data is not meant to be exposed to others||- Data is transformed to data models<br>- focuses on efficiency and ensuring standards|| Data is exposed to end users| 
 
 ### Tools and Technologies
 - Cloud - **Google Cloud Platform**
