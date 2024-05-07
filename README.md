@@ -7,16 +7,6 @@ My course notes and homework can be found here: [DE Zoomcamp 2024 Repo](https://
 To reproduce this project, please refer to the the [Set Up Instructions](https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/docs/setup_instructions.md)
 <br/>
 
-<div align = center>
-  
-### DASHBOARD
-<img src=images/Collisions-Dashboard.png width="700" height="auto">
-<br/>
-
-[View Dashboard](https://lookerstudio.google.com/reporting/f738bd1c-d126-4e76-8c11-0446923e1a8e)
-</div>
-<br/>
-
 ### OBJECTIVE 
 To apply the principles and techniques learned in the data engineering course by building an end-to-end cloud data pipeline for the NYC Collisions dataset. The project ingests, transforms, and enriches the data with local meterological data in monthly batches and visualizes the combined dataset.  
 
@@ -26,10 +16,35 @@ The City of New York provides access to The [New York City Motor Vehicle Collisi
 As part of this excercise, the dataset was enriched with meteorological data obtained from [World Weather Online](https://www.worldweatheronline.com/weather-api/). In order to provide further insights into factors potentially influencing collisions, additional categorical representations were derived from the data. These representations include severity and sun phase, which were calculated based on the day of the year and latitude/longitude coordinates. This enriched dataset enables a more comprehensive analysis of traffic collisions in New York City.
 <div align = center>
 
-### ARCHITECTURE 
-<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="700" height="auto">
-</div>
-<br/>
+
+
+  <caption>
+    Tools and Technologies
+  </caption>
+  <tbody>
+    <tr>
+      <th scope="row">Cloud</th>
+      <td>**Google Cloud Platform**</td>
+      <th scope="row">Transformation</th>
+      <td>**DBT & Apache Spark**</td>
+    </tr>
+    <tr>
+      <th scope="row">Infrastructure as Code Software</th>
+      <td>**Terraform**</td>
+      <th scope="row">Data Lake</th>
+      <td>Google Cloud Storag</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th scope="row">Infrastructure as Code Software</th>
+      <td>**Terraform**</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
 
 ### Tools and Technologies
 - Cloud - **Google Cloud Platform**
@@ -44,7 +59,10 @@ As part of this excercise, the dataset was enriched with meteorological data obt
 - Languages - **Python, SQL, and Bash**
 <br/>
 
-
+### ARCHITECTURE 
+<img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="700" height="auto">
+</div>
+<br/>
 ## PROJECT WORKFLOW 
 
 ### 1. Google Cloud Platform Provisioning with Terraform
@@ -61,7 +79,7 @@ Mage is employed for orchestrating the data pipelines, managing dependencies bet
 Collision Data Ingestion 
   - Collision data is retrieved from the REST API on a monthly basis.
   - Requests are made in batches until the full month of data has been retrieved (typically 2-3 requests/ mos).     
-  - Raw data is then written to the GCP bucket and exposed to BigQuery as an external table.  <br/>
+  - Raw data is then written to the GCP bucket.  <br/>
   
 Weather Data Ingestion  
   - Because the weather dataset isn't publicly accessible, it was retrieved from the REST API and saved to CSV within this repository. This was done for reproducibility purposes using a Python script found in the /scripts folder.
@@ -73,6 +91,16 @@ Initial processing of the collisions dataset is handled using Spark to assign da
 DBT is employed to further transform the collision data and incorporate weather information into a partitioned and clusterd fact table. Subsequently, dimensional tables such as monthly and annual views, along with a vehicle view derived from unnested data, are created. 
 ### 7. Visualization with Looker
 Looker is utilized for visualizing and analyzing the transformed data stored in BigQuery.
+
+<div align = center>
+  
+### DASHBOARD
+<img src=images/Collisions-Dashboard.png width="700" height="auto">
+<br/>
+
+[View Dashboard](https://lookerstudio.google.com/reporting/f738bd1c-d126-4e76-8c11-0446923e1a8e)
+</div>
+<br/>
 
 
 <div align = center>
