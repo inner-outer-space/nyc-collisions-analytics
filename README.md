@@ -35,6 +35,7 @@ As part of this excercise, the dataset was enriched with meteorological data obt
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="700" height="auto">
 </div>
 <br/>
+
 ## PROJECT WORKFLOW 
 
 ### 1. Google Cloud Platform Provisioning with Terraform
