@@ -49,32 +49,30 @@ As part of this excercise, the dataset was enriched with meteorological data obt
 
 ### 1. Google Cloud Platform Provisioning with Terraform
 Terraform is used to: 
-- Provision a GCP bucket and Bigquery dataset. 
-- Enabel Google Cloud APIs. 
+- Authenticate the service account. 
+- Enabel Google Cloud Platform APIs. 
+- Provision a GCP bucket and Bigquery dataset.
+- Destroy the infrastructure upon completion. 
 ### 2. Containerization with Docker
 Docker and Docker-Compose are used to create a local container environment for running Mage with integrated DBT and Spark.
 ### 3. Orchestration with Mage
-Mage is employed for orchestrating the data pipeline, managing dependencies between tasks, and automating workflows.
+Mage is employed for orchestrating the data pipelines, managing dependencies between tasks, and automating workflows.
 ### 4. Data Ingestion
 Collision Data Ingestion 
   - Collision data is retrieved on a monthly basis.
   - Requests are made in batches until the full month of data has been retrieved (typically 2-3 requests/ mos).     
-  - The raw data is then written to the GCP bucket. 
-  - The full historic dataset for 2015 - 2023 is retrieved by running a bash script that triggers the monthly extract pipeline for each month in the time range, with necessary pauses between each month to avoid overwhelming the source. <br/>
+  - Raw data is then written to the GCP bucket.  <br/>
   
 Weather Data Ingestion  
-  - Since the weather dataset is not publicly available, it was retrieved and saved to CSV outside of this process via a python script. 
-  - The CSV file is ingested into Mage where column name transformations are performed before writing the file to the GCS bucket.
+  - Since the weather dataset is not publicly available, it was retrieved and saved to CSV outside of this process via a python script found in the scrips folder. 
+  - The CSV file is ingested into Mage where column name transformations are performed. The file is then written to the GCS bucket and exposed to BigQuery as an external table.
 
 ### 5. Data Processing with Spark
-Initial processing of the collisions dataset is handled using Spark.
-  - The data types are assigned.
-  - A user-defined function (UDF) is applied to calculate the sun phase (day, night, dusk, or dawn) based on date and time.
+Initial processing of the collisions dataset is handled using Spark to assign data types and calculate the sun phase (day, night, dusk, or dawn) based on date and time using a user-defined function (UDF). The processed data is written back to the GCS bucket and exposed as external tables in BigQuery. 
 ### 6. Data Transformation with DBT
-- The collision data is further transformed and enriched with weather data using DBT.
-- Monthly and annual views are created as well as a vehicle view from the unnested data.
+DBT is employed to further transform the collision data and incorporate weather information into a partitioned and clusterd fact table. Subsequently, dimensional tables such as monthly and annual views, along with a vehicle view derived from unnested data, are created. 
 ### 7. Visualization with Looker
-- Looker is utilized for visualizing and analyzing the transformed data stored in BigQuery.
+Looker is utilized for visualizing and analyzing the transformed data stored in BigQuery.
 
 
 <div align = center>
