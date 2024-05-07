@@ -18,11 +18,7 @@ As part of this excercise, the dataset was enriched with meteorological data obt
 
 ### Tools and Technologies
 |--|--|
-| Cloud - **Google Cloud Platform**| Infrastructure as Code Software - **Terraform**|
-| Containerization - **Docker** and **Docker Compose**| Orchestration - **Mage**|
-| Data Extract - **REST API**| Transformation - **DBT & Apache Spark**|
-| Data Lake - **Google Cloud Storage**| Data Warehouse - **BigQuery**|
-| Data Visualization - **Looker Studio**| Languages - **Python, SQL, and Bash**|
+| Cloud - **Google Cloud Platform**| Infrastructure as Code Software - **Terraform**| Containerization - **Docker** and **Docker Compose**| Orchestration - **Mage**| Data Extract - **REST API**| Transformation - **DBT & Apache Spark**| Data Lake - **Google Cloud Storage**| Data Warehouse - **BigQuery**| Data Visualization - **Looker Studio**| Languages - **Python, SQL, and Bash**|
 
 
 ### Tools and Technologies
