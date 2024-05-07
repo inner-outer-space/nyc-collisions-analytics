@@ -21,8 +21,10 @@ As part of this excercise, the dataset was enriched with meteorological data obt
 | Cloud - **Google Cloud Platform**| Infrastructure as Code Software - **Terraform**| Containerization - **Docker** and **Docker Compose**| Orchestration - **Mage**| Data Extract - **REST API**| Transformation - **DBT & Apache Spark**| Data Lake - **Google Cloud Storage**| Data Warehouse - **BigQuery**| Data Visualization - **Looker Studio**| Languages - **Python, SQL, and Bash**|
 
 
+| `If working with data in BigQuery`|`If working with data in Postgres`|
 |--|--|
 |- Use the cloud IDE for development <br>- No need for local installation of dbt core|- Install dbt core locally and connect to Postgres database<br>- Develop using a local preferred IDE<br>- Run dbt models through the CLI|
+
 
 
 
