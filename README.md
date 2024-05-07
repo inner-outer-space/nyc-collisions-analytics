@@ -59,12 +59,12 @@ Docker and Docker-Compose are used to create a local container environment for r
 Mage is employed for orchestrating the data pipelines, managing dependencies between tasks, and automating workflows.
 ### 4. Data Ingestion
 Collision Data Ingestion 
-  - Collision data is retrieved on a monthly basis.
+  - Collision data is retrieved from the REST API on a monthly basis.
   - Requests are made in batches until the full month of data has been retrieved (typically 2-3 requests/ mos).     
-  - Raw data is then written to the GCP bucket.  <br/>
+  - Raw data is then written to the GCP bucket and exposed to BigQuery as an external table.  <br/>
   
 Weather Data Ingestion  
-  - Since the weather dataset is not publicly available, it was retrieved and saved to CSV outside of this process via a python script found in the scrips folder. 
+  - Because the weather dataset isn't publicly accessible, it was retrieved from the REST API and saved to CSV within this repository. This was done for reproducibility purposes using a Python script found in the /scripts folder.
   - The CSV file is ingested into Mage where column name transformations are performed. The file is then written to the GCS bucket and exposed to BigQuery as an external table.
 
 ### 5. Data Processing with Spark
