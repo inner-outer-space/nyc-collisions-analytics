@@ -20,8 +20,13 @@ As part of this excercise, the dataset was enriched with meteorological data obt
 |--|--|
 | Cloud - **Google Cloud Platform**| Infrastructure as Code Software - **Terraform**| Containerization - **Docker** and **Docker Compose**| Orchestration - **Mage**| Data Extract - **REST API**| Transformation - **DBT & Apache Spark**| Data Lake - **Google Cloud Storage**| Data Warehouse - **BigQuery**| Data Visualization - **Looker Studio**| Languages - **Python, SQL, and Bash**|
 
+|`dbt CORE`| `dbt CLOUD`|
 |--|--|
-|- Raw data is imported into the data warehouse<br> - Data is not meant to be exposed to others||- Data is transformed to data models<br>- focuses on efficiency and ensuring standards|| Data is exposed to end users| 
+|- The essence of dbt<br> - Open source project that provides the core data transformation and modeling functionality<br> - Builds and runs a dbt project <br> - Includes SQL compilation logic, macros and database adapters<br> - Includes a CLI interface| - SaaS application that extends the capabilities of dbt Core <br> - Web based IDE that allows you to develop, run and test a dbt project<br> - Offers additional features such as job orchestration, logging and alerting, and integrated documentation<br> - There is a free tier for individuals|
+
+
+
+
 
 ### Tools and Technologies
 - Cloud - **Google Cloud Platform**
