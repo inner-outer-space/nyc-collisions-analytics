@@ -69,7 +69,7 @@ The weather data from World Weather Online used in this project is not publicall
 2. Click `Run@once` and then `Run now`
 
 ### EXTRACT THE HISTORIC COLLISIONS DATA (~36 min)
-This pipeline extracts the historical collision data from the REST API. It loops through the months within 2015 - 2023 and triggers the 'collisions_extract_monthly_from_api' pipeline for each month. The monthly pipeline makes batch requests to the NYC Open Data rest api until the full month of data is retrieved and then ouputs each month's data as a parquet to GCS. The script includes a 20s pause between each month to be respectful of the source.
+This pipeline extracts the historical collision data from the REST API. It loops through the months within 2015 - 2023 and triggers the 'collisions_extract_monthly_from_api' pipeline for each month. The monthly pipeline makes batch requests to the NYC Open Data rest api until the full month of data is retrieved and then ouputs each month's data as a parquet to GCS. The script includes a 30s pause between each month to be respectful of the source.
 
 1. Goto `http://localhost:6789/pipelines/collisions_extract_all/triggers`
 2. Click `Run@once` and then `Run now`
