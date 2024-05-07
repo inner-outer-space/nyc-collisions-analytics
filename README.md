@@ -22,7 +22,7 @@ As part of this excercise, the dataset was enriched with meteorological data obt
 
 |`dbt CORE`| `dbt CLOUD`|
 |--|--|
-|- The essence of dbt<br> - Open source project that provides the core data transformation and modeling functionality<br> - Builds and runs a dbt project <br> - Includes SQL compilation logic, macros and database adapters<br> - Includes a CLI interface| - SaaS application that extends the capabilities of dbt Core <br> - Web based IDE that allows you to develop, run and test a dbt project<br> - Offers additional features such as job orchestration, logging and alerting, and integrated documentation<br> - There is a free tier for individuals|
+| Cloud - **Google Cloud Platform**| Infrastructure as Code Software - **Terraform**| Containerization - **Docker** and **Docker Compose**| Orchestration - **Mage**| Data Extract - **REST API**| Transformation - **DBT & Apache Spark**| Data Lake - **Google Cloud Storage**| Data Warehouse - **BigQuery**| Data Visualization - **Looker Studio**| Languages - **Python, SQL, and Bash**|
 
 
 
