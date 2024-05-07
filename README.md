@@ -14,7 +14,7 @@ To apply the principles and techniques learned in the data engineering course by
 The City of New York provides access to The [New York City Motor Vehicle Collisions Data Set](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95) through the [NYC Open Data platform](https://opendata.cityofnewyork.us/). The dataset encompasses a wide range of collision types, including but not limited to, vehicle-to-vehicle crashes, pedestrian-involved incidents, and cyclist accidents. Key attributes include the date and time of the collision, location details such as the borough and street, as well as contributing factors and vehicle types involved.
 
 As part of this excercise, the dataset was enriched with meteorological data obtained from [World Weather Online](https://www.worldweatheronline.com/weather-api/). In order to provide further insights into factors potentially influencing collisions, additional categorical representations were derived from the data. These representations include severity and sun phase, which were calculated based on the day of the year and latitude/longitude coordinates. This enriched dataset enables a more comprehensive analysis of traffic collisions in New York City.
-<div align = center>
+
 
 ### Tools and Technologies
 - Cloud - **Google Cloud Platform**
@@ -28,6 +28,8 @@ As part of this excercise, the dataset was enriched with meteorological data obt
 - Data Visualization - **Looker Studio**
 - Languages - **Python, SQL, and Bash**
 <br/>
+
+<div align = center>
 
 ### ARCHITECTURE 
 <img src="https://github.com/inner-outer-space/nyc-collisions-analytics/blob/main/images/architecture-diagram.png" width="700" height="auto">
