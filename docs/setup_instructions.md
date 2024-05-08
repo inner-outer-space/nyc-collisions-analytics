@@ -23,7 +23,7 @@ _Instructions for Linux_
 4. Make sure that billing is activated for the project (if you are using a paid account). 
 <br/>
 
-## TERRAFORM
+## Terraform
 In the Terraform folder: <br/>
 1. Update variable in the variables.tf file: 
  - REQUIRED: 
@@ -41,7 +41,7 @@ In the Terraform folder: <br/>
     - `terraform apply`
 <br/>
 
-## MAGE 
+## Mage 
 1. In the Mage folder: <br/>
    - Change name of the `my.env` file to `.env`
    <br/>
