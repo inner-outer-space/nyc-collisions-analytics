@@ -81,8 +81,7 @@ This pipeline processes the collisions data, enriches it with the weather data, 
 2. Click `Run@once` and then `Run now`
 
 ### VIEW THE DATA IN BIG QUERY 
-![image](https://github.com/inner-outer-space/nyc-collisions-analytics/assets/12296455/b9dc0ba7-33a7-4151-9325-c5564a80fa5b)
-
+![image](https://github.com/inner-outer-space/nyc-collisions-analytics/assets/12296455/f7a8627b-e669-4be7-acf1-b84813b3ed95)
 
 ## TAKING THE PROJECT DOWN 
 1. Go to the Mage folder and execute `docker-compose down'
