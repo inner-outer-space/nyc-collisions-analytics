@@ -39,8 +39,7 @@ def load_data(*args, **kwargs):
   
     input_object_keys = [blob.name for blob in blobs if blob.name.endswith('.parquet')]
     print(len(input_object_keys))
-    print(input_object_keys[24:48])
-    return input_object_keys[24:48]
+    return input_object_keys
 
 
 @test

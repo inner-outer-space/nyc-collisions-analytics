@@ -15,7 +15,7 @@ def collisions_batch_loop(input_object_keys, _, **kwargs):
     Returns:
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
-    wait_seconds = 90 
+    wait_seconds = 80 
     
     #input_object_keys = ['raw_api_batched/nyc_collisions_2020_09_.parquet', 'raw_api_batched/nyc_collisions_2020_10_.parquet']
     input_object_keys = sorted(input_object_keys)
