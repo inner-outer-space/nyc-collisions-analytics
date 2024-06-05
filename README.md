@@ -95,7 +95,7 @@ Looker is utilized for visualizing and analyzing the transformed data stored in 
 <br/>
 
 ### Process Collisions Batch Data Pipeline <br/>
-This previous pipeline loops through a list of raw data files and calls this pipeline in the collision batch loop block to process each file. 
+This previous pipeline loops through a list of raw data files and calls this pipeline in the collision batch loop block to process each file. <br/>
 <img src=images/mage-collisions-batch-process.png width="500" height="auto">
 <br/>
 <br/>
